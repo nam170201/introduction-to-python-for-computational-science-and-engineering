@@ -37,7 +37,7 @@ You can use the help function for each numerical method to find out more about t
 
 ## SciPy
 
-`Scipy` provides many scientific computing functions and is generally complementary to the the functionality of `numpy`. 
+`Scipy` provides many scientific computing functions and is generally complementary to the the functionality of `numpy`.
 
 +++
 
@@ -84,8 +84,8 @@ The output is very long, so we're showing just a part of it here:
      spatial                      --- Spatial data structures and algorithms
      special                      --- Special functions
      stats                        --- Statistical Functions
-     
-     
+
+
 
 +++
 
@@ -163,7 +163,7 @@ The solvers are implemented as individual classes which can be used directly
    BDF           -- Implicit multi-step variable order (1 to 5) solver.
    LSODA         -- LSODA solver from ODEPACK Fortran package.
    OdeSolver     -- Base class for ODE solvers.
-   DenseOutput   -- Local interpolant for computing a dense output.
+   DenseOutput   -- Local interpolate for computing a dense output.
    OdeSolution   -- Class which represents a continuous ODE solution.
 ```
 
@@ -216,8 +216,8 @@ _0^1\cos(2\pi x) dx$.
 
 It is good practice to plot the integrand function to check whether it is “well behaved” before you attempt to integrate. Singularities (i.e. $x$ values where the $f(x)$ tends towards minus or plus infinity) or other irregular behaviour (such as $f(x)=\sin(\frac{1}{x}$) close to $x = 0$ are difficult to handle numerically.
 
-1.  Write a function with name `plotquad` which takes the same arguments as the quad command (*i.e.* $f$, $a$ and $b$) and which 
-- (i) creates a plot of the integrand $f(x)$ and 
+1.  Write a function with name `plotquad` which takes the same arguments as the quad command (*i.e.* $f$, $a$ and $b$) and which
+- (i) creates a plot of the integrand $f(x)$ and
 - (ii) computes the integral numerically using the `quad` function. The return values should be as for the `quad` function.
 
 ```{code-cell} ipython3
@@ -234,7 +234,7 @@ mpl.rcParams['figure.dpi'] = 400
 To solve an ordinary differential equation of the type
 $$\frac{\mathrm{d}y}{\mathrm{d}t}(t) = f(y,t)$$
 
-with a given $y(t_0)=y_0$, we can use `scipy`’s `odeint` function. Here is a (self explaining) example program (`useodeint.py`) to find 
+with a given $y(t_0)=y_0$, we can use `scipy`’s `odeint` function. Here is a (self explaining) example program (`useodeint.py`) to find
 
 $$y(t) \quad \mathrm{for}\quad t\in[0,2]$$
  given this differential equation:
@@ -278,27 +278,27 @@ Help on function odeint in module scipy.integrate.odepack:
 
 odeint(func, y0, t, args=(), Dfun=None, col_deriv=0, full_output=0, ml=None, mu=None, rtol=None, atol=None, tcrit=None, h0=0.0, hmax=0.0, hmin=0.0, ixpr=0, mxstep=0, mxhnil=0, mxordn=12, mxords=5, printmessg=0, tfirst=False)
     Integrate a system of ordinary differential equations.
-    
+
     .. note:: For new code, use `scipy.integrate.solve_ivp` to solve a
               differential equation.
-    
+
     Solve a system of ordinary differential equations using lsoda from the
     FORTRAN library odepack.
-    
+
     Solves the initial value problem for stiff or non-stiff systems
     of first order ode-s::
-    
+
         dy/dt = func(y, t, ...)  [or func(t, y, ...)]
-    
+
     where y can be a vector.
-    
+
     .. note:: By default, the required order of the first two arguments of
               `func` are in the opposite order of the arguments in the system
               definition function used by the `scipy.integrate.ode` class and
               the function `scipy.integrate.solve_ivp`.  To use a function with
               the signature ``func(t, y, ...)``, the argument `tfirst` must be
               set to ``True``.
-    
+
     Parameters
     ----------
     func : callable(y, t, ...) or callable(t, y, ...)
@@ -328,9 +328,9 @@ odeint(func, y0, t, args=(), Dfun=None, col_deriv=0, full_output=0, ml=None, mu=
     tfirst: bool, optional
         If True, the first two arguments of `func` (and `Dfun`, if given)
         must ``t, y`` instead of the default ``y, t``.
-    
+
         .. versionadded:: 1.1.0
-    
+
     Returns
     -------
     y : array, shape (len(t), len(y0))
@@ -338,7 +338,7 @@ odeint(func, y0, t, args=(), Dfun=None, col_deriv=0, full_output=0, ml=None, mu=
         with the initial value `y0` in the first row.
     infodict : dict, only returned if full_output == True
         Dictionary containing additional output information
-    
+
         =======  ============================================================
         key      meaning
         =======  ============================================================
@@ -361,7 +361,7 @@ odeint(func, y0, t, args=(), Dfun=None, col_deriv=0, full_output=0, ml=None, mu=
         'mused'  a vector of method indicators for each successful time step:
                  1: adams (nonstiff), 2: bdf (stiff)
         =======  ============================================================
-    
+
     Other Parameters
     ----------------
     ml, mu : int, optional
@@ -405,64 +405,64 @@ odeint(func, y0, t, args=(), Dfun=None, col_deriv=0, full_output=0, ml=None, mu=
         Maximum order to be allowed for the non-stiff (Adams) method.
     mxords : int, (0: solver-determined), optional
         Maximum order to be allowed for the stiff (BDF) method.
-    
+
     See Also
     --------
     solve_ivp : Solve an initial value problem for a system of ODEs.
     ode : a more object-oriented integrator based on VODE.
     quad : for finding the area under a curve.
-    
+
     Examples
     --------
     The second order differential equation for the angle `theta` of a
     pendulum acted on by gravity with friction can be written::
-    
+
         theta''(t) + b*theta'(t) + c*sin(theta(t)) = 0
-    
+
     where `b` and `c` are positive constants, and a prime (') denotes a
     derivative.  To solve this equation with `odeint`, we must first convert
     it to a system of first order equations.  By defining the angular
     velocity ``omega(t) = theta'(t)``, we obtain the system::
-    
+
         theta'(t) = omega(t)
         omega'(t) = -b*omega(t) - c*sin(theta(t))
-    
+
     Let `y` be the vector [`theta`, `omega`].  We implement this system
     in python as:
-    
+
     >>> def pend(y, t, b, c):
     ...     theta, omega = y
     ...     dydt = [omega, -b*omega - c*np.sin(theta)]
     ...     return dydt
     ...
-    
+
     We assume the constants are `b` = 0.25 and `c` = 5.0:
-    
+
     >>> b = 0.25
     >>> c = 5.0
-    
+
     For initial conditions, we assume the pendulum is nearly vertical
     with `theta(0)` = `pi` - 0.1, and is initially at rest, so
     `omega(0)` = 0.  Then the vector of initial conditions is
-    
+
     >>> y0 = [np.pi - 0.1, 0.0]
-    
+
     We will generate a solution at 101 evenly spaced samples in the interval
     0 <= `t` <= 10.  So our array of times is:
-    
+
     >>> t = np.linspace(0, 10, 101)
-    
+
     Call `odeint` to generate the solution.  To pass the parameters
     `b` and `c` to `pend`, we give them to `odeint` using the `args`
     argument.
-    
+
     >>> from scipy.integrate import odeint
     >>> sol = odeint(pend, y0, t, args=(b, c))
-    
+
     The solution is an array with shape (101, 2).  The first column
     is `theta(t)`, and the second is `omega(t)`.  The following code
     plots both components.
-    
+
     >>> import matplotlib.pyplot as plt
     >>> plt.plot(t, sol[:, 0], 'b', label='theta(t)')
     >>> plt.plot(t, sol[:, 1], 'g', label='omega(t)')
@@ -685,7 +685,7 @@ sample_rate = 500       # sampling rate [Hz]
 dt = 1. / sample_rate   # time between two samples [s]
 
 df = 1 / signal_length  # frequency between points in
-                        # in frequency domain [Hz] 
+                        # in frequency domain [Hz]
 t = np.arange(0, signal_length, dt)  # the time vector
 n_t = len(t)            # length of time vector
 
@@ -705,7 +705,7 @@ plt.plot(t, y, label='input data')
 plt.xlabel('time [s]')
 plt.ylabel('signal')
 
-#plot frequency spectrum 
+#plot frequency spectrum
 plt.subplot(2, 1, 2)
 plt.plot(freqs, abs(f[0:n_freq]),
          label='abs(fourier transform)')
@@ -787,7 +787,7 @@ First we create a mat file in Octave (Octave is \[mostly\] compatible with Matla
 octave:1> a=-1:0.5:4
 a =
 Columns 1 through 6:
-   -1.0000   -0.5000    0.0000    0.5000    1.0000    1.5000    
+   -1.0000   -0.5000    0.0000    0.5000    1.0000    1.5000
 Columns 7 through 11:
    2.0000    2.5000   3.0000    3.5000    4.0000
 octave:2> save -6 octave_a.mat a       %save as version 6
@@ -842,7 +842,7 @@ This program creates the file `data.mat`, which we can subsequently read using M
     Variables in the current scope:
 
       Attr Name        Size                     Bytes  Class
-      ==== ====        ====                     =====  ===== 
+      ==== ====        ====                     =====  =====
            ans         1x11                        92  cell
 
     Total is 11 elements using 92 bytes
@@ -852,7 +852,7 @@ This program creates the file `data.mat`, which we can subsequently read using M
     Variables in the current scope:
 
       Attr Name        Size                     Bytes  Class
-      ==== ====        ====                     =====  ===== 
+      ==== ====        ====                     =====  =====
            a          11x1                         88  double
            ans         1x11                        92  cell
            b           4x4                        128  double

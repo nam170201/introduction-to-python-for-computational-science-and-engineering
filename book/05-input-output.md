@@ -62,7 +62,7 @@ print("...still printing in line one.")
 
 ### Formatted printing
 
-The more sophisticated way of formatting output uses a syntax very similar to Matlab’s `fprintf` (and therefor also similar to C’s `printf`).
+The more sophisticated way of formatting output uses a syntax very similar to Matlab’s `fprintf` (and therefore also similar to C’s `printf`).
 
 The overall structure is that there is a string containing format specifiers, followed by a percentage sign and a tuple that contains the variables to be printed in place of the format specifiers.
 
@@ -104,7 +104,7 @@ from math import pi
 "pi = %f" % pi
 ```
 
-This means that we can convert objects into strings whereever we need, and we can decide to print the strings later – there is no need to couple the formatting closely to the code that does the printing.
+This means that we can convert objects into strings wherever we need, and we can decide to print the strings later – there is no need to couple the formatting closely to the code that does the printing.
 
 Overview of commonly used format specifiers using the astronomical unit as an example:
 
@@ -175,7 +175,7 @@ repr(a1)
 
 ```{code-cell} ipython3
 number_as_string = repr(a1)
-a2 = eval(number_as_string)  # evaluate string 
+a2 = eval(number_as_string)  # evaluate string
 a2
 ```
 
@@ -301,13 +301,13 @@ out_file = open("test.txt", "w")          #'w' stands for Writing
 out_file.write("Writing text to file. This is the first line.\n"+\
                "And the second line.")
 out_file.close()                          #close the file
- 
+
 # 2. Read a file
 in_file = open("test.txt", "r")           #'r' stands for Reading
-text = in_file.read()                     #read complete file into 
+text = in_file.read()                     #read complete file into
                                           #string variable text
 in_file.close()                           #close the file
- 
+
 # 3. Display data
 print(text)
 ```

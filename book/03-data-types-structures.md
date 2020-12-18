@@ -366,7 +366,7 @@ jupyter:
 a = [123, 'duck', -42, 17, 0, 'elephant']
 ```
 
-In Python a list is an object. It is therefor possible for a list to contain other lists (because a list keeps a sequence of objects):
+In Python a list is an object. It is therefore possible for a list to contain other lists (because a list keeps a sequence of objects):
 
 ```{code-cell} ipython3
 ---
@@ -400,7 +400,7 @@ a
 
 #### The range() command
 
-A special type of list is frequently required (often together with `for-loops`) and therefor a command exists to generate that list: the `range(n)` command generates integers starting from 0 and going up to *but not including* n. Here are a few examples:
+A special type of list is frequently required (often together with `for-loops`) and therefore a command exists to generate that list: the `range(n)` command generates integers starting from 0 and going up to *but not including* n. Here are a few examples:
 
 ```{code-cell} ipython3
 list(range(3))
@@ -461,7 +461,7 @@ a = 100, 200, 'duck'
 a
 ```
 
-although it is good practice to include the paranthesis where it helps to show that tuple is defined.
+although it is good practice to include the parenthesis where it helps to show that tuple is defined.
 
 Tuples can also be used to make two assignments at the same time:
 
@@ -573,7 +573,7 @@ If you prefer, you can think of the index `a[-1]` to be a shorthand notation for
 Remember that strings (like lists) are also a sequence type and can be indexed in the same way:
 
 ```{code-cell} ipython3
-a = "Hello World!" 
+a = "Hello World!"
 a[0]
 ```
 
@@ -649,11 +649,11 @@ Note that `a[:]` will generate a *copy* of `a`. The use of indices in slicing is
 
 > The best way to remember how slices work is to think of the indices as pointing between characters, with the left edge of the first character numbered 0. Then the right edge of the last character of a string of 5 characters has index 5, for example:
 >
->      +---+---+---+---+---+ 
+>      +---+---+---+---+---+
 >      | H | e | l | l | o |
->      +---+---+---+---+---+ 
+>      +---+---+---+---+---+
 >      0   1   2   3   4   5   <-- use for SLICING
->     -5  -4  -3  -2  -1       <-- use for SLICING 
+>     -5  -4  -3  -2  -1       <-- use for SLICING
 >                                      from the end
 >
 > The first row of numbers gives the position of the slicing indices 0...5 in the string; the second row gives the corresponding negative indices. The slice from i to j consists of all characters between the edges labelled i and j, respectively.
@@ -662,13 +662,13 @@ So the important statement is that for *slicing* we should think of indices poin
 
 For *indexing* it is better to think of the indices referring to characters. Here is a little graph summarising these rules:
 
-       0   1   2   3   4    <-- use for INDEXING 
-      -5  -4  -3  -2  -1    <-- use for INDEXING 
+       0   1   2   3   4    <-- use for INDEXING
+      -5  -4  -3  -2  -1    <-- use for INDEXING
      +---+---+---+---+---+          from the end
      | H | e | l | l | o |
-     +---+---+---+---+---+ 
+     +---+---+---+---+---+
      0   1   2   3   4   5  <-- use for SLICING
-    -5  -4  -3  -2  -1      <-- use for SLICING 
+    -5  -4  -3  -2  -1      <-- use for SLICING
                              from the end
 
 +++
@@ -1051,12 +1051,12 @@ id(b)
 
 ```{code-cell} ipython3
 # NBVAL_IGNORE_OUTPUT
-c = a[:] 
+c = a[:]
 id(c)          # c is a different object
 ```
 
 ```{code-cell} ipython3
-c[0] = 100       
+c[0] = 100
 a              # changing c does not affect a
 ```
 

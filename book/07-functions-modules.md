@@ -118,7 +118,7 @@ and find that the `greeting` function has indeed returned the `None` object.
 Another example for a function that does not return any value (that means there is no `return` keyword in the function) would be:
 
 ```{code-cell} ipython3
-def printpluses(n): 
+def printpluses(n):
     print(n * "+")
 ```
 
@@ -181,7 +181,7 @@ def returnstars( n ):
     return n * '*'
 
 def print_centred_in_stars( string ):
-    linelength = 46 
+    linelength = 46
     starstring = returnstars((linelength - len(string)) // 2)
 
     print(starstring + string + starstring)
@@ -274,7 +274,7 @@ Once again, this does not introduce the name math into the current namespace. It
 
 ### Creating modules
 
-A module is in principle nothing else than a python file. 
+A module is in principle nothing else than a python file.
 We create an example of a module file which is saved in `module1.py`:
 
 ```{code-cell} ipython3
@@ -313,7 +313,7 @@ In summary,
 
 -   `__name__` is the name of the module (i.e. the module filename without the `.py` suffix) if the module file is imported.
 
-We can therefor use the following `if` statement in `module1.py` to write code that is *only run* when the module is executed on its own: This is useful to keep test programs or demonstrations of the abilities of a module in this “conditional” main program. It is common practice for any module files to have such a conditional main program which demonstrates its capabilities.
+We can therefore use the following `if` statement in `module1.py` to write code that is *only run* when the module is executed on its own: This is useful to keep test programs or demonstrations of the abilities of a module in this “conditional” main program. It is common practice for any module files to have such a conditional main program which demonstrates its capabilities.
 
 +++
 

@@ -28,7 +28,7 @@ def f(x):
      return x ** 2
 ```
 
-This funtion has the name `f`. Once the function is defined (i.e. the Python interpreter has come across the `def` line), we can call the function using its name, for example
+This function has the name `f`. Once the function is defined (i.e. the Python interpreter has come across the `def` line), we can call the function using its name, for example
 
 ```{code-cell} ipython3
 y = f(6)
@@ -87,7 +87,7 @@ The map function `lst2 = map(f, s )` applies a function `f` to all elements in a
 The result of `map` can be turned into a list with the same length as `s`:
 
 ```{code-cell} ipython3
-def f(x): 
+def f(x):
     return x ** 2
 lst2 = list(map(f, range(10)))
 lst2

@@ -209,7 +209,7 @@ math.log(math.e)
 
 ## Variables
 
-A *variable* can be used to store a certain value or object. In Python, all numbers (and everything else, including functions, modules and files) are objects. A variable is created through assignement:
+A *variable* can be used to store a certain value or object. In Python, all numbers (and everything else, including functions, modules and files) are objects. A variable is created through assignment:
 
 ```{code-cell} ipython3
 ---
@@ -234,7 +234,7 @@ y = 111
 y + 222
 ```
 
-A variable is overriden if a new value is assigned:
+A variable is overridden if a new value is assigned:
 
 ```{code-cell} ipython3
 y = 0.7
@@ -286,7 +286,7 @@ price * tax
 price + _
 ```
 
-This variable should be treated as read-only by the user. Don’t explicitly assign a value to it — you would create an independent local variable with the same name masking the built-in variable with its magic behavior.
+This variable should be treated as read-only by the user. Don’t explicitly assign a value to it — you would create an independent local variable with the same name masking the built-in variable with its magic behaviour.
 
 ### Terminology
 
@@ -341,7 +341,7 @@ Let’s apply our two-step rule to the assignment `x = x + 1` given above:
 Let’s confirm with the Python prompt that this is the correct interpretation:
 
 ```{code-cell} ipython3
-x = 4     
+x = 4
 x = x + 1
 x
 ```

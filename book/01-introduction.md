@@ -14,7 +14,7 @@ kernelspec:
 # Introduction
 
 
-This text summarises a number of core ideas relevant to Computational Engineering and Scientific Computing using Python. The emphasis is on introducing some basic Python (programming) concepts that are relevant for numerical algorithms. The later chapters touch upon numerical libraries such as <span>`numpy`</span> and <span>`scipy`</span> each of which deserves much more space than provided here. We aim to enable the reader to learn independently how to use other functionality of these libraries using the available documentation (online and through the packages itself).
+This text summarises a number of core ideas relevant to Computational Engineering and Scientific Computing using Python. The emphasis is on introducing some basic Python (programming) concepts that are relevant for numerical algorithms. The later chapters touch upon numerical libraries such as `numpy` and `scipy` each of which deserves much more space than provided here. We aim to enable the reader to learn independently how to use other functionality of these libraries using the available documentation (online and through the packages itself).
 
 ## Computational Modelling
 
@@ -22,13 +22,11 @@ This text summarises a number of core ideas relevant to Computational Engineerin
 
 Increasingly, processes and systems are researched or developed through computer simulations: new aircraft prototypes such as for the recent A380 are first designed and tested virtually through computer simulations. With the ever increasing computational power available through supercomputers, clusters of computers and even desktop and laptop machines, this trend is likely to continue.
 
-Computer simulations are routinely used in fundamental research to help understand experimental measurements, and to replace – for example – growth and fabrication of expensive samples/experiments where possible. In an industrial context, product and device design can often be done much more cost effectively if carried out virtually through simulation rather than through building and testing prototypes. This is in particular so in areas where samples are expensive such as nanoscience (where it is expensive to create small things) and aerospace industry (where it is expensive to build large things). There are also situations where certain experiments can only be carried out virtually (ranging from astrophysics to study of effects of large scale nuclear or chemical accidents). Computational modelling, including use of computational tools to post-process, analyse and visualise data, has been used in engineering, physics and chemistry for many decades but is becoming more important due to the cheap availability of computational resources. Computational Modelling is also starting to play a more important role in studies of biological systems, the economy, archeology, medicine, health care, and many other domains.
-
-+++
+Computer simulations are routinely used in fundamental research to help understand experimental measurements, and to replace – for example – growth and fabrication of expensive samples/experiments where possible. In an industrial context, product and device design can often be done much more cost effectively if carried out virtually through simulation rather than through building and testing prototypes. This is in particular so in areas where samples are expensive such as nanoscience (where it is expensive to create small things) and aerospace industry (where it is expensive to build large things). There are also situations where certain experiments can only be carried out virtually (ranging from astrophysics to study of effects of large scale nuclear or chemical accidents). Computational modelling, including use of computational tools to post-process, analyse and visualise data, has been used in engineering, physics and chemistry for many decades but is becoming more important due to the cheap availability of computational resources. Computational Modelling is also starting to play a more important role in studies of biological systems, the economy, archaeology, medicine, health care, and many other domains.
 
 ### Computational Modelling
 
-To study a process with a computer simulation we distinguish two steps: the first one is to develop a *model* of the real system. When studying the motion of a small object, such as a penny, say, under the influence of gravity, we may be able to ignore friction of air: our model — which might only consider the gravitational force and the penny’s inertia, i.e. $a(t) = F/m = -9.81\mathrm{m}/\mathrm{s}^2$ — is an approximation of the real system. The model will normally allow us to express the behaviour of the system (in some approximated form) through mathematical equations, which often involve ordinary differential equations (ODEs) or partial differential equatons (PDEs).
+To study a process with a computer simulation we distinguish two steps: the first one is to develop a *model* of the real system. When studying the motion of a small object, such as a penny, say, under the influence of gravity, we may be able to ignore friction of air: our model — which might only consider the gravitational force and the penny’s inertia, i.e. $a(t) = F/m = -9.81\mathrm{m}/\mathrm{s}^2$ — is an approximation of the real system. The model will normally allow us to express the behaviour of the system (in some approximated form) through mathematical equations, which often involve ordinary differential equations (ODEs) or partial differential equations (PDEs).
 
 In the natural sciences such as physics, chemistry and related engineering, it is often not so difficult to find a suitable model, although the resulting equations tend to be very difficult to solve, and can in most cases not be solved analytically at all.
 
@@ -44,8 +42,6 @@ It is clearly desirable to find an analytical solutions wherever possible but th
 
 The name *computational modelling* derives from the two steps: (i) *modelling*, i.e. finding a model description of a real system, and (ii) solving the resulting model equations using *computational* methods because this is the only way the equations can be solved at all.
 
-+++
-
 ### Programming to support computational modelling
 
 A large number of packages exist that provide computational modelling capabilities. If these satisfy the research or design needs, and any data processing and visualisation is appropriately supported through existing tools, one can carry out computational modelling studies without any deeper programming knowledge.
@@ -58,24 +54,16 @@ It is often forgotten that there is nothing the computer can do that we as human
 
 Understanding how to build a computer simulation comes roughly down to: (i) finding the model (often this means finding the right equations), (ii) knowing how to solve these equations numerically, (ii) to implement the methods to compute these solutions (this is the programming bit).
 
-+++
-
-Why Python for scientific computing?
-------------------------------------
+### Why Python for scientific computing?
 
 The design focus on the Python language is on productivity and code readability, for example through:
 
--   Interactive python console
-
--   Very clear, readable syntax through whitespace indentation
-
--   Strong introspection capabilities
-
--   Full modularity, supporting hierarchical packages
-
--   Exception-based error handling
-
--   Dynamic data types & automatic memory management
+- Interactive python console
+- Very clear, readable syntax through whitespace indentation
+- Strong introspection capabilities
+- Full modularity, supporting hierarchical packages
+- Exception-based error handling
+- Dynamic data types & automatic memory management
 
 *As Python is an interpreted language, and it runs many times slower than compiled code, one might ask why anybody should consider such a ’slow’ language for computer simulations?*
 
@@ -95,7 +83,7 @@ There are two replies to this criticism:
 
    The compute intense part of the program should to be tuned to reach optimal performance. Python offers a number of options.
 
-   - For example, the <span>`numpy`</span> Python extension provides a Python interface to the compiled and efficient LAPACK libraries that are the quasi-standard in numerical linear algebra. If the problems under study can be formulated such that eventually large systems of algebraic equations have to be solved, or eigenvalues computed, etc, then the compiled code in the LAPACK library can be used (through the Python-numpy package). At this stage, the calculations are carried out with the same performance of Fortran/C as it is essentially Fortran/C code that is used. Matlab, by the way, exploits exactly this: the Matlab scripting language is very slow (about 10 time slower than Python), but Matlab gains its power from delegating the matix operation to the compiled LAPACK libraries.
+   - For example, the `numpy` Python extension provides a Python interface to the compiled and efficient LAPACK libraries that are the quasi-standard in numerical linear algebra. If the problems under study can be formulated such that eventually large systems of algebraic equations have to be solved, or eigenvalues computed, etc, then the compiled code in the LAPACK library can be used (through the Python-numpy package). At this stage, the calculations are carried out with the same performance of Fortran/C as it is essentially Fortran/C code that is used. Matlab, by the way, exploits exactly this: the Matlab scripting language is very slow (about 10 time slower than Python), but Matlab gains its power from delegating the matrix operation to the compiled LAPACK libraries.
 
    - Existing numerical C/Fortran libraries can be interfaced to be usable from within Python (using for example Swig, Boost.Python and Cython).
 
@@ -105,30 +93,23 @@ There are two replies to this criticism:
 
    -   We list some tools that are used to use compiled code from Python:
 
-       -   The <span>`scipy.weave`</span> extension is useful if just a short expression needs to be expressed in C.
+       -   The `scipy.weave` extension is useful if just a short expression needs to be expressed in C.
        -   The Cython interface is growing in popularity to (i) semi-automatically declare variable types in Python code, to translate that code to C (automatically) and to then use the compiled C code from Python. Cython is also used to quickly wrap an existing C library with an interface so the C library can be used from Python.
 
        -   Boost.Python is specialised for wrapping C++ code in Python.
 
-+++
-
 *The conclusion is that Python is “fast enough” for most computational tasks, and that its user friendly high-level language often makes up for reduced speed in comparison to compiled lower-level languages. Combining Python with tailor-written compiled code for the performance critical parts of the code, results in virtually optimal speed in most cases.*
 
-+++
 
 ### Optimisation strategies
 
 We generally understand reduction of execution time when discussing “code optimisation” in the context of computational modelling, and we essentially like to carry out the required calculations as fast as possible. (Sometimes we need to reduce the amount of RAM, the amount of data input output to disk or the network.) At the same time, we need to make sure that we do not invest inappropriate amounts of programming time to achieve this speed up: as always there needs to be a balance between the programmers’ time and the improvement we can gain from this.
-
-+++
 
 ### Get it right first, then make it fast
 
 To write fast code effectively, we note that the right order is to (i) first write a program that carries out the correct calculation. For this, choose a language/approach that allows you to *write the code quickly and make it work quickly* — regardless of execution speed. Then (ii) either change the program or re-write it from scratch in the same language to make the execution faster. During the process, keep comparing results with the slow version written first to make sure the optimisation does not introduce errors. (Once we are familiar with the concept of regression tests, they should be used here to compare the new and hopefully faster code with the original code.)
 
 A common pattern in Python is to start writing pure Python code, then start using Python libraries that use compiled code internally (such as the fast arrays Numpy provides, and routines from scipy that go back to established numerical codes such as ODEPACK, LAPACK and others). If required, one can – after careful profiling – start to replace parts of the Python code with a compiled language such as C and Fortran to improve execution speed further (as discussed above).
-
-+++
 
 ### Prototyping in Python
 
@@ -140,23 +121,16 @@ While this text starts with an introduction of (some aspects of) the basic Pytho
 
 We repeatedly refer to the following documents:
 
--   Allen Downey, *Think Python*. Available online in html and pdf at <https://www.greenteapress.com/thinkpython/thinkpython.html>, or from Amazon.
-
--   The Python documentation <https://www.python.org/doc/>, and:
-
--   The Python tutorial (<https://docs.python.org/3/tutorial/>)
+- Allen Downey, *Think Python*. Available online in html and pdf at <https://www.greenteapress.com/thinkpython/thinkpython.html>, or from Amazon.
+- The Python documentation <https://www.python.org/doc/>, and:
+- The Python tutorial (<https://docs.python.org/3/tutorial/>)
 
 You may also find the following links useful:
 
--   The <span>`numpy`</span> home page (<https://numpy.org/>)
-
--   The <span>`scipy`</span> home page (<https://www.scipy.org/>)
-
--   The <span>`matplotlib`</span> home page (<https://matplotlib.org/>).
-
--   The Python style guide (<https://www.python.org/dev/peps/pep-0008/>
-
-+++
+- The `numpy` home page (<https://numpy.org/>)
+- The `scipy` home page (<https://www.scipy.org/>)
+- The `matplotlib` home page (<https://matplotlib.org/>).
+- The Python style guide (<https://www.python.org/dev/peps/pep-0008/>
 
 ### Recorded video lectures on Python for beginners
 
@@ -166,10 +140,7 @@ Do you like to listen/follow lectures? There is a series of 24 lectures titled *
 
 There is also a Python tutor mailing list (<https://mail.python.org/mailman/listinfo/tutor>) where beginners are welcome to ask questions regarding Python. Both using the archives and posting your own queries (or in fact helping others) may help with understanding the language. Use the normal mailing list etiquette (i.e. be polite, concise, etc). You may want to read <https://www.freebsd.org/doc/en/articles/mailing-list-faq/etiquette.html> for some guidance on how to ask questions on mailing lists.
 
-+++
-
-Python version
---------------
+### Python version
 
 There are two version of the Python language out there: Python 2.x and Python 3.x. They are (slightly) different — the changes in Python 3.x were introduced to address shortcomings in the design of the language that were identified since Python’s inception. A decision was made that some incompatibility should be accepted to achieve the higher goal of a better language for the future.
 
@@ -183,8 +154,6 @@ However, there is a lot of code still in use that was written for Python 2, and 
 print "Hello World"
 ```
 
-+++
-
 where as in Python 3, this would cause a SyntaxError. The right way to use `print` in Python 3 would be as a function, i.e.
 
 ```{code-cell} ipython3
@@ -193,9 +162,7 @@ print("Hello World")
 
 See [Chapter 5: Input and Output](05-input-output.ipynb) for further details.
 
-Fortunately, the function notation (i.e. with the parantheses) is also allowed in Python 2.7, so our examples should execute in Python 3.x and Python 2.7. (There are other differences.)
-
-+++
+Fortunately, the function notation (i.e. with the parentheses) is also allowed in Python 2.7, so our examples should execute in Python 3.x and Python 2.7. (There are other differences.)
 
 These documents
 ---------------
@@ -222,7 +189,7 @@ with open("hello.txt") as f:
 
 ### The `!` to execute shell commands
 
-If we want to run a shell command, we can type it and preceed it by the `!` character. Here is an example: first we create a file that contains a Python hello world program, then we execute it:
+If we want to run a shell command, we can type it and precede it by the `!` character. Here is an example: first we create a file that contains a Python hello world program, then we execute it:
 
 ```{code-cell} ipython3
 %%file hello.py
@@ -239,11 +206,7 @@ In some cells, you will find tags like `#NBVAL_SKIP`, `#NBVAL_IGNORE_OUTPUT` and
 
 (We use them to be able to [automatically execute all notebooks](https://app.circleci.com/pipelines/github/fangohr/introduction-to-python-for-computational-science-and-engineering) to check that the output produced is the same as what is stored in the notebook. This is an advanced topic of testing, and you can read more about NBVAL at https://github.com/computationalmodelling/nbval).
 
-+++
-
 See [Chapter 11](11-python-shells.ipynb) for more information on Jupyter and other Python interfaces.
-
-+++
 
 Your feedback
 -------------

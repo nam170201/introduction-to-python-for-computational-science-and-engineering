@@ -120,7 +120,7 @@ def test_consistency():
     for n in range(2, 1000):
         check_one_n(n)
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     m = 7
     correct_result = 12
     thisresult = compute_sum1(m)
@@ -214,7 +214,7 @@ mylist2 = [("Hans Fangohr", "fangohr"),
 
 We want to sort with the id as the primary key. The first approach to do this is to change the order of `mylist2` to that of `mylist`, and use `sort` as shown above.
 
-The second, neater approach relies on being able to decypher the cryptic help for the sorted function. `list.sort()` has the same options, but its help is less helpful.
+The second, neater approach relies on being able to decipher the cryptic help for the sorted function. `list.sort()` has the same options, but its help is less helpful.
 
 ```{code-cell} ipython3
 # NBVAL_IGNORE_OUTPUT
@@ -243,7 +243,7 @@ mylist2.sort(key=my_key)
 This also works with an anonymous function:
 
 ```{code-cell} ipython3
-mylist2.sort(key=lambda p: p[1]) 
+mylist2.sort(key=lambda p: p[1])
 ```
 
 ### Efficiency

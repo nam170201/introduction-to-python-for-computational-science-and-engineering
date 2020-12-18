@@ -33,7 +33,7 @@ import pandas as pd
 
 ## Motivational example (Series)
 
-Imagine we are working on software for a greengrocer or supermarket, and need to track the number of apples (10), oranges(3) and bananas (22) that are available in the supermarket. 
+Imagine we are working on software for a greengrocer or supermarket, and need to track the number of apples (10), oranges(3) and bananas (22) that are available in the supermarket.
 
 We could use a python list (or a numpy array) to track these numbers:
 
@@ -41,20 +41,20 @@ We could use a python list (or a numpy array) to track these numbers:
 stock = [10, 3, 22]
 ```
 
-However, we would need to remember separately that the entries are in the order of apples, oranges, and bananas. This could be achieved through a second list: 
+However, we would need to remember separately that the entries are in the order of apples, oranges, and bananas. This could be achieved through a second list:
 
 ```{code-cell} ipython3
 stocklabels = ['apple', 'orange', 'banana']
 ```
 
 ```{code-cell} ipython3
-assert len(stocklabels) == len(stock)  # check labels and 
+assert len(stocklabels) == len(stock)  # check labels and
                                        # stock are consistent
 for label, count in zip(stocklabels, stock):
     print(f'{label:10s} : {count:4d}')
 ```
 
-The above 2-list solution is a little awkward in two ways: firstly, we have use two lists to describe one set of data (and thus need to be carefuly to update them simulatenously, for example), and secondly, the access to the data given a label is inconvenient: We need to find the index of the label with one list, then use this as the index to the other list, for example
+The above 2-list solution is a little awkward in two ways: firstly, we have use two lists to describe one set of data (and thus need to be carefully to update them simultaneously, for example), and secondly, the access to the data given a label is inconvenient: We need to find the index of the label with one list, then use this as the index to the other list, for example
 
 ```{code-cell} ipython3
 index = stocklabels.index('banana')
@@ -65,7 +65,7 @@ print(f"There are {bananas} bananas [index={index}].")
 We have come across similar examples in the section on dictionaries, and indeed a dictionary is a more convenient solution:
 
 ```{code-cell} ipython3
-stock_dic = {'apple': 10, 
+stock_dic = {'apple': 10,
              'orange': 3,
              'banana': 22}
 ```
@@ -93,15 +93,15 @@ for label in stock_dic:
     print(f'{label:10s} : {stock_dic[label]:4d}')
 ```
 
-This is a vast improvement over the 2-lists solution: (i) we only maintain one structure, which contains a value for every key - so we don't need to check that the lists have the same length. (ii) we can access individual elements through the label (using it as a key for the dictionary). 
+This is a vast improvement over the 2-lists solution: (i) we only maintain one structure, which contains a value for every key - so we don't need to check that the lists have the same length. (ii) we can access individual elements through the label (using it as a key for the dictionary).
 
 +++
 
-The Pandas Series object address the requriments above. It is similar to a dictionary, but with improvements for the given problem:
+The Pandas Series object address the requirements above. It is similar to a dictionary, but with improvements for the given problem:
 
 * the order of the items is maintained
 * the values have to have the same type (higher execution performance)
-* a (large) number of convenience functionality, for example to deal with missing data, time series, sorting, plotting, and more 
+* a (large) number of convenience functionality, for example to deal with missing data, time series, sorting, plotting, and more
 
 +++
 
@@ -112,12 +112,12 @@ The Pandas Series object address the requriments above. It is similar to a dicti
 We can create a `Series` object - for example - from a dictionary:
 
 ```{code-cell} ipython3
-stock = pd.Series({'apple': 10, 
+stock = pd.Series({'apple': 10,
                    'orange': 3,
                    'banana': 22})
 ```
 
-The default presentation shows the entries one per row, with the label on the left, and the value on the right. 
+The default presentation shows the entries one per row, with the label on the left, and the value on the right.
 
 ```{code-cell} ipython3
 type(stock)
@@ -245,7 +245,7 @@ As usual, the documentation strings provide documentation (`help(stock.describe)
 
 ## Create Series from list
 
-In the example above, we showed how to create a Series from a dictionary where the keys of the dictionary entries served as the index for the Series object. 
+In the example above, we showed how to create a Series from a dictionary where the keys of the dictionary entries served as the index for the Series object.
 
 We can also create a Series from a list, an provide an additional index:
 
@@ -279,7 +279,7 @@ stock
 
 ## Plotting data
 
-Commonly used plots are easily accessible via the `plot()` method of the Series object. We have seen a bar plot above already. The `Series.plot()` method accepts an argument `kind` such as `kind="bar"`, but there is an equivalent method `Series.plot.bar()` avaialble.
+Commonly used plots are easily accessible via the `plot()` method of the Series object. We have seen a bar plot above already. The `Series.plot()` method accepts an argument `kind` such as `kind="bar"`, but there is an equivalent method `Series.plot.bar()` available.
 
 Further examples:
 
@@ -318,7 +318,7 @@ ax.set_title('Stock');
 
 ## Missing values
 
-"Real" data sets tend to be incomplete. Dealing with missing values is an important topic in data science. The agreement in Pandas is that the special floating point value "NaN" (standing for `N`ot `a` `N`umber) represents missing data points. For example, if we have a table for the stock, but we don't know the value for `apple`, we would replace it with `NaN`. 
+"Real" data sets tend to be incomplete. Dealing with missing values is an important topic in data science. The agreement in Pandas is that the special floating point value "NaN" (standing for `N`ot `a` `N`umber) represents missing data points. For example, if we have a table for the stock, but we don't know the value for `apple`, we would replace it with `NaN`.
 
 The special `Nan` value in Python can be created using `float('nan')` or using `numpy.nan` if the `numpy` module is imported.
 
@@ -330,7 +330,7 @@ stock['apple'] = float('nan')
 stock
 ```
 
-Note that the `dtype` of the `stock` Series object has changed from `int64` to `float64` when we assigned `NaN` to `apple`: the whole series has been converted to float, because `NaN` is only defined for floating point numbers. 
+Note that the `dtype` of the `stock` Series object has changed from `int64` to `float64` when we assigned `NaN` to `apple`: the whole series has been converted to float, because `NaN` is only defined for floating point numbers.
 
 (There is a proposal to create a `NaN` object as part of pandas - this would overcome the above limitation.)
 
@@ -359,7 +359,7 @@ stock.dropna()
 ## Series data access: explicit and implicit (`loc` and `iloc`)
 
 ```{code-cell} ipython3
-stock = pd.Series({'apple': 10, 
+stock = pd.Series({'apple': 10,
                    'orange': 3,
                    'banana': 22,
                    'cucumber' : 1,
@@ -421,7 +421,7 @@ stock['orange':'potato':2]
 
 +++
 
-Numerical operations on the series object can be carried for all data values at the same time inthe same way that numpy arrays are processed:
+Numerical operations on the series object can be carried for all data values at the same time in the same way that numpy arrays are processed:
 
 ```{code-cell} ipython3
 stock - stock.mean()
@@ -523,7 +523,7 @@ price2
 pd.DataFrame({'stock' : stock, 'price' : price2})
 ```
 
-### Accessing data in a DataFramea
+### Accessing data in a DataFrames
 
 ```{code-cell} ipython3
 shop
@@ -555,7 +555,7 @@ shop['price']
 
 ### Extracting rows of data
 
-We have two options of extracting a row of data. 
+We have two options of extracting a row of data.
 
 First, explicit indexing using the label of the index in that row:
 
@@ -590,7 +590,7 @@ It is thus understandable how we have arrived at the situation.
 
 ### Data manipulation with `shop`
 
-The real strength of the DataFrames is that we can continue to process the data conveniently. 
+The real strength of the DataFrames is that we can continue to process the data conveniently.
 
 For example, we could work out the financial value of the items we have in stock, and add this as an extra column:
 
@@ -649,7 +649,7 @@ We look at the dataframe as it is, and use the 'head()' command which will only 
 df.head()
 ```
 
-The meaning of the colums, we have to get from metada information. In this case, we have the following description of the data:
+The meaning of the columns, we have to get from metadata information. In this case, we have the following description of the data:
 
 - **geo**: the country in question
 - **pop17**: the population count of that country as of 1 January 2017
@@ -689,7 +689,7 @@ We explore the data by plotting some of it:
 df.plot(kind='bar', y='pop17')
 ```
 
-The above shows the population as of 1 Jan 2017. 
+The above shows the population as of 1 Jan 2017.
 
 We'll try to improve this in two ways:
 
@@ -706,7 +706,7 @@ df_millions = df / 1e6
 df_millions['pop17'].sort_values(ascending=False).plot(kind='bar')
 ```
 
-The example above selects one column from the data frame (`['pop17'`) and that returns a `Series` object. Then we sort this `Series` object using `sort_values()` according to the values (that's the number of poeple in each country), then we plot this.
+The example above selects one column from the data frame (`['pop17'`) and that returns a `Series` object. Then we sort this `Series` object using `sort_values()` according to the values (that's the number of people in each country), then we plot this.
 
 +++
 
@@ -778,7 +778,7 @@ axes[0].set_title("Population change per 1000 in 2017")
 tmp.plot(kind='bar', y=['death-rate', 'birth-rate'], sharex=True, ax=axes[1])
 ```
 
-We haven't used the information we have about the population on 1 January 2018 yet. 
+We haven't used the information we have about the population on 1 January 2018 yet.
 
 Let's first look at the absolute changes in the population based on the (census?) data from 1 Jan 2017 and 1 Jan 2018:
 

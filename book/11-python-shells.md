@@ -139,6 +139,6 @@ Spyder is currently (as of 2014) on the way to develop into a powerful and robus
 
 ## Editors
 
-All major editors that are used for programming, provide Python modes (such as Emacs, Vim, Sublime Text), some Integrated Development Enviroments (IDEs) come with their own editor (Spyder, Eclipse). Which of these is best, is partly a matter of choice.
+All major editors that are used for programming, provide Python modes (such as Emacs, Vim, Sublime Text), some Integrated Development Environments (IDEs) come with their own editor (Spyder, Eclipse). Which of these is best, is partly a matter of choice.
 
 For beginners, Spyder seems a sensible choice as it provides an IDE, allows execution of chunks of code in an interpreter session and is easy to pick up.

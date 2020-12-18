@@ -66,7 +66,7 @@ The recommended way of using Matplotlib in a simple example is shown here (letâ€
 ```{code-cell} ipython3
 # example 1 a
 import numpy as np                  # get access to fast arrays
-import matplotlib.pyplot as plt     # the plotting functions   
+import matplotlib.pyplot as plt     # the plotting functions
 
 x = np.arange(-3.14, 3.14, 0.01)    # create x-data
 y = np.sin(x)                       # compute y - data
@@ -689,7 +689,7 @@ connection = visual.cylinder(pos = ball1.pos, \
                              axis = ball2.pos - ball1.pos)
 
 for t in range(100):
-    #move ball2 
+    #move ball2
     ball2.pos = (-t,math.sin(t),math.cos(t))
 
     #keep cylinder connection between ball1 and ball2
@@ -730,7 +730,7 @@ Often, we need to understand data defined at 3d positions in space. The data its
 
 The probably most commonly used library in Science and Engineering to visualise such data sets is probably VTK, the Visualisation ToolKit (<https://vtk.org>). This is a substantial C++ library with interfaces to high level languages, including Python.
 
-One can either call these routines directly from Python code, or write the data to disk in a format that the VTK library can read (so called vtk data files), and then use stand-alone programme such as Mayavi, ParaView and VisIt to read these data files and manipulate them (ofter with a GUI). All three of these are using the VTK library internally, and can read vtk data files.
+One can either call these routines directly from Python code, or write the data to disk in a format that the VTK library can read (so called vtk data files), and then use stand-alone programme such as Mayavi, ParaView and VisIt to read these data files and manipulate them (often with a GUI). All three of these are using the VTK library internally, and can read vtk data files.
 
 These package is very well suited to visualise static and timedependent 2d and 3d-fields (scalar, vector and tensor fields). Two examples are shown below.
 

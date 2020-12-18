@@ -51,12 +51,12 @@ For example, the application of the <span>`str`</span> to an object <span>`a`</s
 We can demonstrate this by creating a class <span>`my_int`</span> which inherits from the Python’s integer base class, and overrides the <span>`__str__`</span> method. (It requires more Python knowledge than provided up to this point in the text to be able to understand this example.)
 
 ```{code-cell} ipython3
-class my_int(int): 
-    """Inherited from int""" 
-    def __str__(self): 
-        """Tailored str representation of my int""" 
+class my_int(int):
+    """Inherited from int"""
+    def __str__(self):
+        """Tailored str representation of my int"""
         return "my_int: %s" % (int.__str__(self))
- 
+
 a = my_int(3)
 b = int(4)            # equivalent to b = 4
 print("a * b = ", a * b)
@@ -115,7 +115,7 @@ type(a)
 
 ## help
 
--   The `help(<object>)` function will report the docstring (magic attritube with name `__doc__`) of the object that it is given, sometimes complemented with additional information. In the case of functions, `help` will also show the list of arguments that the function accepts (but it cannot provide the return value).
+-   The `help(<object>)` function will report the docstring (magic attribute with name `__doc__`) of the object that it is given, sometimes complemented with additional information. In the case of functions, `help` will also show the list of arguments that the function accepts (but it cannot provide the return value).
 
 -   `help()` starts an interactive help environment.
 
@@ -158,11 +158,11 @@ Instead of importing the module, we could also have given the *string* of `math.
 help('math.sqrt')
 ```
 
-`help` is a function which gives information about the object which is passed as its argument. Most things in Python (classes, functions, modules, etc.) are objects, and therefor can be passed to help. There are, however, some things on which you might like to ask for help, which are not existing Python objects. In such cases it is often possible to pass a string containing the name of the thing or concept to help, for example
+`help` is a function which gives information about the object which is passed as its argument. Most things in Python (classes, functions, modules, etc.) are objects, and therefore can be passed to help. There are, however, some things on which you might like to ask for help, which are not existing Python objects. In such cases it is often possible to pass a string containing the name of the thing or concept to help, for example
 
 -   `help(’modules’)` will generate a list of all modules which can be imported into the current interpreter. Note that help(modules) (note absence of quotes) will result in a NameError (unless you are unlucky enough to have a variable called modules floating around, in which case you will get help on whatever that variable happens to refer to.)
 
--   `help(’some_module’)`, where some\_module is a module which has not been imported yet (and therefor isn’t an object yet), will give you that module’s help information.
+-   `help(’some_module’)`, where some\_module is a module which has not been imported yet (and therefore isn’t an object yet), will give you that module’s help information.
 
 -   `help(’some_keyword’)`: For example `and`, `if` or `print` (*i.e.* `help(’and’)`, `help(’if’)` and `help(’print’)`). These are special words recognized by Python: they are not objects and thus cannot be passed as arguments to help. Passing the name of the keyword as a string to help works, but only if you have Python’s HTML documentation installed, and the interpreter has been made aware of its location by setting the environment variable PYTHONDOCS.
 
@@ -170,7 +170,7 @@ help('math.sqrt')
 
 The command `help(<object>)` accesses the documentation strings of objects.
 
-Any literal string apparing as the first item in the definition of a class, function, method or module, is taken to be its *docstring*.
+Any literal string appearing as the first item in the definition of a class, function, method or module, is taken to be its *docstring*.
 
 `help` includes the docstring in the information it displays about the object.
 

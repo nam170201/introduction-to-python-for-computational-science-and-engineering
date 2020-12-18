@@ -69,7 +69,7 @@ The floating point numbers in a computer are not the same as the mathematical fl
 
 +++
 
--   Therefore, we can use 2 integers to encode one floating point number!
+-   therefore, we can use 2 integers to encode one floating point number!
 
     *x* = *a* ⋅ 10<sup>*b*</sup>
 
