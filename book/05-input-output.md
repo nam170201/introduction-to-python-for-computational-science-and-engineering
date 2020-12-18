@@ -13,17 +13,21 @@ kernelspec:
 
 # Input and Output
 
-In this section, we describe printing, which includes the use of the `print` function, the old-style `%` format specifiers  and the new style `{}` format specifiers.
+In this section, we describe printing, which includes the use of the `print`
+function, the old-style `%` format specifiers  and the new style `{}` format
+specifiers.
 
 ## Printing to standard output (normally the screen)
 
-The `print` function is the most commonly used command to print information to the “standard output device” which is normally the screen.
+The `print` function is the most commonly used command to print information to
+the “standard output device” which is normally the screen.
 
 There are two modes to use print.
 
 ### Simple print
 
-The easiest way to use the print command is to list the variables to be printed, separated by comma. Here are a few examples:
+The easiest way to use the print command is to list the variables to be printed,
+separated by comma. Here are a few examples:
 
 ```{code-cell} ipython3
 a = 10
@@ -53,7 +57,8 @@ print("The answer is", a, "and the string reads", b)
 
 Python adds a space between every object that is being printed.
 
-Python prints a new line after every print call. To suppress that, use the `end=` parameter:
+Python prints a new line after every print call. To suppress that, use the
+`end=` parameter:
 
 ```{code-cell} ipython3
 print("Printing in line one", end='')
@@ -62,15 +67,19 @@ print("...still printing in line one.")
 
 ### Formatted printing
 
-The more sophisticated way of formatting output uses a syntax very similar to Matlab’s `fprintf` (and therefore also similar to C’s `printf`).
+The more sophisticated way of formatting output uses a syntax very similar to
+Matlab’s `fprintf` (and therefore also similar to C’s `printf`).
 
-The overall structure is that there is a string containing format specifiers, followed by a percentage sign and a tuple that contains the variables to be printed in place of the format specifiers.
+The overall structure is that there is a string containing format specifiers,
+followed by a percentage sign and a tuple that contains the variables to be
+printed in place of the format specifiers.
 
 ```{code-cell} ipython3
 print("a = %d b = %d" % (10,20))
 ```
 
-A string can contain format identifiers (such as `%f` to format as a float, `%d` to format as an integer, and `%s` to format as a string):
+A string can contain format identifiers (such as `%f` to format as a float, `%d`
+to format as an integer, and `%s` to format as a string):
 
 ```{code-cell} ipython3
 from math import pi
@@ -89,24 +98,31 @@ print("Pi = %10.8f" % pi)
 print("Pi = %d" % pi)
 ```
 
-The format specifier of type `%W.Df` means that a Float should be printed with a total Width of `W` characters and `D` digits behind the Decimal point. (This is identical to Matlab and C, for example.)
+The format specifier of type `%W.Df` means that a Float should be printed with a
+total Width of `W` characters and `D` digits behind the Decimal point. (This is
+identical to Matlab and C, for example.)
 
-To print more than one object, provide multiple format specifiers and list several objects in the tuple:
+To print more than one object, provide multiple format specifiers and list
+several objects in the tuple:
 
 ```{code-cell} ipython3
 print("Pi = %f, 142*pi = %f and pi^2 = %f." % (pi,142*pi,pi**2))
 ```
 
-Note that the conversion of a format specifier and a tuple of variables into string does not rely on the `print` command:
+Note that the conversion of a format specifier and a tuple of variables into
+string does not rely on the `print` command:
 
 ```{code-cell} ipython3
 from math import pi
 "pi = %f" % pi
 ```
 
-This means that we can convert objects into strings wherever we need, and we can decide to print the strings later – there is no need to couple the formatting closely to the code that does the printing.
+This means that we can convert objects into strings wherever we need, and we can
+decide to print the strings later – there is no need to couple the formatting
+closely to the code that does the printing.
 
-Overview of commonly used format specifiers using the astronomical unit as an example:
+Overview of commonly used format specifiers using the astronomical unit as an
+example:
 
 ```{code-cell} ipython3
 AU = 149597870700  # astronomical unit [m]
@@ -122,9 +138,11 @@ AU = 149597870700  # astronomical unit [m]
 | `%s` |  `str()` |         `149597870700`|
 | `%r` | `repr()` |        `149597870700L`|
 
-### “str” and “\_\_str\_\_”
+### `str` and `__str__`
 
-All objects in Python should provide a method `__str__` which returns a nice string representation of the object. This method `a.__str__()` is called when we apply the `str` function to object `a`:
+All objects in Python should provide a method `__str__` which returns a nice
+string representation of the object. This method `a.__str__()` is called when we
+apply the `str` function to object `a`:
 
 ```{code-cell} ipython3
 a = 3.14
@@ -135,22 +153,26 @@ a.__str__()
 str(a)
 ```
 
-The `str` function is extremely convenient as it allows us to print more complicated objects, such as
+The `str` function is extremely convenient as it allows us to print more
+complicated objects, such as:
 
 ```{code-cell} ipython3
 b = [3, 4.2, ['apple', 'banana'], (0, 1)]
 str(b)
 ```
 
-The way Python prints this is that it uses the `__str__` method of the list object. This will print the opening square bracket `[` and then call the `__str__` method of the first object, i.e. the integer 3. This will produce `3`. Then the list object’s `__str__` method prints the comma `,` and moves on to call the `__str__` method of the next element in the list (i.e. `4.2`) to print itself. This way any composite object can be represented as a string by asking the objects it holds to convert themselves to strings.
+The way Python prints this is that it uses the `__str__` method of the list
+object. This will print the opening square bracket `[` and then call the
+`__str__` method of the first object, i.e. the integer 3. This will produce `3`.
+Then the list object’s `__str__` method prints the comma `,` and moves on to
+call the `__str__` method of the next element in the list (i.e. `4.2`) to print
+itself. This way any composite object can be represented as a string by asking
+the objects it holds to convert themselves to strings.
 
 The string method of object `x` is called implicitly, when we
 
--   use the “%s” format specifier to print `x`
-
--   pass the object `x` directly to the print command:
-
-<!-- -->
+- use the “%s” format specifier to print `x`
+- pass the object `x` directly to the print command:
 
 ```{code-cell} ipython3
 print(b)
@@ -160,9 +182,13 @@ print(b)
 print("%s" % b)
 ```
 
-### “repr” and “\_\_repr\_\_”
+### `repr` and `__repr__`
 
-A second function, `repr`, should convert a given object into a string presentation *so that this string can be used to re-created the object using the `eval` function*. The `repr` function will generally provide a more detailed string than `str`. Applying `repr` to the object `x` will attempt to call `x.__repr__()`.
+A second function, `repr`, should convert a given object into a string
+presentation *so that this string can be used to re-created the object using the
+`eval` function*. The `repr` function will generally provide a more detailed
+string than `str`. Applying `repr` to the object `x` will attempt to call
+`x.__repr__()`.
 
 ```{code-cell} ipython3
 from math import pi as a1
@@ -191,7 +217,8 @@ a1-eval(repr(a1))
 a1-eval(str(a1))           # -> str has lost a few digits
 ```
 
-We can convert an object to its `str()` or `repr` presentation using the format specifiers ``%s and ``%r, respectively.
+We can convert an object to its `str()` or `repr` presentation using the format
+specifiers `%s` and `%r`, respectively.
 
 ```{code-cell} ipython3
 import math
@@ -204,7 +231,8 @@ import math
 
 ### New-style string formatting
 
-A new system of built-in formatting allows more flexibility for complex cases, at the cost of being a bit longer.
+A new system of built-in formatting allows more flexibility for complex cases,
+at the cost of being a bit longer.
 
 Basic ideas in examples:
 
@@ -243,35 +271,36 @@ This is a powerful and elegant way of string formatting, which is gradually bein
 
 **Further information**
 
--   Examples <https://docs.python.org/3/library/string.html#format-examples>
-
--   [Python Enhancement Proposal 3101](https://www.python.org/dev/peps/pep-3101/)
-
--   [Python library String Formatting Operations](https://docs.python.org/3/library/string.html#formatstrings)
-
--   [Introduction to Fancier Output Formatting, Python tutorial, section 7.1](https://docs.python.org/3/tutorial/inputoutput.html)
+- Examples <https://docs.python.org/3/library/string.html#format-examples>
+- [Python Enhancement Proposal 3101](https://www.python.org/dev/peps/pep-3101/)
+- [Python library String Formatting Operations](https://docs.python.org/3/library/string.html#formatstrings)
+- [Introduction to Fancier Output Formatting, Python tutorial, section 7.1](https://docs.python.org/3/tutorial/inputoutput.html)
 
 +++
 
 ### Changes from Python 2 to Python 3: `print`
 
-One (maybe the most obvious) change going from Python 2 to Python 3 is that the `print` command loses its special status. In Python 2, we could print “Hello World” using:
+One (maybe the most obvious) change going from Python 2 to Python 3 is that the
+`print` command loses its special status. In Python 2, we could print “Hello
+World” using:
 
 ```python
 print "Hello world"             # valid in Python 2.x
 ```
 
-+++
-
-Effectively, we call the function `print` with the argument `Hello World`. All other functions in Python are called such that the argument is enclosed in parentheses, i.e.
+Effectively, we call the function `print` with the argument `Hello World`. All
+other functions in Python are called such that the argument is enclosed in
+parentheses, i.e.
 
 ```{code-cell} ipython3
 print("Hello World")               # valid in Python 3.x
 ```
 
-This is the new convention *required* in Python 3 (and *allowed* for recent version of Python 2.x.)
+This is the new convention *required* in Python 3 (and *allowed* for recent
+version of Python 2.x.)
 
-Everything we have learned about formatting strings using the percentage operator still works the same way:
+Everything we have learned about formatting strings using the percentage
+operator still works the same way:
 
 ```{code-cell} ipython3
 import math
@@ -316,15 +345,9 @@ print(text)
 
 Here is a program that
 
-1.  writes some text to a file with name `test.txt`,
-
-2.  and then reads the text again and
-
-3.  prints it to the screen.
-
-<!-- -->
-
-+++
+1. writes some text to a file with name `test.txt`,
+2. and then reads the text again and
+3. prints it to the screen.
 
 The data stored in the file `test.txt` is:
 
@@ -333,13 +356,24 @@ Writing text to file. This is the first line.
 And the second line.
 ```
 
-+++
-
-In more detail, you have opened a file with the `open` command, and assigned this open file object to the variable `out_file`. We have then written data to the file using the `out_file.write` method. Note that in the example above, we have given a string to the `write` method. We can, of course, use all the formatting that we have discussed before—see [formatted printing](#Formatted-printing) and [new style formatting](#New-style-string-formatting). For example, to write this file with name table `table.txt` we can use this Python program It is good practice to `close()` files when we have finished reading and writing. If a Python program is left in a controlled way (i.e. not through a power cut or an unlikely bug deep in the Python language or the operating system) then it will close all open files as soon as the file objects are destroyed. However, closing them actively as soon as possible is better style.
+In more detail, you have opened a file with the `open` command, and assigned
+this open file object to the variable `out_file`. We have then written data to
+the file using the `out_file.write` method. Note that in the example above, we
+have given a string to the `write` method. We can, of course, use all the
+formatting that we have discussed before—see [formatted
+printing](#Formatted-printing) and [new style
+formatting](#New-style-string-formatting). For example, to write this file with
+name table `table.txt` we can use this Python program It is good practice to
+`close()` files when we have finished reading and writing. If a Python program
+is left in a controlled way (i.e. not through a power cut or an unlikely bug
+deep in the Python language or the operating system) then it will close all open
+files as soon as the file objects are destroyed. However, closing them actively
+as soon as possible is better style.
 
 ### File reading examples
 
-We use a file named `myfile.txt` containing the following 3 lines of text for the examples below:
+We use a file named `myfile.txt` containing the following 3 lines of text for
+the examples below:
 
     This is the first line.
     This is the second line.
@@ -353,9 +387,10 @@ f.write('This is the first line.\n'
 f.close()
 ```
 
-#### fileobject.read()
+#### `fileobject.read()`
 
-The `fileobject.read()` method reads the whole file, and returns it as one string (including new line characters).
+The `fileobject.read()` method reads the whole file, and returns it as one
+string (including new line characters).
 
 ```{code-cell} ipython3
 f = open('myfile.txt', 'r')
@@ -368,7 +403,8 @@ f.close()
 
 #### fileobject.readlines()
 
-The `fileobject.readlines()` method returns a list of strings, where each element of the list corresponds to one line in the string:
+The `fileobject.readlines()` method returns a list of strings, where each
+element of the list corresponds to one line in the string:
 
 ```{code-cell} ipython3
 f = open('myfile.txt', 'r')
@@ -379,7 +415,8 @@ f.readlines()
 f.close()
 ```
 
-This is often used to iterate over the lines, and to do something with each line. For example:
+This is often used to iterate over the lines, and to do something with each
+line. For example:
 
 ```{code-cell} ipython3
 f = open('myfile.txt', 'r')
@@ -388,7 +425,9 @@ for line in f.readlines():
 f.close()
 ```
 
-Note that this will read the complete file into a list of strings when the `readlines()` method is called. This is no problem if we know that the file is small and will fit into the machine’s memory.
+Note that this will read the complete file into a list of strings when the
+`readlines()` method is called. This is no problem if we know that the file is
+small and will fit into the machine’s memory.
 
 If so, we can also close the file before we process the data, i.e.:
 
@@ -402,7 +441,9 @@ for line in lines:
 
 #### Iterating over lines (file object)
 
-There is a neater possibility to read a file line by line which (i) will only read one line at a time (and is thus suitable for large files as well) and (ii) results in more compact code:
+There is a neater possibility to read a file line by line which (i) will only
+read one line at a time (and is thus suitable for large files as well) and (ii)
+results in more compact code:
 
 ```{code-cell} ipython3
 f = open('myfile.txt', 'r')
@@ -411,7 +452,9 @@ for line in f:
 f.close()
 ```
 
-Here, the file handler `f` acts as in iterator and will return the next line in every subsequent iteration of the for-loop until the end of the file is reached (and then the for-loop is terminated).
+Here, the file handler `f` acts as in iterator and will return the next line in
+every subsequent iteration of the for-loop until the end of the file is reached
+(and then the for-loop is terminated).
 
 ## Further reading
 

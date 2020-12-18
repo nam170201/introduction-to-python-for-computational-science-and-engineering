@@ -15,7 +15,8 @@ kernelspec:
 
 ## What type is it?
 
-Python knows different data types. To find the type of a variable, use the `type()` function:
+Python knows different data types. To find the type of a variable, use the
+`type()` function:
 
 ```{code-cell} ipython3
 a = 45
@@ -41,19 +42,25 @@ type(d)
 
 **Further information**
 
--   Informal introduction to numbers. [Python tutorial, section 3.1.1](https://docs.python.org/3/tutorial/introduction.html#using-python-as-a-calculator)
+- Informal introduction to numbers. [Python tutorial, section
+  3.1.1](https://docs.python.org/3/tutorial/introduction.html#using-python-as-a-calculator)
+- Python Library Reference: formal overview of numeric types,
+  <https://docs.python.org/3.8/library/stdtypes.html#numeric-types-int-float-complex>
+- Think Python, [Sec
+  2.1](https://www.greenteapress.com/thinkpython/html/book003.html)
 
--   Python Library Reference: formal overview of numeric types, <https://docs.python.org/3.8/library/stdtypes.html#numeric-types-int-float-complex>
-
--   Think Python, [Sec 2.1](https://www.greenteapress.com/thinkpython/html/book003.html)
-
-The in-built numerical types are integers and floating point numbers (see [floating point numbers](#Floating-Point-numbers)) and complex floating point numbers ([complex numbers](#Complex-numbers)).
+The in-built numerical types are integers and floating point numbers (see
+[floating point numbers](#Floating-Point-numbers)) and complex floating point
+numbers ([complex numbers](#Complex-numbers)).
 
 ### Integers
 
-We have seen the use of integer numbers already in [Chapter 2](02-powerful-calculator.ipynb). Be aware of integer division problems (02 A Powerful Calculator, Integer Division).
+We have seen the use of integer numbers already in [Chapter
+2](02-powerful-calculator.ipynb). Be aware of integer division problems (02 A
+Powerful Calculator, Integer Division).
 
-If we need to convert string containing an integer number to an integer we can use `int()` function:
+If we need to convert string containing an integer number to an integer we can
+use `int()` function:
 
 ```{code-cell} ipython3
 ---
@@ -74,7 +81,8 @@ int(7.0)
 int(7.9)
 ```
 
-Note than `int` will truncate any non-integer part of a floating point number. To `round` an floating point number to an integer, use the `round()` command:
+Note than `int` will truncate any non-integer part of a floating point number.
+To `round` an floating point number to an integer, use the `round()` command:
 
 ```{code-cell} ipython3
 round(7.9)
@@ -82,26 +90,40 @@ round(7.9)
 
 ### Integer limits
 
-Integers in Python 3 are unlimited; Python will automatically assign more memory as needed as the numbers get bigger. This means we can calculate very large numbers with no special steps.
+Integers in Python 3 are unlimited; Python will automatically assign more memory
+as needed as the numbers get bigger. This means we can calculate very large
+numbers with no special steps.
 
 ```{code-cell} ipython3
 35**42
 ```
 
-In many other programming languages, such as C and FORTRAN, integers are a fixed size—most frequently 4 bytes, which allows $2^{32}$ different values—but different types are available with different sizes. For numbers that fit into these limits, calculations can be faster, but you may need to check that the numbers don't go beyond the limits. Calculating a number beyond the limits is called *integer overflow*, and may produce bizarre results.
+In many other programming languages, such as C and FORTRAN, integers are a fixed
+size—most frequently 4 bytes, which allows $2^{32}$ different values—but
+different types are available with different sizes. For numbers that fit into
+these limits, calculations can be faster, but you may need to check that the
+numbers don't go beyond the limits. Calculating a number beyond the limits is
+called *integer overflow*, and may produce bizarre results.
 
-Even in Python, we need to be aware of this when we use numpy (see [Chapter 14](14-numpy.ipynb)). Numpy uses integers with a fixed size, because it stores many of them together and needs to calculate with them efficiently. [Numpy data types](https://numpy.org/doc/stable/user/basics.types.html) include a range of integer types named for their size, so e.g. `int16` is a 16-bit integer, with $2^{16}$ possible values.
+Even in Python, we need to be aware of this when we use numpy (see [Chapter
+14](14-numpy.ipynb)). Numpy uses integers with a fixed size, because it stores
+many of them together and needs to calculate with them efficiently. [Numpy data
+types](https://numpy.org/doc/stable/user/basics.types.html) include a range of
+integer types named for their size, so e.g. `int16` is a 16-bit integer, with
+$2^{16}$ possible values.
 
-Integer types can also be *signed* or *unsigned*. Signed integers allow positive or negative values, unsigned integers only allow positive ones. For instance:
+Integer types can also be *signed* or *unsigned*. Signed integers allow positive
+or negative values, unsigned integers only allow positive ones. For instance:
 
-* uint16 (unsigned) ranges from 0 to $2^{16}-1$
-* int16 (signed) ranges from $-2^{15}$ to $2^{15}-1$
+- uint16 (unsigned) ranges from 0 to $2^{16}-1$
+- int16 (signed) ranges from $-2^{15}$ to $2^{15}-1$
 
 +++
 
 ### Floating Point numbers
 
-A string containing a floating point number can be converted into a floating point number using the `float()` command:
+A string containing a floating point number can be converted into a floating
+point number using the `float()` command:
 
 ```{code-cell} ipython3
 a = '35.342'
@@ -115,7 +137,8 @@ type(b)
 
 ### Complex numbers
 
-Python (as Fortran and Matlab) has built-in complex numbers. Here are some examples how to use these:
+Python (as Fortran and Matlab) has built-in complex numbers. Here are some
+examples how to use these:
 
 ```{code-cell} ipython3
 x = 1 + 3j
@@ -146,7 +169,8 @@ x * x.conjugate()
 3 * x
 ```
 
-Note that if you want to perform more complicated operations (such as taking the square root, etc) you have to use the `cmath` module (Complex MATHematics):
+Note that if you want to perform more complicated operations (such as taking the
+square root, etc) you have to use the `cmath` module (Complex MATHematics):
 
 ```{code-cell} ipython3
 import cmath
@@ -155,7 +179,8 @@ cmath.sqrt(x)
 
 ### Functions applicable to all types of numbers
 
-The `abs()` function returns the absolute value of a number (also called modulus):
+The `abs()` function returns the absolute value of a number (also called
+modulus):
 
 ```{code-cell} ipython3
 a = -45.463
@@ -166,30 +191,34 @@ Note that `abs()` also works for complex numbers (see above).
 
 ## Sequences
 
-Strings, lists and tuples are *sequences*. They can be *indexed* and *sliced* in the same way.
+Strings, lists and tuples are *sequences*. They can be *indexed* and *sliced* in
+the same way.
 
-Tuples and strings are “immutable” (which basically means we can’t change individual elements within the tuple, and we cannot change individual characters within a string) whereas lists are “mutable” (*.i.e* we can change elements in a list.)
+Tuples and strings are “immutable” (which basically means we can’t change
+individual elements within the tuple, and we cannot change individual characters
+within a string) whereas lists are “mutable” (*.i.e* we can change elements in a
+list.)
 
 Sequences share the following operations
 
-* `a[i]` returns i-th element of `a`
-* `a[i:j]` returns elements i up to j-1
-* `len(a)` returns number of elements in sequence
-* `min(a)` returns smallest value in sequence
-* `max(a)` returns largest value in sequence
-* `x in a` returns `True` if `x` is element in `a`
-* `a + b` concatenates `a` and `b`
-* `n * a` creates `n` copies of sequence `a`
+- `a[i]` returns i-th element of `a`
+- `a[i:j]` returns elements i up to j-1
+- `len(a)` returns number of elements in sequence
+- `min(a)` returns smallest value in sequence
+- `max(a)` returns largest value in sequence
+- `x in a` returns `True` if `x` is element in `a`
+- `a + b` concatenates `a` and `b`
+- `n * a` creates `n` copies of sequence `a`
 
 +++
 
 ### Sequence type 1: String
 
-**Further information**
+- Introduction to strings, [Python tutorial
+  3.1.2](https://docs.python.org/3/tutorial/introduction.html#strings)
 
--   Introduction to strings, [Python tutorial 3.1.2](https://docs.python.org/3/tutorial/introduction.html#strings)
-
-A string is a (immutable) sequence of characters. A string can be defined using single quotes:
+A string is a (immutable) sequence of characters. A string can be defined using
+single quotes:
 
 ```{code-cell} ipython3
 ---
@@ -240,7 +269,8 @@ type("Hello World")
 type("")
 ```
 
-The number of characters in a string (that is its *length*) can be obtained using the `len()`-function:
+The number of characters in a string (that is its *length*) can be obtained
+using the `len()`-function:
 
 ```{code-cell} ipython3
 a = "Hello Moon"
@@ -262,25 +292,34 @@ You can combine (“concatenate”) two strings using the `+` operator:
 'Hello ' + 'World'
 ```
 
-Strings have a number of useful methods, including for example `upper()` which returns the string in upper case:
+Strings have a number of useful methods, including for example `upper()` which
+returns the string in upper case:
 
 ```{code-cell} ipython3
 a = "This is a test sentence."
 a.upper()
 ```
 
-A list of available string methods can be found in the Python reference documentation. If a Python prompt is available, one should use the `dir` and `help` function to retrieve this information, *i.e.* `dir()` provides the list of methods, `help` can be used to learn about each method.
+A list of available string methods can be found in the Python reference
+documentation. If a Python prompt is available, one should use the `dir` and
+`help` function to retrieve this information, *i.e.* `dir()` provides the list
+of methods, `help` can be used to learn about each method.
 
-A particularly useful method is `split()` which converts a string into a list of strings:
+A particularly useful method is `split()` which converts a string into a list of
+strings:
 
 ```{code-cell} ipython3
 a = "This is a test sentence."
 a.split()
 ```
 
-The `split()` method will separate the string where it finds *white space*. White space means any character that is printed as white space, such as one space or several spaces or a tab.
+The `split()` method will separate the string where it finds *white space*.
+White space means any character that is printed as white space, such as one
+space or several spaces or a tab.
 
-By passing a separator character to the `split()` method, a string can split into different parts. Suppose, for example, we would like to obtain a list of complete sentences:
+By passing a separator character to the `split()` method, a string can split
+into different parts. Suppose, for example, we would like to obtain a list of
+complete sentences:
 
 ```{code-cell} ipython3
 a = "The dog is hungry. The cat is bored. The snake is awake."
@@ -307,9 +346,11 @@ s
 
 **Further information**
 
--   Introduction to Lists, [Python tutorial, section 3.1.4](https://docs.python.org/3/tutorial/introduction.html#lists)
+- Introduction to Lists, [Python tutorial, section
+  3.1.4](https://docs.python.org/3/tutorial/introduction.html#lists)
 
-A list is a sequence of objects. The objects can be of any type, for example integers:
+A list is a sequence of objects. The objects can be of any type, for example
+integers:
 
 ```{code-cell} ipython3
 ---
@@ -349,7 +390,8 @@ type(a)
 type([])
 ```
 
-As with strings, the number of elements in a list can be obtained using the `len()` function:
+As with strings, the number of elements in a list can be obtained using the
+`len()` function:
 
 ```{code-cell} ipython3
 a = ['dog', 'cat', 'mouse']
@@ -366,7 +408,8 @@ jupyter:
 a = [123, 'duck', -42, 17, 0, 'elephant']
 ```
 
-In Python a list is an object. It is therefore possible for a list to contain other lists (because a list keeps a sequence of objects):
+In Python a list is an object. It is therefore possible for a list to contain
+other lists (because a list keeps a sequence of objects):
 
 ```{code-cell} ipython3
 ---
@@ -390,7 +433,8 @@ a.append(42)
 a
 ```
 
-You can delete an object from a list by calling the `remove()` method and passing the object to delete. For example:
+You can delete an object from a list by calling the `remove()` method and
+passing the object to delete. For example:
 
 ```{code-cell} ipython3
 a = [34, 56, 23, 42]
@@ -400,7 +444,10 @@ a
 
 #### The range() command
 
-A special type of list is frequently required (often together with `for-loops`) and therefore a command exists to generate that list: the `range(n)` command generates integers starting from 0 and going up to *but not including* n. Here are a few examples:
+A special type of list is frequently required (often together with `for-loops`)
+and therefore a command exists to generate that list: the `range(n)` command
+generates integers starting from 0 and going up to *but not including* n. Here
+are a few examples:
 
 ```{code-cell} ipython3
 list(range(3))
@@ -410,14 +457,18 @@ list(range(3))
 list(range(10))
 ```
 
-This command is often used with for loops. For example, to print the numbers 0<sup>2</sup>,1<sup>2</sup>,2<sup>2</sup>,3<sup>2</sup>,…,10<sup>2</sup>, the following program can be used:
+This command is often used with for loops. For example, to print the numbers
+$0^2,1^2,2^2,3^2,…,10^2$, the following program can be used:
 
 ```{code-cell} ipython3
 for i in range(11):
     print(i ** 2)
 ```
 
-The range command takes an optional parameter for the beginning of the integer sequence (start) and another optional parameter for the step size. This is often written as `range([start],stop,[step])` where the arguments in square brackets (*i.e.* start and step) are optional. Here are some examples:
+The range command takes an optional parameter for the beginning of the integer
+sequence (start) and another optional parameter for the step size. This is often
+written as `range([start],stop,[step])` where the arguments in square brackets
+(*i.e.* start and step) are optional. Here are some examples:
 
 ```{code-cell} ipython3
 list(range(3, 10))            # start=3
@@ -433,15 +484,19 @@ list(range(10, 0, -1))        # start=10,step=-1
 
 Why are we calling `list(range())`?
 
-In Python 3, `range()` generates the numbers on demand. When you use `range()` in a for loop, this is more efficient, because it doesn't take up memory with a list of numbers. Passing it to `list()` forces it to generate all of its numbers, so we can see what it does.
+In Python 3, `range()` generates the numbers on demand. When you use `range()`
+in a for loop, this is more efficient, because it doesn't take up memory with a
+list of numbers. Passing it to `list()` forces it to generate all of its
+numbers, so we can see what it does.
 
-To get the same efficient behaviour in Python 2, use `xrange()` instead of `range()`.
-
-+++
+To get the same efficient behaviour in Python 2, use `xrange()` instead of
+`range()`.
 
 ### Sequence type 3: Tuples
 
-A *tuple* is a (immutable) sequence of objects. Tuples are very similar in behaviour to lists with the exception that they cannot be modified (i.e. are immutable).
+A *tuple* is a (immutable) sequence of objects. Tuples are very similar in
+behaviour to lists with the exception that they cannot be modified (i.e. are
+immutable).
 
 For example, the objects in a sequence can be of any type:
 
@@ -454,14 +509,16 @@ a
 a[0]
 ```
 
-The parentheses are not necessary to define a tuple: just a sequence of objects separated by commas is sufficient to define a tuple:
+The parentheses are not necessary to define a tuple: just a sequence of objects
+separated by commas is sufficient to define a tuple:
 
 ```{code-cell} ipython3
 a = 100, 200, 'duck'
 a
 ```
 
-although it is good practice to include the parenthesis where it helps to show that tuple is defined.
+although it is good practice to include the parenthesis where it helps to show
+that tuple is defined.
 
 Tuples can also be used to make two assignments at the same time:
 
@@ -509,7 +566,9 @@ type(t)
 len(t)
 ```
 
-The extra comma is required to distinguish `(42,)` from `(42)` where in the latter case the parenthesis would be read as defining operator precedence: `(42)` simplifies to `42` which is just a number:
+The extra comma is required to distinguish `(42,)` from `(42)` where in the
+latter case the parenthesis would be read as defining operator precedence:
+`(42)` simplifies to `42` which is just a number:
 
 ```{code-cell} ipython3
 t = (42)
@@ -530,17 +589,20 @@ a[0]
 a[0] = 1
 ```
 
-The immutability is the main difference between a tuple and a list (the latter being mutable). We should use tuples when we don’t want the content to change.
+The immutability is the main difference between a tuple and a list (the latter
+being mutable). We should use tuples when we don’t want the content to change.
 
-Note that Python functions that return more than one value, return these in tuples (which makes sense because you don’t want these values be changed).
+Note that Python functions that return more than one value, return these in
+tuples (which makes sense because you don’t want these values be changed).
 
 ### Indexing sequences
 
-**Further information**
+- Introduction to strings and indexing in [Python tutorial, section
+  3.1.2](https://docs.python.org/3/tutorial/introduction.html#strings), the
+  relevant section is starting after strings have been introduced.
 
--   Introduction to strings and indexing in [Python tutorial, section 3.1.2](https://docs.python.org/3/tutorial/introduction.html#strings), the relevant section is starting after strings have been introduced.
-
-Individual objects in lists can be accessed by using the index of the object and square brackets (`[` and `]`):
+Individual objects in lists can be accessed by using the index of the object and
+square brackets (`[` and `]`):
 
 ```{code-cell} ipython3
 a = ['dog', 'cat', 'mouse']
@@ -555,9 +617,13 @@ a[1]
 a[2]
 ```
 
-Note that Python (like C but unlike Fortran and unlike Matlab) starts counting indices from zero!
+Note that Python (like C but unlike Fortran and unlike Matlab) starts counting
+indices from zero!
 
-Python provides a handy shortcut to retrieve the last element in a list: for this one uses the index “-1” where the minus indicates that it is one element *from the back* of the list. Similarly, the index “-2” will return the 2nd last element:
+Python provides a handy shortcut to retrieve the last element in a list: for
+this one uses the index “-1” where the minus indicates that it is one element
+*from the back* of the list. Similarly, the index “-2” will return the 2nd last
+element:
 
 ```{code-cell} ipython3
 a = ['dog', 'cat', 'mouse']
@@ -568,9 +634,11 @@ a[-1]
 a[-2]
 ```
 
-If you prefer, you can think of the index `a[-1]` to be a shorthand notation for `a[len(a) - 1]`.
+If you prefer, you can think of the index `a[-1]` to be a shorthand notation for
+`a[len(a) - 1]`.
 
-Remember that strings (like lists) are also a sequence type and can be indexed in the same way:
+Remember that strings (like lists) are also a sequence type and can be indexed
+in the same way:
 
 ```{code-cell} ipython3
 a = "Hello World!"
@@ -595,11 +663,11 @@ a[-2]
 
 ### Slicing sequences
 
-**Further information**
+- Introduction to strings, indexing and slicing in [Python tutorial, section
+  3.1.2](https://docs.python.org/3/tutorial/introduction.html#strings)
 
--   Introduction to strings, indexing and slicing in [Python tutorial, section 3.1.2](https://docs.python.org/3/tutorial/introduction.html#strings)
-
-*Slicing* of sequences can be used to retrieve more than one element. For example:
+*Slicing* of sequences can be used to retrieve more than one element. For
+example:
 
 ```{code-cell} ipython3
 a = "Hello World!"
@@ -626,7 +694,9 @@ We can use negative indices to refer to the end of the sequence:
 a[0:-1]
 ```
 
-It is also possible to leave out the start or the end index and this will return all elements up to the beginning or the end of the sequence. Here are some examples to make this clearer:
+It is also possible to leave out the start or the end index and this will return
+all elements up to the beginning or the end of the sequence. Here are some
+examples to make this clearer:
 
 ```{code-cell} ipython3
 a = "Hello World!"
@@ -645,9 +715,15 @@ a[-2:]
 a[:]
 ```
 
-Note that `a[:]` will generate a *copy* of `a`. The use of indices in slicing is by some people experienced as counter intuitive. If you feel uncomfortable with slicing, have a look at this quotation from the [Python tutorial (section 3.1.2)](https://docs.python.org/3/tutorial/introduction.html#strings):
+Note that `a[:]` will generate a *copy* of `a`. The use of indices in slicing is
+by some people experienced as counter intuitive. If you feel uncomfortable with
+slicing, have a look at this quotation from the [Python tutorial (section
+3.1.2)](https://docs.python.org/3/tutorial/introduction.html#strings):
 
-> The best way to remember how slices work is to think of the indices as pointing between characters, with the left edge of the first character numbered 0. Then the right edge of the last character of a string of 5 characters has index 5, for example:
+> The best way to remember how slices work is to think of the indices as
+> pointing between characters, with the left edge of the first character
+> numbered 0. Then the right edge of the last character of a string of 5
+> characters has index 5, for example:
 >
 >      +---+---+---+---+---+
 >      | H | e | l | l | o |
@@ -656,11 +732,16 @@ Note that `a[:]` will generate a *copy* of `a`. The use of indices in slicing is
 >     -5  -4  -3  -2  -1       <-- use for SLICING
 >                                      from the end
 >
-> The first row of numbers gives the position of the slicing indices 0...5 in the string; the second row gives the corresponding negative indices. The slice from i to j consists of all characters between the edges labelled i and j, respectively.
+> The first row of numbers gives the position of the slicing indices 0...5 in
+> the string; the second row gives the corresponding negative indices. The slice
+> from i to j consists of all characters between the edges labelled i and j,
+> respectively.
 
-So the important statement is that for *slicing* we should think of indices pointing between characters.
+So the important statement is that for *slicing* we should think of indices
+pointing between characters.
 
-For *indexing* it is better to think of the indices referring to characters. Here is a little graph summarising these rules:
+For *indexing* it is better to think of the indices referring to characters.
+Here is a little graph summarising these rules:
 
        0   1   2   3   4    <-- use for INDEXING
       -5  -4  -3  -2  -1    <-- use for INDEXING
@@ -671,13 +752,14 @@ For *indexing* it is better to think of the indices referring to characters. Her
     -5  -4  -3  -2  -1      <-- use for SLICING
                              from the end
 
-+++
-
-If you are not sure what the right index is, it is always a good technique to play around with a small example at the Python prompt to test things before or while you write your program.
+If you are not sure what the right index is, it is always a good technique to
+play around with a small example at the Python prompt to test things before or
+while you write your program.
 
 ### Dictionaries
 
-Dictionaries are also called “associative arrays” and “hash tables”. Dictionaries are *unordered* sets of *key-value pairs*.
+Dictionaries are also called “associative arrays” and “hash tables”.
+Dictionaries are *unordered* sets of *key-value pairs*.
 
 An empty dictionary can be created using curly braces:
 
@@ -733,7 +815,8 @@ d3
 
 The function `dict()` creates an empty dictionary.
 
-Other useful dictionary methods include `values()`, `items()` and `get()`. You can use `in` to check for the presence of values.
+Other useful dictionary methods include `values()`, `items()` and `get()`. You
+can use `in` to check for the presence of values.
 
 ```{code-cell} ipython3
 d.values()
@@ -759,7 +842,8 @@ d.get('tomorrow','unknown')
 'tomorrow' in d
 ```
 
-The method `get(key,default)` will provide the value for a given `key` if that key exists, otherwise it will return the `default` object.
+The method `get(key,default)` will provide the value for a given `key` if that
+key exists, otherwise it will return the `default` object.
 
 Here is a more complex example:
 
@@ -779,17 +863,14 @@ for person in order.keys():
 
 Some more technicalities:
 
--   The keyword can be any (immutable) Python object. This includes:
+- The keyword can be any (immutable) Python object. This includes:
+  - numbers
+  - strings
+  - tuples
+- dictionaries are very fast in retrieving values (when given the key)
 
-    -   numbers
-
-    -   strings
-
-    -   tuples.
-
--   dictionaries are very fast in retrieving values (when given the key)
-
-An other example to demonstrate an advantage of using dictionaries over pairs of lists:
+An other example to demonstrate an advantage of using dictionaries over pairs of
+lists:
 
 ```{code-cell} ipython3
 # NBVAL_IGNORE_OUTPUT
@@ -819,15 +900,24 @@ for i in range( len( rooms ) ):
 
 ## Passing arguments to functions
 
-This section contains some more advanced ideas and makes use of concepts that are only later introduced in this text. The section may be more easily accessible at a later stage.
+This section contains some more advanced ideas and makes use of concepts that
+are only later introduced in this text. The section may be more easily
+accessible at a later stage.
 
-When objects are passed to a function, Python always passes (the value of) the reference to the object to the function. Effectively this is calling a function by reference, although one could refer to it as calling by value (of the reference).
+When objects are passed to a function, Python always passes (the value of) the
+reference to the object to the function. Effectively this is calling a function
+by reference, although one could refer to it as calling by value (of the
+reference).
 
-We review argument passing by value and reference before discussing the situation in Python in more detail.
+We review argument passing by value and reference before discussing the
+situation in Python in more detail.
 
 ### Call by value
 
-One might expect that if we pass an object by value to a function, that modifications of that value inside the function will not affect the object (because we don’t pass the object itself, but only its value, which is a copy). Here is an example of this behaviour (in C):
+One might expect that if we pass an object by value to a function, that
+modifications of that value inside the function will not affect the object
+(because we don’t pass the object itself, but only its value, which is a copy).
+Here is an example of this behaviour (in C):
 
 ```c
 #include <stdio.h>
@@ -855,13 +945,18 @@ together with the corresponding output:
     global_m=1
 
 
-The value `1` of the global variable `global_m` is not modified when the function `pass_by_value` changes its input argument to 42.
-
-+++
+The value `1` of the global variable `global_m` is not modified when the
+function `pass_by_value` changes its input argument to 42.
 
 ### Call by reference
 
-Calling a function by reference, on the other hand, means that the object given to a function is a reference to the object. This means that the function will see the same object as in the calling code (because they are referencing the same object: we can think of the reference as a pointer to the place in memory where the object is located). Any changes acting on the object inside the function, will then be visible in the object at the calling level (because the function does actually operate on the same object, not a copy of it).
+Calling a function by reference, on the other hand, means that the object given
+to a function is a reference to the object. This means that the function will
+see the same object as in the calling code (because they are referencing the
+same object: we can think of the reference as a pointer to the place in memory
+where the object is located). Any changes acting on the object inside the
+function, will then be visible in the object at the calling level (because the
+function does actually operate on the same object, not a copy of it).
 
 Here is one example showing this using pointers in C:
 
@@ -890,9 +985,8 @@ together with the corresponding output:
     in pass_by_reference: changed to m=42
     global_m=42
 
-+++
-
-C++ provides the ability to pass arguments as references by adding an ampersand in front of the argument name in the function definition:
+C++ provides the ability to pass arguments as references by adding an ampersand
+in front of the argument name in the function definition:
 
 ```cpp
 #include <stdio.h>
@@ -919,13 +1013,17 @@ together with the corresponding output:
     in pass_by_reference: changed to m=42
     global_m=42
 
-+++
-
 ### Argument passing in Python
 
-In Python, objects are passed as the value of a reference (think pointer) to the object. Depending on the way the reference is used in the function and depending on the type of object it references, this can result in pass-by-reference behaviour (where any changes to the object received as a function argument, are immediately reflected in the calling level).
+In Python, objects are passed as the value of a reference (think pointer) to the
+object. Depending on the way the reference is used in the function and depending
+on the type of object it references, this can result in pass-by-reference
+behaviour (where any changes to the object received as a function argument, are
+immediately reflected in the calling level).
 
-Here are three examples to discuss this. We start by passing a list to a function which iterates through all elements in the sequence and doubles the value of each element:
+Here are three examples to discuss this. We start by passing a list to a
+function which iterates through all elements in the sequence and doubles the
+value of each element:
 
 ```{code-cell} ipython3
 def double_the_values(l):
@@ -940,11 +1038,19 @@ double_the_values(l_global)
 print("In main: s=%s" % l_global)
 ```
 
-The variable `l` is a reference to the list object. The line `l[i] = l[i] * 2` first evaluates the right-hand side and reads the element with index `i`, then multiplies this by two. A reference to this new object is then stored in the list object `l` at position with index `i`. We have thus modified the list object, that is referenced through `l`.
+The variable `l` is a reference to the list object. The line `l[i] = l[i] * 2`
+first evaluates the right-hand side and reads the element with index `i`, then
+multiplies this by two. A reference to this new object is then stored in the
+list object `l` at position with index `i`. We have thus modified the list
+object, that is referenced through `l`.
 
-The reference to the list object does never change: the line `l[i] = l[i] * 2` changes the elements `l[i]` of the list `l` but never changes the reference `l` for the list. Thus both the function and calling level are operating on the same object through the references `l` and `global_l`, respectively.
+The reference to the list object does never change: the line `l[i] = l[i] * 2`
+changes the elements `l[i]` of the list `l` but never changes the reference `l`
+for the list. Thus both the function and calling level are operating on the same
+object through the references `l` and `global_l`, respectively.
 
-In contrast, here is an example where do not modify the elements of the list within the function: which produces this output:
+In contrast, here is an example where do not modify the elements of the list
+within the function: which produces this output:
 
 ```{code-cell} ipython3
 def double_the_list(l):
@@ -958,7 +1064,10 @@ double_the_list(l_global)
 print("In main: l=%s" % l_global)
 ```
 
-What happens here is that during the evaluation of `l = l + l` a new object is created that holds `l + l`, and that we then bind the name `l` to it. In the process, we lose the references to the list object `l` that was given to the function (and thus we do not change the list object given to the function).
+What happens here is that during the evaluation of `l = l + l` a new object is
+created that holds `l + l`, and that we then bind the name `l` to it. In the
+process, we lose the references to the list object `l` that was given to the
+function (and thus we do not change the list object given to the function).
 
 Finally, let’s look at which produces this output:
 
@@ -974,25 +1083,40 @@ double_the_value(l_global)
 print("In main: s=%s" % l_global)
 ```
 
-In this example, we also double the value (from 42 to 84) within the function. However, when we bind the object 84 to the python name `l` (that is the line `l = l * 2`) we have created a new object (84), and we bind the new object to `l`. In the process, we lose the reference to the object 42 within the function. This does not affect the object 42 itself, nor the reference `l_global` to it.
+In this example, we also double the value (from 42 to 84) within the function.
+However, when we bind the object 84 to the python name `l` (that is the line `l
+= l * 2`) we have created a new object (84), and we bind the new object to `l`.
+In the process, we lose the reference to the object 42 within the function. This
+does not affect the object 42 itself, nor the reference `l_global` to it.
 
-In summary, Python’s behaviour of passing arguments to a function may appear to vary (if we view it from the pass by value versus pass by reference point of view). However, it is always call by value, where the value is a reference to the object in question, and the behaviour can be explained through the same reasoning in every case.
-
-+++
+In summary, Python’s behaviour of passing arguments to a function may appear to
+vary (if we view it from the pass by value versus pass by reference point of
+view). However, it is always call by value, where the value is a reference to
+the object in question, and the behaviour can be explained through the same
+reasoning in every case.
 
 ### Performance considerations
 
-Call by value function calls require copying of the value before it is passed to the function. From a performance point of view (both execution time and memory requirements), this can be an expensive process if the value is large. (Imagine the value is a `numpy.array` object which could be several Megabytes or Gigabytes in size.)
+Call by value function calls require copying of the value before it is passed to
+the function. From a performance point of view (both execution time and memory
+requirements), this can be an expensive process if the value is large. (Imagine
+the value is a `numpy.array` object which could be several Megabytes or
+Gigabytes in size.)
 
-One generally prefers call by reference for large data objects as in this case only a pointer to the data objects is passed, independent of the actual size of the object, and thus this is generally faster than call-by-value.
+One generally prefers call by reference for large data objects as in this case
+only a pointer to the data objects is passed, independent of the actual size of
+the object, and thus this is generally faster than call-by-value.
 
-Python’s approach of (effectively) calling by reference is thus efficient. However, we need to be careful that our function do not modify the data they have been given where this is undesired.
+Python’s approach of (effectively) calling by reference is thus efficient.
+However, we need to be careful that our function do not modify the data they
+have been given where this is undesired.
 
 ### Inadvertent modification of data
 
 Generally, a function should not modify the data given as input to it.
 
-For example, the following code demonstrates the attempt to determine the maximum value of a list, and – inadvertently – modifies the list in the process:
+For example, the following code demonstrates the attempt to determine the
+maximum value of a list, and – inadvertently – modifies the list in the process:
 
 ```{code-cell} ipython3
 def mymax(s):  # demonstrating side effect
@@ -1012,21 +1136,30 @@ print("mymax(s)=%s" % mymax(s))
 print("in main after calling mymax(s): s=%s" % s)
 ```
 
-The user of the `mymax()` function would not expect that the input argument is modified when the function executes. We should generally avoid this. There are several ways to find better solutions to the given problem:
+The user of the `mymax()` function would not expect that the input argument is
+modified when the function executes. We should generally avoid this. There are
+several ways to find better solutions to the given problem:
 
--   In this particular case, we could use the Python in-built function `max()` to obtain the maximum value of a sequence.
-
--   If we felt we need to stick to storing temporary values inside the list \[this is actually not necessary\], we could create a copy of the incoming list `s` first, and then proceed with the algorithm (see [below](#Copying-objects) on Copying objects).
-
--   Use another algorithm which uses an extra temporary variable rather than abusing the list for this. For example:
-
--   We could pass a tuple (instead of a list) to the function: a tuple is *immutable* and can thus never be modified (this would result in an exception being raised when the function tries to write to elements in the tuple).
+- In this particular case, we could use the Python in-built function `max()` to
+  obtain the maximum value of a sequence.
+- If we felt we need to stick to storing temporary values inside the list \[this
+  is actually not necessary\], we could create a copy of the incoming list `s`
+  first, and then proceed with the algorithm (see [below](#Copying-objects) on
+  Copying objects).
+- Use another algorithm which uses an extra temporary variable rather than
+  abusing the list for this. For example:
+- We could pass a tuple (instead of a list) to the function: a tuple is
+  *immutable* and can thus never be modified (this would result in an exception
+  being raised when the function tries to write to elements in the tuple).
 
 ### Copying objects
 
-Python provides the `id()` function which returns an integer number that is unique for each object. (In the current CPython implementation, this is the memory address.) We can use this to identify whether two objects are the same.
+Python provides the `id()` function which returns an integer number that is
+unique for each object. (In the current CPython implementation, this is the
+memory address.) We can use this to identify whether two objects are the same.
 
-To copy a sequence object (including lists), we can slice it, *i.e.* if `a` is a list, then `a[:]` will return a copy of `a`. Here is a demonstration:
+To copy a sequence object (including lists), we can slice it, *i.e.* if `a` is a
+list, then `a[:]` will return a copy of `a`. Here is a demonstration:
 
 ```{code-cell} ipython3
 a = list(range(10))
@@ -1060,7 +1193,9 @@ c[0] = 100
 a              # changing c does not affect a
 ```
 
-Python’s standard library provides the `copy` module, which provides copy functions that can be used to create copies of objects. We could have used `import copy; c = copy.deepcopy(a)` instead of `c = a[:]`.
+Python’s standard library provides the `copy` module, which provides copy
+functions that can be used to create copies of objects. We could have used
+`import copy; c = copy.deepcopy(a)` instead of `c = a[:]`.
 
 ## Equality and Identity/Sameness
 
@@ -1068,7 +1203,8 @@ A related question concerns the equality of objects.
 
 ### Equality
 
-The operators `<`, `>`, `==`, `>=`, `<=`, and `!=` compare the *values* of two objects. The objects need not have the same type. For example:
+The operators `<`, `>`, `==`, `>=`, `<=`, and `!=` compare the *values* of two
+objects. The objects need not have the same type. For example:
 
 ```{code-cell} ipython3
 a = 1.0; b = 1
@@ -1087,7 +1223,9 @@ So the `==` operator checks whether the values of two objects are equal.
 
 ### Identity / Sameness
 
-To see check whether two objects `a` and `b` are the same (i.e. `a` and `b` are references to the same place in memory), we can use the `is` operator (continued from example above):
+To see check whether two objects `a` and `b` are the same (i.e. `a` and `b` are
+references to the same place in memory), we can use the `is` operator (continued
+from example above):
 
 ```{code-cell} ipython3
 a is b
@@ -1095,7 +1233,10 @@ a is b
 
 Of course they are different here, as they are not of the same type.
 
-We can also ask the `id` function which, according to the documentation string in Python 2.7 “*Returns the identity of an object. This is guaranteed to be unique among simultaneously existing objects. (Hint: it’s the object’s memory address.)*”
+We can also ask the `id` function which, according to the documentation string
+in Python 2.7 “*Returns the identity of an object. This is guaranteed to be
+unique among simultaneously existing objects. (Hint: it’s the object’s memory
+address.)*”
 
 ```{code-cell} ipython3
 # NBVAL_IGNORE_OUTPUT
@@ -1133,9 +1274,13 @@ id(x)
 id(y)
 ```
 
-Here, `x` and `y` are references to the same piece of memory, they are thus identical and the `is` operator confirms this. The important point to remember is that line 2 (`y=x`) creates a new reference `y` to the same list object that `x` is a reference for.
+Here, `x` and `y` are references to the same piece of memory, they are thus
+identical and the `is` operator confirms this. The important point to remember
+is that line 2 (`y=x`) creates a new reference `y` to the same list object that
+`x` is a reference for.
 
-Accordingly, we can change elements of `x`, and `y` will change simultaneously as both `x` and `y` refer to the same object:
+Accordingly, we can change elements of `x`, and `y` will change simultaneously
+as both `x` and `y` refer to the same object:
 
 ```{code-cell} ipython3
 x
@@ -1158,7 +1303,10 @@ y
 x
 ```
 
-In contrast, if we use `z=x[:]` (instead of `z=x`) to create a new name `z`, then the slicing operation `x[:]` will actually create a copy of the list `x`, and the new reference `z` will point to the copy. The *value* of `x` and `z` is equal, but `x` and `z` are not the same object (they are not identical):
+In contrast, if we use `z=x[:]` (instead of `z=x`) to create a new name `z`,
+then the slicing operation `x[:]` will actually create a copy of the list `x`,
+and the new reference `z` will point to the copy. The *value* of `x` and `z` is
+equal, but `x` and `z` are not the same object (they are not identical):
 
 ```{code-cell} ipython3
 x

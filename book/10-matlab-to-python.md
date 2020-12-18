@@ -27,7 +27,8 @@ end
 
 +++
 
-Matlab requires the `end` key-word at the end of the block belonging to the for-loop.
+Matlab requires the `end` key-word at the end of the block belonging to the
+for-loop.
 
 Python:
 
@@ -36,7 +37,9 @@ for i in range(1,11):
     print(i)
 ```
 
-Python requires a colon (“:”) at the of the `for`-line. (This is important and often forgotten when you have programmed in Matlab before.) Python requires the commands to be executed within the for-loop to be indented.
+Python requires a colon (“:”) at the of the `for`-line. (This is important and
+often forgotten when you have programmed in Matlab before.) Python requires the
+commands to be executed within the for-loop to be indented.
 
 ### The if-then statement
 
@@ -54,9 +57,8 @@ else
 end
 ```
 
-+++
-
-Matlab requires the `end` key-word at the very end of the block belonging to the for-loop.
+Matlab requires the `end` key-word at the very end of the block belonging to the
+for-loop.
 
 Python:
 
@@ -73,14 +75,22 @@ else:
     print('a is positive')
 ```
 
-Python requires a colon (“:”) after every condition (i.e. at the of the lines starting with `if`, `elif`, `else`. Python requires the commands to be executed within each part of the if-then-else statement to be indented.
+Python requires a colon (“:”) after every condition (i.e. at the of the lines
+starting with `if`, `elif`, `else`. Python requires the commands to be executed
+within each part of the if-then-else statement to be indented.
 
 ### Indexing
 
-Matlab’s indexing of matrices and vectors starts a 1 (similar to Fortran), whereas Python’s indexing starts at 0 (similar to C).
+Matlab’s indexing of matrices and vectors starts a 1 (similar to Fortran),
+whereas Python’s indexing starts at 0 (similar to C).
 
 ### Matrices
 
-In Matlab, every object is a matrix. In Python, there is a specialised extension library called `numpy` (see Sec. \[cha:numer-pyth-numpy\]) which provides the `array` object which in turns provides the corresponding functionality. Similar to Matlab, the `numpy` object is actually based on binary libraries and execution there very fast.
+In Matlab, every object is a matrix. In Python, there is a specialised extension
+library called `numpy` (see Sec. \[cha:numer-pyth-numpy\]) which provides the
+`array` object which in turns provides the corresponding functionality. Similar
+to Matlab, the `numpy` object is actually based on binary libraries and
+execution there very fast.
 
-There is a dedicated introduction to numpy for Matlab users available at <https://numpy.org/doc/stable/user/numpy-for-matlab-users.html>.
+There is a dedicated introduction to numpy for Matlab users available at
+<https://numpy.org/doc/stable/user/numpy-for-matlab-users.html>.

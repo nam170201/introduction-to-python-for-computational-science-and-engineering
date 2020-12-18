@@ -13,28 +13,41 @@ kernelspec:
 
 # Functional tools
 
-Python provides a few in-built commands such as `map`, `filter`, `reduce` as well `lambda` (to create anonymous functions) and list comprehension. These are typical commands from functional languages of which LISP is probably best known.
+Python provides a few in-built commands such as `map`, `filter`, `reduce` as
+well `lambda` (to create anonymous functions) and list comprehension. These are
+typical commands from functional languages of which LISP is probably best known.
 
-Functional programming can be extremely powerful and one of the strengths of Python is that it allows to program using (i) imperative/procedural programming style, (ii) object oriented style and (iii) functional style. It is the programmers choice which tools to select from which style and how to mix them to best address a given problem.
+Functional programming can be extremely powerful and one of the strengths of
+Python is that it allows to program using (i) imperative/procedural programming
+style, (ii) object oriented style and (iii) functional style. It is the
+programmers choice which tools to select from which style and how to mix them to
+best address a given problem.
 
-In this chapter, we provide some examples for usage of the commands listed above.
+In this chapter, we provide some examples for usage of the commands listed
+above.
 
 ## Anonymous functions
 
-All functions we have seen in Python so far have been defined through the `def` keyword, for example:
+All functions we have seen in Python so far have been defined through the `def`
+keyword, for example:
 
 ```{code-cell} ipython3
 def f(x):
      return x ** 2
 ```
 
-This function has the name `f`. Once the function is defined (i.e. the Python interpreter has come across the `def` line), we can call the function using its name, for example
+This function has the name `f`. Once the function is defined (i.e. the Python
+interpreter has come across the `def` line), we can call the function using its
+name, for example
 
 ```{code-cell} ipython3
 y = f(6)
 ```
 
-Sometimes, we need to define a function that is only used once, or we want to create a function but don’t need a name for it (as for creating closures). In this case, this is called *anonymous* function as it does not have a name. In Python, the `lambda` keyword can create an anonymous function.
+Sometimes, we need to define a function that is only used once, or we want to
+create a function but don’t need a name for it (as for creating closures). In
+this case, this is called *anonymous* function as it does not have a name. In
+Python, the `lambda` keyword can create an anonymous function.
 
 We create a (named) function first, check it’s type and behaviour:
 
@@ -67,7 +80,9 @@ type(lambda x: x ** 2)
 (lambda x: x ** 2)(10)
 ```
 
-This works exactly in the same way but – as the anonymous function does not have a name – we need to define the function (through the `lambda` expression) – every time we need it.
+This works exactly in the same way but – as the anonymous function does not have
+a name – we need to define the function (through the `lambda` expression) –
+every time we need it.
 
 Anonymous functions can take more than one argument:
 
@@ -83,8 +98,9 @@ We will see some examples using `lambda` which will clarify typical use cases.
 
 ## Map
 
-The map function `lst2 = map(f, s )` applies a function `f` to all elements in a sequence `s`.
-The result of `map` can be turned into a list with the same length as `s`:
+The map function `lst2 = map(f, s )` applies a function `f` to all elements in a
+sequence `s`. The result of `map` can be turned into a list with the same length
+as `s`:
 
 ```{code-cell} ipython3
 def f(x):
@@ -109,7 +125,10 @@ list(map(lambda s: s.capitalize(), ['banana', 'apple', 'orange']))
 
 ## Filter
 
-The filter function `lst2 = filter( f, lst)` applies the function `f` to all elements in a sequence `s`. The function `f` should return `True` or `False`. This makes a list which will contain only those elements *s*<sub>*i*</sub> of the sequence `s` for which `f`(*s*<sub>*i*</sub>) has returned `True`.
+The filter function `lst2 = filter( f, lst)` applies the function `f` to all
+elements in a sequence `s`. The function `f` should return `True` or `False`.
+This makes a list which will contain only those elements $s_i$ of
+the sequence `s` for which `f`($s_i$) has returned `True`.
 
 ```{code-cell} ipython3
 def greater_than_5(x):
@@ -135,7 +154,13 @@ list(filter( lambda name : name in known_names, \
 
 ## List comprehension
 
-List comprehensions provide a concise way to create and modify lists without resorting to use of map(), filter() and/or lambda. The resulting list definition tends often to be clearer than lists built using those constructs. Each list comprehension consists of an expression followed by a `for` clause, then zero or more `for` or `if` clauses. The result will be a list resulting from evaluating the expression in the context of the for and if clauses which follow it. If the expression would evaluate to a tuple, it must be parenthesized.
+List comprehensions provide a concise way to create and modify lists without
+resorting to use of map(), filter() and/or lambda. The resulting list definition
+tends often to be clearer than lists built using those constructs. Each list
+comprehension consists of an expression followed by a `for` clause, then zero or
+more `for` or `if` clauses. The result will be a list resulting from evaluating
+the expression in the context of the for and if clauses which follow it. If the
+expression would evaluate to a tuple, it must be parenthesized.
 
 Some examples will make this clearer:
 
@@ -161,7 +186,9 @@ vec = [2, 4, 6]
 [[x, x ** 2] for x in vec]
 ```
 
-We can also use list comprehension to modify the list of integers returned by the `range` command so that our subsequent elements in the list increase by non-integer fractions:
+We can also use list comprehension to modify the list of integers returned by
+the `range` command so that our subsequent elements in the list increase by
+non-integer fractions:
 
 ```{code-cell} ipython3
 [x*0.5 for x in range(10)]
@@ -190,17 +217,20 @@ and the examples from the `map` section
 
 all of which can be expressed through list comprehensions.
 
-More details
-
--   Python Tutorial [5.1.4 List comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)
-
-+++
+More details:
+- Python Tutorial [5.1.4 List comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)
 
 ## Reduce
 
-The `reduce` function takes a binary function `f(x, y)`, a sequence `s`, and a start value `a0`. It then applies the function `f` to the start value `a0` and the first element in the sequence: `a1 = f(a0, s[0])`. The second element (`s[1]`) of the sequence is then processed as follows: the function `f` is called with arguments `a1` and `s[1]`, i.e. `a2 = f(a1, s[1])`. In this fashion, the whole sequence is processed. Reduce returns a single element.
+The `reduce` function takes a binary function `f(x, y)`, a sequence `s`, and a
+start value `a0`. It then applies the function `f` to the start value `a0` and
+the first element in the sequence: `a1 = f(a0, s[0])`. The second element
+(`s[1]`) of the sequence is then processed as follows: the function `f` is
+called with arguments `a1` and `s[1]`, i.e. `a2 = f(a1, s[1])`. In this fashion,
+the whole sequence is processed. Reduce returns a single element.
 
-This can be used, for example, to compute a sum of numbers in a sequence if the function `f(x, y)` returns `x+y`:
+This can be used, for example, to compute a sum of numbers in a sequence if the
+function `f(x, y)` returns `x+y`:
 
 ```{code-cell} ipython3
 from functools import reduce
@@ -227,7 +257,9 @@ def add_verbose(x, y):
 reduce(add_verbose, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0)
 ```
 
-It may be instructive to use an asymmetric function `f`, such as `add_len( n, s )` where s is a sequence and the function returns `n+len(s)` (suggestion from Thomas Fischbacher):
+It may be instructive to use an asymmetric function `f`, such as `add_len( n, s
+)` where s is a sequence and the function returns `n+len(s)` (suggestion from
+Thomas Fischbacher):
 
 ```{code-cell} ipython3
 def add_len(n, s):
@@ -236,7 +268,8 @@ def add_len(n, s):
 reduce(add_len, ["This","is","a","test."],0)
 ```
 
-As before, we’ll use a more verbose version of the binary function to see what is happening:
+As before, we’ll use a more verbose version of the binary function to see what
+is happening:
 
 ```{code-cell} ipython3
 def add_len_verbose(n, s):
@@ -246,7 +279,9 @@ def add_len_verbose(n, s):
 reduce(add_len_verbose, ["This", "is", "a", "test."], 0)
 ```
 
-Another way to understand what the reduce function does is to look at the following function (kindly provided by Thomas Fischbacher) which behaves like `reduce` but explains what it does:
+Another way to understand what the reduce function does is to look at the
+following function (kindly provided by Thomas Fischbacher) which behaves like
+`reduce` but explains what it does:
 
 Here is an example using the `explain_reduce` function:
 
@@ -297,7 +332,10 @@ Reduce is often combined with `lambda`:
 reduce(lambda x, y: x + y, [1, 2, 3, 4, 5], 0)
 ```
 
-There is also the `operator` module which provides standard Python operators as functions. For example, the function `operator.__add__(a,b)` is executed when Python evaluates code such as `a+b`. These are generally faster than `lambda` expressions. We could write the example above as
+There is also the `operator` module which provides standard Python operators as
+functions. For example, the function `operator.__add__(a,b)` is executed when
+Python evaluates code such as `a+b`. These are generally faster than `lambda`
+expressions. We could write the example above as
 
 ```{code-cell} ipython3
 import operator
@@ -308,9 +346,11 @@ Use `help(’operator’)` to see the complete list of operator functions.
 
 ## Why not just use for-loops?
 
-Let’s compare the example introduced at the beginning of the chapter written (i) using a for-loop and (ii) list comprehension. Again, we want to compute the numbers 0<sup>2</sup>, 1<sup>2</sup>, 2<sup>2</sup>, 3<sup>2</sup>, ... up to (*n* − 1)<sup>2</sup> for a given *n*.
+Let’s compare the example introduced at the beginning of the chapter written (i)
+using a for-loop and (ii) list comprehension. Again, we want to compute the
+numbers $0^2, 1^2, 2^2, 3^2, ...$ up to $(*n* − 1)^2$for a given $n$.
 
-Implementation (i) using a for-loop with *n*=10:
+Implementation (i) using a for-loop with $n=10$:
 
 ```{code-cell} ipython3
 y = []
@@ -330,23 +370,31 @@ or using `map`:
 y = map(lambda x: x**2, range(10))
 ```
 
-The versions using list comprehension and `map` fit into one line of code whereas the for-loop needs 3. This example shows that functional code result in very *concise* expressions. Typically, the number of mistakes a programmer makes is per line of code written, so the fewer lines of code we have, the fewer bugs we need to find.
+The versions using list comprehension and `map` fit into one line of code
+whereas the for-loop needs 3. This example shows that functional code result in
+very *concise* expressions. Typically, the number of mistakes a programmer makes
+is per line of code written, so the fewer lines of code we have, the fewer bugs
+we need to find.
 
-Often programmers find that initially the list-processing tools introduced in this chapter seem less intuitive than using for-loops to process every element in a list individually, but that – over time – they come to value a more functional programming style.
+Often programmers find that initially the list-processing tools introduced in
+this chapter seem less intuitive than using for-loops to process every element
+in a list individually, but that – over time – they come to value a more
+functional programming style.
 
 ## Speed
 
-The functional tools described in this chapter can also be faster than using explicit (for or while) loops over list elements.
+The functional tools described in this chapter can also be faster than using
+explicit (for or while) loops over list elements.
 
-The program `list_comprehension_speed.py` below computes $\\sum\_{i=0}^{N-1} i^2$ for a large value of *N* using 4 different methods and records execution time:
+The program `list_comprehension_speed.py` below computes $\\sum\_{i=0}^{N-1}
+i^2$ for a large value of *N* using 4 different methods and records execution
+time:
 
--   Method 1: for-loop (with pre-allocated list, storing of *i*<sup>2</sup> in list, then using in-built `sum` function)
-
--   Method 2: for-loop without list (updating sum as the for-loop progresses)
-
--   Method 3: using list comprehension
-
--   Method 4: using numpy. (Numpy is covered in [chapter 14](14-numpy.ipynb))
+- Method 1: for-loop (with pre-allocated list, storing of $i^2$ in list, then
+  using in-built `sum` function)
+- Method 2: for-loop without list (updating sum as the for-loop progresses)
+- Method 3: using list comprehension
+- Method 4: using numpy. (Numpy is covered in [chapter 14](14-numpy.ipynb))
 
 Here is a possible program computing this:
 
@@ -430,17 +478,25 @@ print("Slowest method is {:.1f} times slower than the fastest method."
       .format(max(timings)/min(timings)))
 ```
 
-The actual execution performance depends on the computer. The relative performance may depend on versions of Python and its support libraries (such as numpy) we use.
+The actual execution performance depends on the computer. The relative
+performance may depend on versions of Python and its support libraries (such as
+numpy) we use.
 
-With the current version (python 3.6, numpy 1.11, on a x84 machine running OS X), we see that methods 1 and 2 (for-loop without list and with pre-allocated list) are slowest, somewhat closely followed by the slightly faster list comprehension. The fastest method is number 4 (using numpy).
-
-+++
+With the current version (python 3.6, numpy 1.11, on a x84 machine running OS
+X), we see that methods 1 and 2 (for-loop without list and with pre-allocated
+list) are slowest, somewhat closely followed by the slightly faster list
+comprehension. The fastest method is number 4 (using numpy).
 
 ## The `%%timeit` magic
 
-If we are using IPython as our shell (or a cell in a Jupyter notebook running a python kernel), there is a much more sophisticated way to measure timings that what is done above: if a cell starts with `%%timeit`, then IPython will run the commands in that cell repeatedly and obtain (averaged) timings. This particularly useful for timing of commands that execute relatively quickly.
+If we are using IPython as our shell (or a cell in a Jupyter notebook running a
+python kernel), there is a much more sophisticated way to measure timings that
+what is done above: if a cell starts with `%%timeit`, then IPython will run the
+commands in that cell repeatedly and obtain (averaged) timings. This
+particularly useful for timing of commands that execute relatively quickly.
 
-Let's compare a list comprehension with an explicit loop using the `timeit` magic:
+Let's compare a list comprehension with an explicit loop using the `timeit`
+magic:
 
 ```{code-cell} ipython3
 %%timeit

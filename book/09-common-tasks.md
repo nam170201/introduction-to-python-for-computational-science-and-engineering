@@ -13,7 +13,9 @@ kernelspec:
 
 # Common tasks
 
-Here we provide a selection of small example programs addressing some common tasks and just providing some more Python code that can be read if seeking inspiration how to address a given problem.
+Here we provide a selection of small example programs addressing some common
+tasks and just providing some more Python code that can be read if seeking
+inspiration how to address a given problem.
 
 ## Many ways to compute a series
 
@@ -142,21 +144,18 @@ if __name__ == "__main__":
     test_consistency()
 ```
 
-All the different implementations shown above compute the same result. There are a number of things to be learned from this:
+All the different implementations shown above compute the same result. There are
+a number of things to be learned from this:
 
--   There are a large (probably an infinite) number of solutions for one given problem. (This means that writing programs is a task that requires creativity!)
-
--   These may achieve the same ’result’ (in this case computation of a number).
-
--   Different solutions may have different characteristics. They might:
-
-    -   be faster or slower
-
-    -   use less or more memory
-
-    -   are easier or more difficult to understand (when reading the source code)
-
-    -   can be considered more or less elegant.
+- There are a large (probably an infinite) number of solutions for one given
+  problem. (This means that writing programs is a task that requires
+  creativity!)
+- These may achieve the same ’result’ (in this case computation of a number).
+- Different solutions may have different characteristics. They might:
+  - be faster or slower
+  - use less or more memory
+  - are easier or more difficult to understand (when reading the source code)
+  - can be considered more or less elegant.
 
 +++
 
@@ -170,7 +169,10 @@ mylist = [("fangohr", "Hans Fangohr",),
           ("guest", "The Guest")]
 ```
 
-which we want to sort in increasing order of user-ids. If there are two or more identical user-ids, they should be ordered by the order of the names associated with these user-ids. This behaviour is just the default behaviour of sort (which goes back to how to sequences are compared).
+which we want to sort in increasing order of user-ids. If there are two or more
+identical user-ids, they should be ordered by the order of the names associated
+with these user-ids. This behaviour is just the default behaviour of sort (which
+goes back to how to sequences are compared).
 
 ```{code-cell} ipython3
 stuff = mylist # collect your data
@@ -178,7 +180,10 @@ stuff.sort()   # sort the data in place
 print(stuff)   # inspect the sorted data
 ```
 
-Sequences are compared by initially comparing the first elements only. If they differ, then a decision is reached on the basis of those elements only. If the elements are equal, only then are the next elements in the sequence compared ... and so on, until a difference is found, or we run out of elements. For example:
+Sequences are compared by initially comparing the first elements only. If they
+differ, then a decision is reached on the basis of those elements only. If the
+elements are equal, only then are the next elements in the sequence compared...
+and so on, until a difference is found, or we run out of elements. For example:
 
 ```{code-cell} ipython3
 (2,0) > (1,0)
@@ -202,9 +207,13 @@ It is also possible to do:
 stuff = sorted(stuff)
 ```
 
-Where the list is not particularly large, it is generally advisable to use the `sorted` function (which *returns a sorted copy* of the list) over the `sort` method of a list (which changes the list into sorted order of elements, and returns None).
+Where the list is not particularly large, it is generally advisable to use the
+`sorted` function (which *returns a sorted copy* of the list) over the `sort`
+method of a list (which changes the list into sorted order of elements, and
+returns None).
 
-However, what if the data we have is stored such that in each tuple in the list, the name comes first, followed by the id, i.e.:
+However, what if the data we have is stored such that in each tuple in the list,
+the name comes first, followed by the id, i.e.:
 
 ```{code-cell} ipython3
 mylist2 = [("Hans Fangohr", "fangohr"),
@@ -212,24 +221,31 @@ mylist2 = [("Hans Fangohr", "fangohr"),
            ("The Guest", "guest")]
 ```
 
-We want to sort with the id as the primary key. The first approach to do this is to change the order of `mylist2` to that of `mylist`, and use `sort` as shown above.
+We want to sort with the id as the primary key. The first approach to do this is
+to change the order of `mylist2` to that of `mylist`, and use `sort` as shown
+above.
 
-The second, neater approach relies on being able to decipher the cryptic help for the sorted function. `list.sort()` has the same options, but its help is less helpful.
+The second, neater approach relies on being able to decipher the cryptic help
+for the sorted function. `list.sort()` has the same options, but its help is
+less helpful.
 
 ```{code-cell} ipython3
 # NBVAL_IGNORE_OUTPUT
 help(sorted)
 ```
 
-You should notice that `sorted` and `list.sort` have two keyword parameters. The first of these is called key. You can use this to supply a *key function*, which will be used to transform the items for sort to compare.
+You should notice that `sorted` and `list.sort` have two keyword parameters. The
+first of these is called key. You can use this to supply a *key function*, which
+will be used to transform the items for sort to compare.
 
-Let’s illustrate this in the context of our exercise, by assuming that we have stored a list of pairs like this
+Let’s illustrate this in the context of our exercise, by assuming that we have
+stored a list of pairs like this
 
     pair = name, id
 
-+++
-
-(i.e. as in `mylist2`) and that we want to sort according to id and ignore name. We can achieve this by writing a function that retrieves only the second element of the pair it receives:
+(i.e. as in `mylist2`) and that we want to sort according to id and ignore name.
+We can achieve this by writing a function that retrieves only the second element
+of the pair it receives:
 
 ```{code-cell} ipython3
 def my_key(pair):
@@ -248,6 +264,12 @@ mylist2.sort(key=lambda p: p[1])
 
 ### Efficiency
 
-The `key` function will be called exactly once for every element in the list. This is much more efficient than calling a function on every *comparison* (which was how you customised sorting in older versions of Python). But if you have a large list to sort, the overhead of calling a Python function (which is relatively large compared to the C function overhead) might be noticeable.
+The `key` function will be called exactly once for every element in the list.
+This is much more efficient than calling a function on every *comparison* (which
+was how you customised sorting in older versions of Python). But if you have a
+large list to sort, the overhead of calling a Python function (which is
+relatively large compared to the C function overhead) might be noticeable.
 
-If efficiency is really important (and you have proven that a significant proportion of time is spent in these functions) then you have the option of re-coding them in C (or another low-level language).
+If efficiency is really important (and you have proven that a significant
+proportion of time is spent in these functions) then you have the option of
+re-coding them in C (or another low-level language).
