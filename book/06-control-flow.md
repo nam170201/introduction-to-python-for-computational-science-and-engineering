@@ -19,10 +19,11 @@ For a given file with a python program, the python interpreter will start at the
 top and then process the file. We demonstrate this with a simple program, for
 example:
 
-```{code-cell} ipython3
+```{code-cell}
 def f(x):
     """function that computes and returns x*x"""
     return x * x
+
 
 print("Main program starts here")
 print("4 * 4 = %s" % f(4))
@@ -61,99 +62,99 @@ further.
 
 The python values `True` and `False` are special inbuilt objects:
 
-```{code-cell} ipython3
+```{code-cell}
 a = True
 print(a)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type(a)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 b = False
 print(b)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type(b)
 ```
 
 We can operate with these two logical values using boolean logic, for example
 the logical and operation (`and`):
 
-```{code-cell} ipython3
-True and True          #logical and operation
+```{code-cell}
+True and True  # logical and operation
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 True and False
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 False and True
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 True and True
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 c = a and b
 print(c)
 ```
 
 There is also logical or (`or`) and the negation (`not`):
 
-```{code-cell} ipython3
+```{code-cell}
 True or False
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 not True
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 not False
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 True and not False
 ```
 
 In computer code, we often need to evaluate some expression that is either true
 or false (sometimes called a “predicate”). For example:
 
-```{code-cell} ipython3
-x = 30          # assign 30 to x
-x > 15          # is x greater than 15
+```{code-cell}
+x = 30  # assign 30 to x
+x > 15  # is x greater than 15
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x > 42
 ```
 
-```{code-cell} ipython3
-x == 30         # is x the same as 30?
+```{code-cell}
+x == 30  # is x the same as 30?
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x == 42
 ```
 
-```{code-cell} ipython3
-not x == 42     # is x not the same as 42?
+```{code-cell}
+not x == 42  # is x not the same as 42?
 ```
 
-```{code-cell} ipython3
-x != 42         # is x not the same as 42?
+```{code-cell}
+x != 42  # is x not the same as 42?
 ```
 
-```{code-cell} ipython3
-x > 30          # is x greater than 30?
+```{code-cell}
+x > 30  # is x greater than 30?
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x >= 30  # is x greater than or equal to 30?
 ```
 
@@ -165,7 +166,7 @@ x >= 30  # is x greater than or equal to 30?
 
 The `if` statement allows conditional execution of code, for example:
 
-```{code-cell} ipython3
+```{code-cell}
 a = 34
 if a > 0:
     print("a is positive")
@@ -174,7 +175,7 @@ if a > 0:
 The if-statement can also have an `else` branch which is executed if the
 condition is wrong:
 
-```{code-cell} ipython3
+```{code-cell}
 a = 34
 if a > 0:
     print("a is positive")
@@ -185,7 +186,7 @@ else:
 Finally, there is the `elif` (read as “else if”) keyword that allows checking
 for several (exclusive) possibilities:
 
-```{code-cell} ipython3
+```{code-cell}
 a = 17
 if a == 0:
     print("a is zero")
@@ -203,16 +204,16 @@ Further information:
 The `for`-loop allows to iterate over a sequence (this could be a string or a
 list, for example). Here is an example:
 
-```{code-cell} ipython3
-for animal in ['dog','cat','mouse']:
+```{code-cell}
+for animal in ['dog', 'cat', 'mouse']:
     print(animal, animal.upper())
 ```
 
 Together with the `range()` command (03 Data Types Structures, The Range
 Command), one can iterate over increasing integers:
 
-```{code-cell} ipython3
-for i in range(5,10):
+```{code-cell}
+for i in range(5, 10):
     print(i)
 ```
 
@@ -223,14 +224,14 @@ Suppose we’d like to know for how many years we have to keep 100 pounds on a
 savings account to reach 200 pounds simply due to annual payment of interest at
 a rate of 5%. Here is a program to compute that this will take 15 years:
 
-```{code-cell} ipython3
-mymoney = 100         # in GBP
-rate = 1.05           # 5% interest
+```{code-cell}
+mymoney = 100  # in GBP
+rate = 1.05  # 5% interest
 years = 0
 while mymoney < 200:  # repeat until 20 pounds reached
     mymoney = mymoney * rate
     years = years + 1
-print('We need', years, 'years to reach', mymoney, 'pounds.')
+print("We need", years, "years to reach", mymoney, "pounds.")
 ```
 
 ## Relational operators (comparisons) in `if` and `while` statements
@@ -243,7 +244,7 @@ the condition is True).
 For example, the condition could be equality of two variables `a1` and `a2`
 which is expressed as `a1==a2`:
 
-```{code-cell} ipython3
+```{code-cell}
 a1 = 42
 a2 = 42
 if a1 == a2:
@@ -253,7 +254,7 @@ if a1 == a2:
 Another example is to test whether `a1` and `a2` are not the same. For this, we
 have two possibilities. Option number 1 uses the *inequality operator* `!=`:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -264,7 +265,7 @@ if a1 != a2:
 
 Option two uses the keyword `not` in front of the condition:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -279,18 +280,17 @@ Comparisons for “greater” (`>`), “smaller” (`<`) and “greater equal”
 Finally, we can use the logical operators “`and`” and “`or`” to combine
 conditions:
 
-```{code-cell} ipython3
+```{code-cell}
 if a > 10 and b > 20:
     print("A is greater than 10 and b is greater than 20")
 if a > 10 or b < -5:
-    print("Either a is greater than 10, or "
-          "b is smaller than -5, or both.")
+    print("Either a is greater than 10, or " "b is smaller than -5, or both.")
 ```
 
 Use the Python prompt to experiment with these comparisons and logical
 expressions. For example:
 
-```{code-cell} ipython3
+```{code-cell}
 T = -12.5
 if T < -20:
     print("very cold")
@@ -299,11 +299,11 @@ if T < -10:
     print("quite cold")
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 T < -20
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 T < -10
 ```
 
@@ -315,30 +315,30 @@ are called *exceptions* and are not necessarily fatal: exceptions can be
 *caught* and dealt with within the program. Most exceptions are not handled by
 programs, however, and result in error messages as shown here
 
-```{code-cell} ipython3
+```{code-cell}
 :tags: [raises-exception]
 
 # NBVAL_RAISES_EXCEPTION
-10 * (1/0)
+10 * (1 / 0)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 :tags: [raises-exception]
 
 # NBVAL_RAISES_EXCEPTION
-4 + spam*3
+4 + spam * 3
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 :tags: [raises-exception]
 
 # NBVAL_SKIP
-'2' + 2
+"2" + 2
 ```
 
 Schematic exception catching with all options
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -375,7 +375,7 @@ files: see
 Example: We try to open a file that does not exist, and Python will raise an
 exception of type `IOError` which stands for Input Output Error:
 
-```{code-cell} ipython3
+```{code-cell}
 :tags: [raises-exception]
 
 # NBVAL_RAISES_EXCEPTION
@@ -389,11 +389,11 @@ does not exist. Instead, we need to catch this exception and act accordingly
 and ask whether they want to try another file name). Here is the skeleton for
 catching this exception:
 
-```{code-cell} ipython3
+```{code-cell}
 try:
-    f = open("filenamethatdoesnotexist","r")
+    f = open('filenamethatdoesnotexist', 'r')
 except IOError:
-    print("Could not open that file")
+    print('Could not open that file')
 ```
 
 There is a lot more to be said about exceptions and their use in larger
@@ -433,7 +433,7 @@ style to have each module define its own base exception.
 -   LBYL (Look Before You Leap) vs
 -   EAFP (Easer to ask forgiveness than permission)
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -444,18 +444,18 @@ denominator = 0
 
 Example for LBYL:
 
-```{code-cell} ipython3
+```{code-cell}
 if denominator == 0:
     print("Oops")
 else:
-    print(numerator/denominator)
+    print(numerator / denominator)
 ```
 
 Easier to Ask for Forgiveness than Permission:
 
-```{code-cell} ipython3
+```{code-cell}
 try:
-    print(numerator/denominator)
+    print(numerator / denominator)
 except ZeroDivisionError:
     print("Oops")
 ```

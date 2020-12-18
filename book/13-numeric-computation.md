@@ -139,20 +139,20 @@ represented internally: not all floating point numbers can be represented
 exactly in the computer. The number $1.0$ can be represented exactly but the
 numbers $0.1$, $0.2$ and $0.3$ cannot:
 
-```{code-cell} ipython3
-'%.20f' % 1.0
+```{code-cell}
+"%.20f" % 1.0
 ```
 
-```{code-cell} ipython3
-'%.20f' % 0.1
+```{code-cell}
+"%.20f" % 0.1
 ```
 
-```{code-cell} ipython3
-'%.20f' % 0.2
+```{code-cell}
+"%.20f" % 0.2
 ```
 
-```{code-cell} ipython3
-'%.20f' % 0.3
+```{code-cell}
+"%.20f" % 0.3
 ```
 
 Instead, the floating point number “nearest” to the real number is chosen.
@@ -192,11 +192,11 @@ Thus: *Never compare two floating point numbers for equality.*
 There are a number of alternative ways to solve this problem. For example, we
 can compare the distance between two floating point numbers:
 
-```{code-cell} ipython3
+```{code-cell}
 x = 0.0
 while abs(x - 1.0) > 1e-8:
     x = x + 0.1
-    print ( " x =%19.17f" % ( x ))
+    print(' x =%19.17f' % (x))
 ```
 
 ### Using floating point numbers carefully 2
@@ -204,23 +204,23 @@ while abs(x - 1.0) > 1e-8:
 Alternatively, we can (for this example) iterate over a sequence of integers and
 compute the floating point number from the integer:
 
-```{code-cell} ipython3
-for i in range (1 , 11):
+```{code-cell}
+for i in range(1, 11):
     x = i * 0.1
-    print(" x =%19.17f" % ( x ))
+    print(" x =%19.17f" % (x))
 ```
 
-```{code-cell} ipython3
-x=0.10000000000000001
-x=0.20000000000000001
-x=0.30000000000000004
-x=0.40000000000000002
-x=                0.5
-x=0.60000000000000009
-x=0.70000000000000007
-x=0.80000000000000004
-x=0.90000000000000002
-x=                  1
+```{code-cell}
+x = 0.10000000000000001
+x = 0.20000000000000001
+x = 0.30000000000000004
+x = 0.40000000000000002
+x = 0.5
+x = 0.60000000000000009
+x = 0.70000000000000007
+x = 0.80000000000000004
+x = 0.90000000000000002
+x = 1
 ```
 
 If we compare this with the output from the program in [Using floating point
@@ -235,13 +235,14 @@ Using the sympy package we have arbitrary precision. Using `sympy.Rational`, we
 can define the fraction $1/10$ exactly symbolically. Adding this $10$ times will
 lead exactly to the value $1$, as demonstrated by this script
 
-```{code-cell} ipython3
+```{code-cell}
 from sympy import Rational
-dx = Rational (1 ,10)
+
+dx = Rational(1, 10)
 x = 0
 while x != 1.0:
     x = x + dx
-    print("Current x=%4s = %3.1f " % (x , x . evalf ()))
+    print("Current x=%4s = %3.1f " % (x, x.evalf()))
     print(" Reached x=%s " % x)
 ```
 
@@ -249,40 +250,46 @@ However, this symbolic calculation is much slower as it is done through software
 rather than the CPU-based floating point operations. The next program
 approximates the relative performances:
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 from sympy import Rational
-dx_symbolic = Rational (1 ,10)
+
+dx_symbolic = Rational(1, 10)
 dx = 0.1
 
-def loop_sympy (n):
+
+def loop_sympy(n):
     x = 0
     for i in range(n):
         x = x + dx_symbolic
     return x
 
+
 def loop_float(n):
-    x =0
+    x = 0
     for i in range(n):
         x = x + dx
     return x
 
-def time_this (f, n):
+
+def time_this(f, n):
     import time
+
     starttime = time.time()
     result = f(n)
     stoptime = time.time()
-    print(" deviation is %16.15g" % ( n * dx_symbolic - result ))
+    print(" deviation is %16.15g" % (n * dx_symbolic - result))
     return stoptime - starttime
+
 
 n = 100000
 print("loop using float dx:")
 time_float = time_this(loop_float, n)
 print("float loop n=%d takes %6.5f seconds" % (n, time_float))
 print("loop using sympy symbolic dx:")
-time_sympy = time_this (loop_sympy, n)
-print("sympy loop n =% d takes %6.5f seconds" % (n , time_sympy ))
-print("Symbolic loop is a factor %.1f slower." % ( time_sympy / time_float ))
+time_sympy = time_this(loop_sympy, n)
+print("sympy loop n =% d takes %6.5f seconds" % (n, time_sympy))
+print("Symbolic loop is a factor %.1f slower." % (time_sympy / time_float))
 ```
 
 This is of course an artificial example: we have added the symbolic code to

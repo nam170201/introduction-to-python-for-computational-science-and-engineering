@@ -46,8 +46,9 @@ programming it refers to a named sequence of operations that perform a
 computation. For example, the function `sqrt()` which is defined in the `math`
 module computes the square root of a given value:
 
-```{code-cell} ipython3
+```{code-cell}
 from math import sqrt
+
 sqrt(4)
 ```
 
@@ -67,8 +68,9 @@ It is a common beginner’s mistake to confuse the *printing* of values with
 *returning* values. In the following example it is hard to see whether the
 function `math.sin` returns a value or whether it prints the value:
 
-```{code-cell} ipython3
+```{code-cell}
 import math
+
 math.sin(2)
 ```
 
@@ -79,7 +81,7 @@ the Python prompt will print the returned object.
 
 The following alternative sequence works only if the value is returned:
 
-```{code-cell} ipython3
+```{code-cell}
 x = math.sin(2)
 print(x)
 ```
@@ -133,25 +135,25 @@ in will always return the `None` object when it terminates – even if the
 For example, the function `greeting` will print “Hello World” when called (and
 is fruitless as it does not return a value).
 
-```{code-cell} ipython3
+```{code-cell}
 def greeting():
     print("Hello World!")
 ```
 
 If we call that function:
 
-```{code-cell} ipython3
+```{code-cell}
 greeting()
 ```
 
 it prints “Hello World” to stdout, as we would expect. If we assign the return
 value of the function to a variable `x`, we can inspect it subsequently:
 
-```{code-cell} ipython3
+```{code-cell}
 x = greeting()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print(x)
 ```
 
@@ -160,7 +162,7 @@ and find that the `greeting` function has indeed returned the `None` object.
 Another example for a function that does not return any value (that means there
 is no `return` keyword in the function) would be:
 
-```{code-cell} ipython3
+```{code-cell}
 def printpluses(n):
     print(n * "+")
 ```
@@ -172,7 +174,7 @@ at some examples of functions that do return a value.
 Suppose we need to define a function that computes the square of a given
 variable. The function source could be:
 
-```{code-cell} ipython3
+```{code-cell}
 def square(x):
     return x * x
 ```
@@ -183,7 +185,7 @@ course $x^2$. Here is the listing of a file that shows how the function can be
 defined and used: (note that the numbers on the left are line numbers and are
 not part of the program)
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 attributes:
   classes: [numberLines]
@@ -192,9 +194,10 @@ attributes:
 def square(x):
     return x * x
 
+
 for i in range(5):
     i_squared = square(i)
-    print(i, '*', i, '=', i_squared)
+    print(i, "*", i, "=", i_squared)
 ```
 
 It is worth mentioning that lines 1 and 2 define the square function whereas
@@ -202,8 +205,9 @@ lines 4 to 6 are the main program.
 
 We can define functions that take more than one argument:
 
-```{code-cell} ipython3
+```{code-cell}
 import math
+
 
 def hypot(x, y):
     return math.sqrt(x * x + y * y)
@@ -214,32 +218,34 @@ function that converts a given string into all characters uppercase and all
 characters lowercase and returns the two versions. We have included the main
 program to show how this function can be called:
 
-```{code-cell} ipython3
+```{code-cell}
 def upperAndLower(string):
     return string.upper(), string.lower()
 
-testword = 'Banana'
+
+testword = "Banana"
 
 uppercase, lowercase = upperAndLower(testword)
 
-print(testword, 'in lowercase:', lowercase,
-      'and in uppercase', uppercase)
+print(testword, "in lowercase:", lowercase, "and in uppercase", uppercase)
 ```
 
 We can define multiple Python functions in one file. Here is an example with two
 functions:
 
-```{code-cell} ipython3
-def returnstars( n ):
+```{code-cell}
+def returnstars(n):
     return n * '*'
 
-def print_centred_in_stars( string ):
+
+def print_centred_in_stars(string):
     linelength = 46
     starstring = returnstars((linelength - len(string)) // 2)
 
     print(starstring + string + starstring)
 
-print_centred_in_stars('Hello world!')
+
+print_centred_in_stars("Hello world!")
 ```
 
 Further reading:
@@ -270,7 +276,7 @@ Modules
 
 ### Importing modules
 
-```{code-cell} ipython3
+```{code-cell}
 import math
 ```
 
@@ -279,7 +285,7 @@ command was issued. The names within the `math` module will not appear in the
 enclosing namespace: they must be accessed through the name `math`. For example:
 `math.sin`.
 
-```{code-cell} ipython3
+```{code-cell}
 import math, cmath
 ```
 
@@ -287,7 +293,7 @@ More than one module can be imported in the same statement, although the [Python
 Style Guide](https://www.python.org/dev/peps/pep-0008/) recommends not to do
 this. Instead, we should write
 
-```{code-cell} ipython3
+```{code-cell}
 import math
 import cmath
 
@@ -306,7 +312,7 @@ The name by which the module is known locally can be different from its
   first class objects, you can, of course, simply do `shs = SimpleHTTPServer` in
   order to obtain the more easily typable handle on the module.
 
-```{code-cell} ipython3
+```{code-cell}
 from math import sin
 ```
 
@@ -315,13 +321,13 @@ introduce the name math into the current namespace. It will only introduce the
 name `sin` into the current namespace. It is possible to pull in more than one
 name from the module in one go:
 
-```{code-cell} ipython3
+```{code-cell}
 from math import sin, cos
 ```
 
 Finally, let’s look at this notation:
 
-```{code-cell} ipython3
+```{code-cell}
 from math import *
 ```
 
@@ -341,10 +347,11 @@ namespace. Broadly speaking, it is a bad idea to do this:
 A module is in principle nothing else than a python file. We create an example
 of a module file which is saved in `module1.py`:
 
-```{code-cell} ipython3
+```{code-cell}
 %%file module1.py
 def someusefulfunction():
     pass
+
 
 print("My name is", __name__)
 ```
@@ -352,7 +359,7 @@ print("My name is", __name__)
 We can execute this (module) file as a normal python program (for example
 `python module1.py`):
 
-```{code-cell} ipython3
+```{code-cell}
 !python3 module1.py
 ```
 
@@ -362,8 +369,8 @@ the program file `module1.py` is executed.
 On the other hand, we can *import* `module1.py` in another file (which could
 have the name `prog.py`), for example like this:
 
-```{code-cell} ipython3
-import module1            # in file prog.py
+```{code-cell}
+import module1  # in file prog.py
 ```
 
 When Python comes across the `import module1` statement in `prog.py`, it looks
@@ -401,7 +408,7 @@ such a conditional main program which demonstrates its capabilities.
 The next example shows a main program for the another file `vectools.py` that is
 used to demonstrate the capabilities of the functions defined in that file:
 
-```{code-cell} ipython3
+```{code-cell}
 %%file vectools.py
 from __future__ import division
 import math
@@ -426,14 +433,15 @@ if __name__ == "__main__":
     # a little demo of how the functions in this module can be used:
     x1 = N.array([0, 1, 2])
     print("The norm of " + str(x1) + " is " + str(norm(x1)) + ".")
-    print("The unitvector in direction of " + str(x1) + " is " \
-        + str(unitvector(x1)) + ".")
+    print(
+        "The unitvector in direction of " + str(x1) + " is " + str(unitvector(x1)) + "."
+    )
 ```
 
 If this file is executed using `python vectools.py`, then `__name__==__main__`
 is true, and the output reads
 
-```{code-cell} ipython3
+```{code-cell}
 !python3 vectools.py
 ```
 
@@ -461,36 +469,40 @@ numbers, and in addition to print them. (There is of course a trivial solution
 to this as we know the prime numbers, and we should imagine that the required
 calculation is more complex). One might be tempted to write
 
-```{code-cell} ipython3
+```{code-cell}
 def primes5():
     return (2, 3, 5, 7, 11)
 
+
 for p in primes5():
-    print("%d" % p, end=' ')
+    print("%d" % p, end=" ")
 ```
 
 It is better style to use a conditional main function, i.e.:
 
-```{code-cell} ipython3
+```{code-cell}
 def primes5():
     return (2, 3, 5, 7, 11)
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     for p in primes5():
-        print("%d" % p, end=' ')
+        print("%d" % p, end=" ")
 ```
 
 A purist might argue that the following is even cleaner:
 
-```{code-cell} ipython3
+```{code-cell}
 def primes5():
     return (2, 3, 5, 7, 11)
 
+
 def main():
     for p in primes5():
-        print("%d" % p, end=' ')
+        print('%d' % p, end=' ')
 
-if __name__=="__main__":
+
+if __name__ == '__main__':
     main()
 ```
 

@@ -34,8 +34,9 @@ efficient numerical code, before that is executed.
 Before we start using sympy, we'll call `init_printing`. This tells sympy to
 display expressions in a nicer format.
 
-```{code-cell} ipython3
+```{code-cell}
 import sympy
+
 sympy.init_printing(use_latex='mathjax')
 ```
 
@@ -44,22 +45,23 @@ sympy.init_printing(use_latex='mathjax')
 Before we can carry out any symbolic operations, we need to create symbolic
 variables using SymPy’s `Symbol` function:
 
-```{code-cell} ipython3
+```{code-cell}
 from sympy import Symbol
+
 x = Symbol('x')
 type(x)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 y = Symbol('y')
 2 * x - x
 ```
 
-```{code-cell} ipython3
-x + y + x + 10*y
+```{code-cell}
+x + y + x + 10 * y
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 y + x - y + 10
 ```
 
@@ -67,51 +69,53 @@ We can abbreviate the creation of multiple symbolic variables using the
 `symbols` function. For example, to create the symbolic variables `x`, `y` and
 `z`, we can use
 
-```{code-cell} ipython3
+```{code-cell}
 import sympy
+
 x, y, z = sympy.symbols('x,y,z')
-x + 2*y + 3*z - x
+x + 2 * y + 3 * z - x
 ```
 
 Once we have completed our term manipulation, we sometimes like to insert
 numbers for variables. This can be done using the `subs` method.
 
-```{code-cell} ipython3
+```{code-cell}
 from sympy import symbols
+
 x, y = symbols('x,y')
-x + 2*y
+x + 2 * y
 ```
 
-```{code-cell} ipython3
-x + 2*y.subs(x, 10)
+```{code-cell}
+x + 2 * y.subs(x, 10)
 ```
 
-```{code-cell} ipython3
-(x + 2*y).subs(x, 10)
+```{code-cell}
+(x + 2 * y).subs(x, 10)
 ```
 
-```{code-cell} ipython3
-(x + 2*y).subs(x, 10).subs(y, 3)
+```{code-cell}
+(x + 2 * y).subs(x, 10).subs(y, 3)
 ```
 
-```{code-cell} ipython3
-(x + 2*y).subs({x:10, y:3})
+```{code-cell}
+(x + 2 * y).subs({x: 10, y: 3})
 ```
 
 We can also substitute a symbolic variable for another one such as in this
 example where `y` is replaced with `x` before we substitute `x` with the number
 `2`.
 
-```{code-cell} ipython3
-myterm = 3*x + y**2
+```{code-cell}
+myterm = 3 * x + y ** 2
 myterm
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 myterm.subs(x, y)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 myterm.subs(x, y).subs(y, 2)
 ```
 
@@ -155,29 +159,29 @@ represents a rational number as a pair of two integers: the numerator and the
 denominator, so `Rational(1,2)` represents `1/2`, `Rational(5,2)` represents
 `5/2` and so on.
 
-```{code-cell} ipython3
+```{code-cell}
 from sympy import Rational
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a = Rational(1, 10)
 a
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 b = Rational(45, 67)
 b
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a * b
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a - b
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a + b
 ```
 
@@ -191,20 +195,20 @@ can take an argument that specifies how many digits should be computed for the
 floating point approximation (not all of those may be used by Python’s floating
 point type of course).
 
-```{code-cell} ipython3
+```{code-cell}
 c = Rational(2, 3)
 c
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 float(c)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 c.evalf()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 c.evalf(50)
 ```
 
@@ -213,39 +217,40 @@ c.evalf(50)
 SymPy is capable of carrying out differentiation and integration of many
 functions:
 
-```{code-cell} ipython3
+```{code-cell}
 from sympy import Symbol, exp, sin, sqrt, diff
+
 x = Symbol('x')
 y = Symbol('y')
 diff(sin(x), x)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 diff(sin(x), y)
 ```
 
-```{code-cell} ipython3
-diff(10 + 3*x + 4*y + 10*x**2 + x**9, x)
+```{code-cell}
+diff(10 + 3 * x + 4 * y + 10 * x ** 2 + x ** 9, x)
 ```
 
-```{code-cell} ipython3
-diff(10 + 3*x + 4*y + 10*x**2 + x**9, y)
+```{code-cell}
+diff(10 + 3 * x + 4 * y + 10 * x ** 2 + x ** 9, y)
 ```
 
-```{code-cell} ipython3
-diff(10 + 3*x + 4*y + 10*x**2 + x**9, x).subs(x,1)
+```{code-cell}
+diff(10 + 3 * x + 4 * y + 10 * x ** 2 + x ** 9, x).subs(x, 1)
 ```
 
-```{code-cell} ipython3
-diff(10 + 3*x + 4*y + 10*x**2 + x**9, x).subs(x,1.5)
+```{code-cell}
+diff(10 + 3 * x + 4 * y + 10 * x ** 2 + x ** 9, x).subs(x, 1.5)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 diff(exp(x), x)
 ```
 
-```{code-cell} ipython3
-diff(exp(-x ** 2 / 2), x)
+```{code-cell}
+diff(exp(-(x ** 2) / 2), x)
 ```
 
 The SymPy `diff()` function takes a minimum of two arguments: the function to be
@@ -253,24 +258,24 @@ differentiated and the variable with respect to which the differentiation is
 performed. Higher derivatives may be calculated by specifying additional
 variables, or by adding an optional integer argument:
 
-```{code-cell} ipython3
-diff(3*x**4, x)
+```{code-cell}
+diff(3 * x ** 4, x)
 ```
 
-```{code-cell} ipython3
-diff(3*x**4, x, x, x)
+```{code-cell}
+diff(3 * x ** 4, x, x, x)
 ```
 
-```{code-cell} ipython3
-diff(3*x**4, x, 3)
+```{code-cell}
+diff(3 * x ** 4, x, 3)
 ```
 
-```{code-cell} ipython3
-diff(3*x**4*y**7, x, 2, y, 2)
+```{code-cell}
+diff(3 * x ** 4 * y ** 7, x, 2, y, 2)
 ```
 
-```{code-cell} ipython3
-diff(diff(3*x**4*y**7, x, x), y, y)
+```{code-cell}
+diff(diff(3 * x ** 4 * y ** 7, x, x), y, y)
 ```
 
 At times, SymPy may return a result in an unfamiliar form. If, for example, you
@@ -287,17 +292,20 @@ In this example, we first ask SymPy to print the derivative. See that it is
 printed in a different form to our trial derivative, but the subtraction
 verifies that they are identical:
 
-```{code-cell} ipython3
-r = sqrt(x**2 + y**2)
-sigma = Symbol('σ')
-def phi(x,y,sigma):
-    return sqrt(x**2 + y**2 + sigma**2)
+```{code-cell}
+r = sqrt(x ** 2 + y ** 2)
+sigma = Symbol("σ")
 
-mydfdx= x / sqrt(r**2 + sigma**2)
+
+def phi(x, y, sigma):
+    return sqrt(x ** 2 + y ** 2 + sigma ** 2)
+
+
+mydfdx = x / sqrt(r ** 2 + sigma ** 2)
 print(diff(phi(x, y, sigma), x))
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print(mydfdx - diff(phi(x, y, sigma), x))
 ```
 
@@ -310,25 +318,26 @@ such cases that this subtraction technique is of most use.
 Integration uses a similar syntax. For the indefinite case, specify the function
 and the variable with respect to which the integration is performed:
 
-```{code-cell} ipython3
+```{code-cell}
 from sympy import integrate
-integrate(x**2, x)
+
+integrate(x ** 2, x)
 ```
 
-```{code-cell} ipython3
-integrate(x**2, y)
+```{code-cell}
+integrate(x ** 2, y)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 integrate(sin(x), y)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 integrate(sin(x), x)
 ```
 
-```{code-cell} ipython3
-integrate(-x*exp(-x**2/2), x)
+```{code-cell}
+integrate(-x * exp(-(x ** 2) / 2), x)
 ```
 
 We can calculate definite integrals by providing `integrate()` with a tuple
@@ -338,44 +347,44 @@ result in the `Rational` class, it is possible to evaluate it to a
 floating-point representation at any desired precision (see [numeric
 types](#Numeric-types)).
 
-```{code-cell} ipython3
-integrate(x*2, (x, 0, 1))
+```{code-cell}
+integrate(x * 2, (x, 0, 1))
 ```
 
-```{code-cell} ipython3
-integrate(x**2, x)
+```{code-cell}
+integrate(x ** 2, x)
 ```
 
-```{code-cell} ipython3
-integrate(x**2, x, x)
+```{code-cell}
+integrate(x ** 2, x, x)
 ```
 
-```{code-cell} ipython3
-integrate(x**2, x, x, y)
+```{code-cell}
+integrate(x ** 2, x, x, y)
 ```
 
-```{code-cell} ipython3
-integrate(x**2, (x, 0, 2))
+```{code-cell}
+integrate(x ** 2, (x, 0, 2))
 ```
 
-```{code-cell} ipython3
-integrate(x**2, (x, 0, 2), (x, 0, 2), (y, 0, 1))
+```{code-cell}
+integrate(x ** 2, (x, 0, 2), (x, 0, 2), (y, 0, 1))
 ```
 
-```{code-cell} ipython3
-float(integrate(x**2, (x, 0, 2)))
+```{code-cell}
+float(integrate(x ** 2, (x, 0, 2)))
 ```
 
-```{code-cell} ipython3
-type(integrate(x**2, (x, 0, 2)))
+```{code-cell}
+type(integrate(x ** 2, (x, 0, 2)))
 ```
 
-```{code-cell} ipython3
-result_rational=integrate(x**2, (x, 0, 2))
+```{code-cell}
+result_rational = integrate(x ** 2, (x, 0, 2))
 result_rational.evalf()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 result_rational.evalf(50)
 ```
 
@@ -392,12 +401,13 @@ To set up the ODE solver, we need a way to refer to the unknown function for
 which we are solving, as well as its derivatives. The `Function` and
 `Derivative` classes facilitate this:
 
-```{code-cell} ipython3
+```{code-cell}
 from sympy import Symbol, dsolve, Function, Derivative, Eq
+
 y = Function("y")
-x = Symbol('x')
+x = Symbol("x")
 y_ = Derivative(y(x), x)
-dsolve(y_ + 5*y(x), y(x))
+dsolve(y_ + 5 * y(x), y(x))
 ```
 
 Note how `dsolve` has introduced a constant of integration, `C1`. It will
@@ -405,16 +415,16 @@ introduce as many constants as are required, and they will all be named `Cn`,
 where `n` is an integer. Note also that the first argument to `dsolve` is taken
 to be equal to zero unless we use the `Eq()` function to specify otherwise:
 
-```{code-cell} ipython3
-dsolve(y_ + 5*y(x), y(x))
+```{code-cell}
+dsolve(y_ + 5 * y(x), y(x))
 ```
 
-```{code-cell} ipython3
-dsolve(Eq(y_ + 5*y(x), 0), y(x))
+```{code-cell}
+dsolve(Eq(y_ + 5 * y(x), 0), y(x))
 ```
 
-```{code-cell} ipython3
-dsolve(Eq(y_ + 5*y(x), 12), y(x))
+```{code-cell}
+dsolve(Eq(y_ + 5 * y(x), 12), y(x))
 ```
 
 The results from `dsolve` are an instance of the `Equality` class. This has
@@ -428,47 +438,47 @@ Note that, here, we use `z` to store the `Equality` returned by `dsolve`, even
 though it is an expression for a function called `y(x)`, to emphasise the
 distinction between the `Equality` itself and the data that it contains.
 
-```{code-cell} ipython3
-z = dsolve(y_ + 5*y(x), y(x))
+```{code-cell}
+z = dsolve(y_ + 5 * y(x), y(x))
 z
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type(z)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 z.rhs
 ```
 
-```{code-cell} ipython3
-C1=Symbol('C1')
-y3 = z.subs({C1:2, x:3})
+```{code-cell}
+C1 = Symbol("C1")
+y3 = z.subs({C1: 2, x: 3})
 y3
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 y3.evalf(10)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 y3.rhs
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 y3.rhs.evalf(10)
 ```
 
-```{code-cell} ipython3
-z.rhs.subs({C1:2, x:4}).evalf(10)
+```{code-cell}
+z.rhs.subs({C1: 2, x: 4}).evalf(10)
 ```
 
-```{code-cell} ipython3
-z.rhs.subs({C1:2, x:5}).evalf(10)
+```{code-cell}
+z.rhs.subs({C1: 2, x: 5}).evalf(10)
 ```
 
-```{code-cell} ipython3
-type(z.rhs.subs({C1:2, x:5}).evalf(10))
+```{code-cell}
+type(z.rhs.subs({C1: 2, x: 5}).evalf(10))
 ```
 
 At times, `dsolve` may return too general a solution. One example is when there
@@ -476,16 +486,17 @@ is a possibility that some coefficients may be complex. If we know that, for
 example, they are always real and positive, we can provide `dsolve` this
 information to avoid the solution becoming unnecessarily complicated:
 
-```{code-cell} ipython3
+```{code-cell}
 from sympy import *
+
 a, x = symbols('a,x')
 f = Function('f')
-dsolve(Derivative(f(x), x, 2) + a**4*f(x), f(x))
+dsolve(Derivative(f(x), x, 2) + a ** 4 * f(x), f(x))
 ```
 
-```{code-cell} ipython3
-a = Symbol('a',real=True,positive=True)
-dsolve(Derivative(f(x), x, 2)+a**4*f(x), f(x))
+```{code-cell}
+a = Symbol('a', real=True, positive=True)
+dsolve(Derivative(f(x), x, 2) + a ** 4 * f(x), f(x))
 ```
 
 ### Series expansions and plotting
@@ -496,17 +507,18 @@ and the variable in which to expand it. Optionally, we can also specify the
 point around which to expand, the maximum term number, and the direction of the
 expansion (try `help(Basic.series)` for more information).
 
-```{code-cell} ipython3
+```{code-cell}
 from sympy import *
+
 x = Symbol('x')
 sin(x).series(x, 0)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 series(sin(x), x, 0)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 cos(x).series(x, 0.5, 10)
 ```
@@ -514,7 +526,7 @@ cos(x).series(x, 0.5, 10)
 In some cases, especially for numerical evaluation and plotting the results, it
 is necessary to remove the trailing `O(n)` term:
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 cos(x).series(x, 0.5, 10).removeO()
 ```
@@ -529,38 +541,39 @@ For most of our purposes, Matplotlib should be the plotting tool of choice. The
 details are in chapter \[cha:visualisingdata\]. Here we furnish just one example
 of how to plot the results of a SymPy computation.
 
-```{code-cell} ipython3
+```{code-cell}
 %matplotlib inline
 ```
 
-```{code-cell} ipython3
-from sympy import sin,series,Symbol
+```{code-cell}
+from sympy import sin, series, Symbol
 import pylab
+
 x = Symbol('x')
-s10 = sin(x).series(x,0,10).removeO()
-s20 = sin(x).series(x,0,20).removeO()
+s10 = sin(x).series(x, 0, 10).removeO()
+s20 = sin(x).series(x, 0, 20).removeO()
 s = sin(x)
 xx = []
 y10 = []
 y20 = []
 y = []
 for i in range(1000):
-  xx.append(i / 100.0)
-  y10.append(float(s10.subs({x:i/100.0})))
-  y20.append(float(s20.subs({x:i/100.0})))
-  y.append(float(s.subs({x:i/100.0})))
+    xx.append(i / 100.0)
+    y10.append(float(s10.subs({x: i / 100.0})))
+    y20.append(float(s20.subs({x: i / 100.0})))
+    y.append(float(s.subs({x: i / 100.0})))
 
 pylab.figure()
 ```
 
-```{code-cell} ipython3
-pylab.plot(xx, y10, label='O(10)')
-pylab.plot(xx, y20, label='O(20)')
-pylab.plot(xx, y, label='sin(x)')
+```{code-cell}
+pylab.plot(xx, y10, label="O(10)")
+pylab.plot(xx, y20, label="O(20)")
+pylab.plot(xx, y, label="sin(x)")
 
 pylab.axis([0, 10, -4, 4])
-pylab.xlabel('x')
-pylab.ylabel('f(x)')
+pylab.xlabel("x")
+pylab.ylabel("f(x)")
 
 pylab.legend()
 ```
@@ -600,32 +613,33 @@ pre-multiply, *i.e.* $A^{-1}A\vec{x}=\vec{x}=A^{-1}\vec{b}$. SymPy’s `Matrix`
 class has an `inv()` method that allows us to find the inverse, and `*` performs
 matrix multiplication for us, when appropriate:
 
-```{code-cell} ipython3
-from sympy import symbols,Matrix
+```{code-cell}
+from sympy import symbols, Matrix
+
 x, y, z = symbols('x,y,z')
 A = Matrix(([3, 7], [4, -2]))
 A
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 A.inv()
 ```
 
-```{code-cell} ipython3
-b = Matrix(( 12*z,5*z  ))
+```{code-cell}
+b = Matrix((12 * z, 5 * z))
 b
 ```
 
-```{code-cell} ipython3
-x = A.inv()*b
+```{code-cell}
+x = A.inv() * b
 x
 ```
 
-```{code-cell} ipython3
-x.subs({z:3.3}).evalf(4)
+```{code-cell}
+x.subs({z: 3.3}).evalf(4)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type(x)
 ```
 
@@ -640,26 +654,27 @@ $$(A|\vec{b})=\left(\begin{array}{cc|c}
 and as before we construct this as a SymPy `Matrix` object, but in this case we
 pass it to the `solve_linear_system()` function:
 
-```{code-cell} ipython3
+```{code-cell}
 from sympy import Matrix, symbols, solve_linear_system
+
 x, y, z = symbols('x,y,z')
-system = Matrix(([3, 7, 12*z],[4, -2, 5*z]))
+system = Matrix(([3, 7, 12 * z], [4, -2, 5 * z]))
 system
 ```
 
-```{code-cell} ipython3
-sol = solve_linear_system(system,x,y)
+```{code-cell}
+sol = solve_linear_system(system, x, y)
 sol
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type(sol)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 for k in sol.keys():
-    print(k,'=',sol[k].subs({z:3.3}).evalf(4))
+    print(k, "=", sol[k].subs({z: 3.3}).evalf(4))
 ```
 
 A third option is the `solve()` method, whose arguments include the individual
@@ -668,14 +683,15 @@ symbolic equations, rather than any matrices. Like `dsolve()` (see
 which it will assume equal to zero, or `Equality` objects, which we can
 conveniently create with `Eq()`:
 
-```{code-cell} ipython3
-from sympy import symbols,solve,Eq
+```{code-cell}
+from sympy import symbols, solve, Eq
+
 x, y, z = symbols('x,y,z')
-solve((Eq(3*x+7*y,12*z), Eq(4*x-2*y,5*z)), x, y)
+solve((Eq(3 * x + 7 * y, 12 * z), Eq(4 * x - 2 * y, 5 * z)), x, y)
 ```
 
-```{code-cell} ipython3
-solve((3*x+7*y-12*z, 4*x-2*y-5*z), x, y)
+```{code-cell}
+solve((3 * x + 7 * y - 12 * z, 4 * x - 2 * y - 5 * z), x, y)
 ```
 
 For more information, see `help(solve)` and `help(solve_linear_system)`.
@@ -685,14 +701,15 @@ For more information, see `help(solve)` and `help(solve_linear_system)`.
 Let’s solve a simple equation such as $x = x^2$. There are two obvious
 solutions: $x = 0$ and $x = 1$. How can we ask Sympy to compute these for us?
 
-```{code-cell} ipython3
+```{code-cell}
 import sympy
-x, y, z = sympy.symbols('x, y, z')        # create some symbols
-eq = x - x ** 2                           # define the equation
+
+x, y, z = sympy.symbols('x, y, z')  # create some symbols
+eq = x - x ** 2  # define the equation
 ```
 
-```{code-cell} ipython3
-sympy.solve(eq, x)                        # solve eq = 0
+```{code-cell}
+sympy.solve(eq, x)  # solve eq = 0
 ```
 
 The `solve()` function expects an expression that as meant to be solve so that
@@ -712,9 +729,9 @@ $x = x^3$
 
 and solve
 
-```{code-cell} ipython3
-eq = x - x ** 3                           # define the equation
-sympy.solve(eq, x)                        # solve eq = 0
+```{code-cell}
+eq = x - x ** 3  # define the equation
+sympy.solve(eq, x)  # solve eq = 0
 ```
 
 ### Output: LaTeX interface and pretty-printing
@@ -735,16 +752,16 @@ above.
 We can also see the plain text output from Sympy, and the raw Latex code it
 creates:
 
-```{code-cell} ipython3
-print(series(1/(x+y), y, 0, 3))
+```{code-cell}
+print(series(1 / (x + y), y, 0, 3))
 ```
 
-```{code-cell} ipython3
-print(latex(series(1/(x+y), y, 0, 3)))
+```{code-cell}
+print(latex(series(1 / (x + y), y, 0, 3)))
 ```
 
-```{code-cell} ipython3
-print(latex(series(1/(x+y), y, 0, 3), mode='inline'))
+```{code-cell}
+print(latex(series(1 / (x + y), y, 0, 3), mode="inline"))
 ```
 
 Be aware that in its default mode, `latex()` outputs code that requires the
@@ -769,16 +786,17 @@ A strong point of many symbolic libraries is that they can convert the symbolic
 expressions to C-code (or other code) that can subsequently be compiled for high
 execution speed. Here is an example that demonstrates this:
 
-```{code-cell} ipython3
+```{code-cell}
 from sympy import *
 from sympy.utilities.codegen import codegen
+
 x = Symbol('x')
 sin(x).series(x, 0, 6)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
-print(codegen(("taylor_sine",sin(x).series(x,0,6)), language='C')[0][1])
+print(codegen(("taylor_sine", sin(x).series(x, 0, 6)), language='C')[0][1])
 ```
 
 ## Related tools

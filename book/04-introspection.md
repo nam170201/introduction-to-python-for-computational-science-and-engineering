@@ -27,18 +27,18 @@ manipulating.
 
 For example:
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 apples = ['Cox', 'Braeburn', 'Jazz']
 dir(apples)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 dir()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 name = "Peter"
 dir(name)
@@ -64,15 +64,17 @@ Python’s integer base class, and overrides the `__str__` method. (It requires
 more Python knowledge than provided up to this point in the text to be able to
 understand this example.)
 
-```{code-cell} ipython3
+```{code-cell}
 class my_int(int):
     """Inherited from int"""
+
     def __str__(self):
         """Tailored str representation of my int"""
         return "my_int: %s" % (int.__str__(self))
 
+
 a = my_int(3)
-b = int(4)            # equivalent to b = 4
+b = int(4)  # equivalent to b = 4
 print("a * b = ", a * b)
 print("Type a = ", type(a), "str(a) = ", str(a))
 print("Type b = ", type(b), "str(b) = ", str(b))
@@ -85,24 +87,25 @@ Further Reading:
 
 The `type(<object>)`command returns the type of an object:
 
-```{code-cell} ipython3
+```{code-cell}
 type(1)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type(1.0)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type("Python")
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 import math
+
 type(math)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type(math.sin)
 ```
 
@@ -112,19 +115,19 @@ type(math.sin)
 instance of the given type, or any of its superclasses. Use `help(isinstance)`
 for the full syntax.
 
-```{code-cell} ipython3
-isinstance(2,int)
+```{code-cell}
+isinstance(2, int)
 ```
 
-```{code-cell} ipython3
-isinstance(2.,int)
+```{code-cell}
+isinstance(2.0, int)
 ```
 
-```{code-cell} ipython3
-isinstance(a,int)    # a is an instance of my_int
+```{code-cell}
+isinstance(a, int)  # a is an instance of my_int
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type(a)
 ```
 
@@ -139,17 +142,18 @@ type(a)
 - It is common to use the `help` command a lot to remind oneself of the syntax
   and semantic of commands.
 
-```{code-cell} ipython3
+```{code-cell}
 help(isinstance)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 import math
+
 help(math.sin)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 help(math)
 ```
@@ -158,21 +162,22 @@ The `help` function needs to be given the name of an object (which must exist in
 the current name space). For example `help(math.sqrt)` will not work if the
 `math` module has not been imported before.
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 help(math.sqrt)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 import math
+
 help(math.sqrt)
 ```
 
 Instead of importing the module, we could also have given the *string* of
 `math.sqrt` to the help function, i.e.:
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 help('math.sqrt')
 ```
@@ -214,12 +219,12 @@ in the case of functions, it displays the function’s signature.
 
 The docstring is stored in the object’s `__doc__` attribute.
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 help(math.sin)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 print(math.sin.__doc__)
 ```
@@ -229,26 +234,27 @@ provide a docstring.
 
 Documenting a user-provided function:
 
-```{code-cell} ipython3
+```{code-cell}
 def power2and3(x):
     """Returns the tuple (x**2, x**3)"""
-    return x**2 ,x**3
+    return x ** 2, x ** 3
+
 
 power2and3(2)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 power2and3(4.5)
 ```
 
-```{code-cell} ipython3
-power2and3(0+1j)
+```{code-cell}
+power2and3(0 + 1j)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 help(power2and3)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print(power2and3.__doc__)
 ```

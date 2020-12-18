@@ -346,7 +346,7 @@ print "Hello World"
 where as in Python 3, this would cause a SyntaxError. The right way to use
 `print` in Python 3 would be as a function, i.e.
 
-```{code-cell} ipython3
+```{code-cell}
 print("Hello World")
 ```
 
@@ -373,7 +373,7 @@ shown in the cell below.
 
 For example
 
-```{code-cell} ipython3
+```{code-cell}
 %%file hello.txt
 This is the content of the file hello.txt
 ```
@@ -381,7 +381,7 @@ This is the content of the file hello.txt
 To confirm the file has been written and contains, we use some Python commands
 (which you are not expected to understand at this point):
 
-```{code-cell} ipython3
+```{code-cell}
 with open("hello.txt") as f:
     print(f.read())
 ```
@@ -392,12 +392,12 @@ If we want to run a shell command, we can type it and precede it by the `!`
 character. Here is an example: first we create a file that contains a Python
 hello world program, then we execute it:
 
-```{code-cell} ipython3
+```{code-cell}
 %%file hello.py
 print("Hello World")
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 !python hello.py
 ```
 

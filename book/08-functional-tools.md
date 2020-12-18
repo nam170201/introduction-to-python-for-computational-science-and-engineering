@@ -31,16 +31,16 @@ above.
 All functions we have seen in Python so far have been defined through the `def`
 keyword, for example:
 
-```{code-cell} ipython3
+```{code-cell}
 def f(x):
-     return x ** 2
+    return x ** 2
 ```
 
 This function has the name `f`. Once the function is defined (i.e. the Python
 interpreter has come across the `def` line), we can call the function using its
 name, for example
 
-```{code-cell} ipython3
+```{code-cell}
 y = f(6)
 ```
 
@@ -51,32 +51,33 @@ Python, the `lambda` keyword can create an anonymous function.
 
 We create a (named) function first, check it’s type and behaviour:
 
-```{code-cell} ipython3
+```{code-cell}
 def f(x):
     return x ** 2
+
 
 f
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type(f)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 f(10)
 ```
 
 Now we do the same with an anonymous function:
 
-```{code-cell} ipython3
+```{code-cell}
 lambda x: x ** 2
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type(lambda x: x ** 2)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 (lambda x: x ** 2)(10)
 ```
 
@@ -86,12 +87,12 @@ every time we need it.
 
 Anonymous functions can take more than one argument:
 
-```{code-cell} ipython3
+```{code-cell}
 (lambda x, y: x + y)(10, 20)
 ```
 
-```{code-cell} ipython3
-(lambda x, y, z: (x + y) * z )(10, 20, 2)
+```{code-cell}
+(lambda x, y, z: (x + y) * z)(10, 20, 2)
 ```
 
 We will see some examples using `lambda` which will clarify typical use cases.
@@ -102,24 +103,26 @@ The map function `lst2 = map(f, s )` applies a function `f` to all elements in a
 sequence `s`. The result of `map` can be turned into a list with the same length
 as `s`:
 
-```{code-cell} ipython3
+```{code-cell}
 def f(x):
     return x ** 2
+
+
 lst2 = list(map(f, range(10)))
 lst2
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 list(map(str.capitalize, ['banana', 'apple', 'orange']))
 ```
 
 Often, this is combined with the anonymous function `lambda`:
 
-```{code-cell} ipython3
-list(map(lambda x: x ** 2, range(10) ))
+```{code-cell}
+list(map(lambda x: x ** 2, range(10)))
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 list(map(lambda s: s.capitalize(), ['banana', 'apple', 'orange']))
 ```
 
@@ -130,26 +133,26 @@ elements in a sequence `s`. The function `f` should return `True` or `False`.
 This makes a list which will contain only those elements $s_i$ of
 the sequence `s` for which `f`($s_i$) has returned `True`.
 
-```{code-cell} ipython3
+```{code-cell}
 def greater_than_5(x):
     if x > 5:
-            return True
+        return True
     else:
-            return False
+        return False
+
 
 list(filter(greater_than_5, range(11)))
 ```
 
 The usage of `lambda` can simplify this significantly:
 
-```{code-cell} ipython3
+```{code-cell}
 list(filter(lambda x: x > 5, range(11)))
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 known_names = ['smith', 'miller', 'bob']
-list(filter( lambda name : name in known_names, \
-     ['ago', 'smith', 'bob', 'carl']))
+list(filter(lambda name: name in known_names, ['ago', 'smith', 'bob', 'carl']))
 ```
 
 ## List comprehension
@@ -164,25 +167,25 @@ expression would evaluate to a tuple, it must be parenthesized.
 
 Some examples will make this clearer:
 
-```{code-cell} ipython3
+```{code-cell}
 freshfruit = ['  banana', '  loganberry ', 'passion fruit  ']
 [weapon.strip() for weapon in freshfruit]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 vec = [2, 4, 6]
 [3 * x for x in vec]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 [3 * x for x in vec if x > 3]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 [3 * x for x in vec if x < 2]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 [[x, x ** 2] for x in vec]
 ```
 
@@ -190,29 +193,28 @@ We can also use list comprehension to modify the list of integers returned by
 the `range` command so that our subsequent elements in the list increase by
 non-integer fractions:
 
-```{code-cell} ipython3
-[x*0.5 for x in range(10)]
+```{code-cell}
+[x * 0.5 for x in range(10)]
 ```
 
 Let’s now revisit the examples from the section on `filter`
 
-```{code-cell} ipython3
-[x for x in range(11) if x>5 ]
+```{code-cell}
+[x for x in range(11) if x > 5]
 ```
 
-```{code-cell} ipython3
-[name for name in ['ago','smith','bob','carl'] \
-      if name in known_names]
+```{code-cell}
+[name for name in ['ago', 'smith', 'bob', 'carl'] if name in known_names]
 ```
 
 and the examples from the `map` section
 
-```{code-cell} ipython3
-[x ** 2 for x in range(10) ]
+```{code-cell}
+[x ** 2 for x in range(10)]
 ```
 
-```{code-cell} ipython3
-[fruit.capitalize() for fruit in ['banana', 'apple', 'orange'] ]
+```{code-cell}
+[fruit.capitalize() for fruit in ['banana', 'apple', 'orange']]
 ```
 
 all of which can be expressed through list comprehensions.
@@ -232,27 +234,29 @@ the whole sequence is processed. Reduce returns a single element.
 This can be used, for example, to compute a sum of numbers in a sequence if the
 function `f(x, y)` returns `x+y`:
 
-```{code-cell} ipython3
+```{code-cell}
 from functools import reduce
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 def add(x, y):
     return x + y
+
 
 reduce(add, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 reduce(add, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 100)
 ```
 
 We can modify the function `add` to provide some more detail about the process:
 
-```{code-cell} ipython3
+```{code-cell}
 def add_verbose(x, y):
-    print("add(x=%s, y=%s) -> %s" % (x, y, x+y))
-    return x+y
+    print('add(x=%s, y=%s) -> %s' % (x, y, x + y))
+    return x + y
+
 
 reduce(add_verbose, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0)
 ```
@@ -261,20 +265,22 @@ It may be instructive to use an asymmetric function `f`, such as `add_len( n, s
 )` where s is a sequence and the function returns `n+len(s)` (suggestion from
 Thomas Fischbacher):
 
-```{code-cell} ipython3
+```{code-cell}
 def add_len(n, s):
     return n + len(s)
 
-reduce(add_len, ["This","is","a","test."],0)
+
+reduce(add_len, ["This", "is", "a", "test."], 0)
 ```
 
 As before, we’ll use a more verbose version of the binary function to see what
 is happening:
 
-```{code-cell} ipython3
+```{code-cell}
 def add_len_verbose(n, s):
-    print("add_len(n=%d, s=%s) -> %d" % (n, s, n+len(s)))
-    return n+len(s)
+    print('add_len(n=%d, s=%s) -> %d' % (n, s, n + len(s)))
+    return n + len(s)
+
 
 reduce(add_len_verbose, ["This", "is", "a", "test."], 0)
 ```
@@ -285,7 +291,7 @@ following function (kindly provided by Thomas Fischbacher) which behaves like
 
 Here is an example using the `explain_reduce` function:
 
-```{code-cell} ipython3
+```{code-cell}
 def explain_reduce(f, xs, start=None):
     """This function behaves like reduce, but explains what it does,
     step-by-step.
@@ -293,42 +299,47 @@ def explain_reduce(f, xs, start=None):
     nr_xs = len(xs)
     if start == None:
         if nr_xs == 0:
-            raise ValueError("No starting value given - cannot " + \
-                              "process empty list!")
+            raise ValueError(
+                "No starting value given - cannot " + "process empty list!"
+            )
         if nr_xs == 1:
-            print("reducing over 1-element list without starting " + \
-                  "value: returning that element.")
+            print(
+                "reducing over 1-element list without starting "
+                + "value: returning that element."
+            )
             return xs[0]
         else:
-            print("reducing over list with >= 2 elements without " +\
-                  "starting value: using the first element as a " +\
-                  "start value.")
+            print(
+                "reducing over list with >= 2 elements without "
+                + "starting value: using the first element as a "
+                + "start value."
+            )
             return explain_reduce(f, xs[1:], xs[0])
     else:
         s = start
         for n in range(len(xs)):
             x = xs[n]
-            print("Step %d: value-so-far=%s next-list-element=%s"\
-                  % (n, str(s), str(x)))
+            print("Step %d: value-so-far=%s next-list-element=%s" % (n, str(s), str(x)))
             s = f(s, x)
         print("Done. Final result=%s" % str(s))
         return s
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 def f(a, b):
     return a + b
+
 
 reduce(f, [1, 2, 3, 4, 5], 0)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 explain_reduce(f, [1, 2, 3, 4, 5], 0)
 ```
 
 Reduce is often combined with `lambda`:
 
-```{code-cell} ipython3
+```{code-cell}
 reduce(lambda x, y: x + y, [1, 2, 3, 4, 5], 0)
 ```
 
@@ -337,8 +348,9 @@ functions. For example, the function `operator.__add__(a,b)` is executed when
 Python evaluates code such as `a+b`. These are generally faster than `lambda`
 expressions. We could write the example above as
 
-```{code-cell} ipython3
+```{code-cell}
 import operator
+
 reduce(operator.__add__, [1, 2, 3, 4, 5], 0)
 ```
 
@@ -352,22 +364,22 @@ numbers $0^2, 1^2, 2^2, 3^2, ...$ up to $(*n* − 1)^2$for a given $
 
 Implementation (i) using a for-loop with $n=10$:
 
-```{code-cell} ipython3
+```{code-cell}
 y = []
 for i in range(10):
-    y.append(i**2)
+    y.append(i ** 2)
 ```
 
 Implementation (ii) using list comprehension:
 
-```{code-cell} ipython3
-y = [x**2 for x in range(10)]
+```{code-cell}
+y = [x ** 2 for x in range(10)]
 ```
 
 or using `map`:
 
-```{code-cell} ipython3
-y = map(lambda x: x**2, range(10))
+```{code-cell}
+y = map(lambda x: x ** 2, range(10))
 ```
 
 The versions using list comprehension and `map` fit into one line of code
@@ -398,7 +410,7 @@ time:
 
 Here is a possible program computing this:
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 """Compare calculation of \sum_i x_i^2 with
 i going from zero to N-1.
@@ -412,6 +424,7 @@ be likely to make the timings less representative).
 
 import time
 import numpy
+
 N = 10000000
 
 
@@ -425,7 +438,7 @@ def timeit(f, args):
     entry 1 is the return value of f."""
 
     starttime = time.time()
-    y = f(*args)    # use tuple args as input arguments
+    y = f(*args)  # use tuple args as input arguments
     endtime = time.time()
     return endtime - starttime, y
 
@@ -449,7 +462,8 @@ def listcomp(N):
 
 
 def numpy_(N):
-    return numpy.sum(numpy.arange(0, N, dtype='d') ** 2)
+    return numpy.sum(numpy.arange(0, N, dtype="d") ** 2)
+
 
 # main program starts
 timings = []
@@ -474,8 +488,11 @@ assert f1_res == lc_res
 # Allow a bit of difference for the numpy calculation
 numpy.testing.assert_approx_equal(f1_res, n_res)
 
-print("Slowest method is {:.1f} times slower than the fastest method."
-      .format(max(timings)/min(timings)))
+print(
+    "Slowest method is {:.1f} times slower than the fastest method.".format(
+        max(timings) / min(timings)
+    )
+)
 ```
 
 The actual execution performance depends on the computer. The relative
@@ -498,14 +515,14 @@ particularly useful for timing of commands that execute relatively quickly.
 Let's compare a list comprehension with an explicit loop using the `timeit`
 magic:
 
-```{code-cell} ipython3
+```{code-cell}
 %%timeit
-y = [x**2 for x in range(100)]
+y = [x ** 2 for x in range(100)]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 %%timeit
 y = []
 for x in range(100):
-    y.append(x**2)
+    y.append(x ** 2)
 ```

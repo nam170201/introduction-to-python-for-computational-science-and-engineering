@@ -32,8 +32,8 @@ for-loop.
 
 Python:
 
-```{code-cell} ipython3
-for i in range(1,11):
+```{code-cell}
+for i in range(1, 11):
     print(i)
 ```
 
@@ -62,17 +62,17 @@ for-loop.
 
 Python:
 
-```{code-cell} ipython3
+```{code-cell}
 a = -5
 
-if a==0:
-    print('a is zero')
-elif a<0:
-    print('a is negative')
-elif a==42:
-    print('a is 42')
+if a == 0:
+    print("a is zero")
+elif a < 0:
+    print("a is negative")
+elif a == 42:
+    print("a is 42")
 else:
-    print('a is positive')
+    print("a is positive")
 ```
 
 Python requires a colon (“:”) after every condition (i.e. at the of the lines

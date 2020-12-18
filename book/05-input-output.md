@@ -29,29 +29,29 @@ There are two modes to use print.
 The easiest way to use the print command is to list the variables to be printed,
 separated by comma. Here are a few examples:
 
-```{code-cell} ipython3
+```{code-cell}
 a = 10
-b = 'test text'
+b = "test text"
 print(a)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print(b)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print(a, b)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print("The answer is", a)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print("The answer is", a, "and the string contains", b)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print("The answer is", a, "and the string reads", b)
 ```
 
@@ -60,8 +60,8 @@ Python adds a space between every object that is being printed.
 Python prints a new line after every print call. To suppress that, use the
 `end=` parameter:
 
-```{code-cell} ipython3
-print("Printing in line one", end='')
+```{code-cell}
+print("Printing in line one", end="")
 print("...still printing in line one.")
 ```
 
@@ -74,27 +74,28 @@ The overall structure is that there is a string containing format specifiers,
 followed by a percentage sign and a tuple that contains the variables to be
 printed in place of the format specifiers.
 
-```{code-cell} ipython3
-print("a = %d b = %d" % (10,20))
+```{code-cell}
+print('a = %d b = %d' % (10, 20))
 ```
 
 A string can contain format identifiers (such as `%f` to format as a float, `%d`
 to format as an integer, and `%s` to format as a string):
 
-```{code-cell} ipython3
+```{code-cell}
 from math import pi
+
 print("Pi = %5.2f" % pi)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print("Pi = %10.3f" % pi)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print("Pi = %10.8f" % pi)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print("Pi = %d" % pi)
 ```
 
@@ -105,15 +106,16 @@ identical to Matlab and C, for example.)
 To print more than one object, provide multiple format specifiers and list
 several objects in the tuple:
 
-```{code-cell} ipython3
-print("Pi = %f, 142*pi = %f and pi^2 = %f." % (pi,142*pi,pi**2))
+```{code-cell}
+print("Pi = %f, 142*pi = %f and pi^2 = %f." % (pi, 142 * pi, pi ** 2))
 ```
 
 Note that the conversion of a format specifier and a tuple of variables into
 string does not rely on the `print` command:
 
-```{code-cell} ipython3
+```{code-cell}
 from math import pi
+
 "pi = %f" % pi
 ```
 
@@ -124,9 +126,9 @@ closely to the code that does the printing.
 Overview of commonly used format specifiers using the astronomical unit as an
 example:
 
-```{code-cell} ipython3
+```{code-cell}
 AU = 149597870700  # astronomical unit [m]
-"%f" % AU        # line 1 in table
+"%f" % AU  # line 1 in table
 ```
 
 | specifier         |         style         |  Example output for AU|
@@ -144,19 +146,19 @@ All objects in Python should provide a method `__str__` which returns a nice
 string representation of the object. This method `a.__str__()` is called when we
 apply the `str` function to object `a`:
 
-```{code-cell} ipython3
+```{code-cell}
 a = 3.14
 a.__str__()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 str(a)
 ```
 
 The `str` function is extremely convenient as it allows us to print more
 complicated objects, such as:
 
-```{code-cell} ipython3
+```{code-cell}
 b = [3, 4.2, ['apple', 'banana'], (0, 1)]
 str(b)
 ```
@@ -174,11 +176,11 @@ The string method of object `x` is called implicitly, when we
 - use the “%s” format specifier to print `x`
 - pass the object `x` directly to the print command:
 
-```{code-cell} ipython3
+```{code-cell}
 print(b)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print("%s" % b)
 ```
 
@@ -190,42 +192,44 @@ presentation *so that this string can be used to re-created the object using the
 string than `str`. Applying `repr` to the object `x` will attempt to call
 `x.__repr__()`.
 
-```{code-cell} ipython3
+```{code-cell}
 from math import pi as a1
+
 str(a1)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 repr(a1)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 number_as_string = repr(a1)
 a2 = eval(number_as_string)  # evaluate string
 a2
 ```
 
-```{code-cell} ipython3
-a2-a1                      # -> repr is exact representation
+```{code-cell}
+a2 - a1  # -> repr is exact representation
 ```
 
-```{code-cell} ipython3
-a1-eval(repr(a1))
+```{code-cell}
+a1 - eval(repr(a1))
 ```
 
-```{code-cell} ipython3
-a1-eval(str(a1))           # -> str has lost a few digits
+```{code-cell}
+a1 - eval(str(a1))  # -> str has lost a few digits
 ```
 
 We can convert an object to its `str()` or `repr` presentation using the format
 specifiers `%s` and `%r`, respectively.
 
-```{code-cell} ipython3
+```{code-cell}
 import math
+
 "%s" % math.pi
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 "%r" % math.pi
 ```
 
@@ -236,34 +240,35 @@ at the cost of being a bit longer.
 
 Basic ideas in examples:
 
-```{code-cell} ipython3
-"{} needs {} pints".format('Peter', 4)     # insert values in order
+```{code-cell}
+"{} needs {} pints".format("Peter", 4)  # insert values in order
 ```
 
-```{code-cell} ipython3
-"{0} needs {1} pints".format('Peter', 4)   # index which element
+```{code-cell}
+"{0} needs {1} pints".format("Peter", 4)  # index which element
 ```
 
-```{code-cell} ipython3
-"{1} needs {0} pints".format('Peter', 4)
+```{code-cell}
+"{1} needs {0} pints".format("Peter", 4)
 ```
 
-```{code-cell} ipython3
-"{name} needs {number} pints".format(    # reference element to
-    name='Peter',                        # print by name
-    number=4
+```{code-cell}
+"{name} needs {number} pints".format(  # reference element to
+    name="Peter", number=4  # print by name
 )
 ```
 
-```{code-cell} ipython3
-"Pi is approximately {:f}.".format(math.pi)     # can use old-style format options for float
+```{code-cell}
+"Pi is approximately {:f}.".format(
+    math.pi
+)  # can use old-style format options for float
 ```
 
-```{code-cell} ipython3
-"Pi is approximately {:.2f}.".format(math.pi)   # and precision
+```{code-cell}
+"Pi is approximately {:.2f}.".format(math.pi)  # and precision
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 "Pi is approximately {:6.2f}.".format(math.pi)  # and width
 ```
 
@@ -292,8 +297,8 @@ Effectively, we call the function `print` with the argument `Hello World`. All
 other functions in Python are called such that the argument is enclosed in
 parentheses, i.e.
 
-```{code-cell} ipython3
-print("Hello World")               # valid in Python 3.x
+```{code-cell}
+print("Hello World")  # valid in Python 3.x
 ```
 
 This is the new convention *required* in Python 3 (and *allowed* for recent
@@ -302,40 +307,42 @@ version of Python 2.x.)
 Everything we have learned about formatting strings using the percentage
 operator still works the same way:
 
-```{code-cell} ipython3
+```{code-cell}
 import math
+
 a = math.pi
-"my pi = %f" % a           # string formatting
+"my pi = %f" % a  # string formatting
 ```
 
-```{code-cell} ipython3
-print("my pi = %f" % a)    # valid print in 2.7 and 3.x
+```{code-cell}
+print("my pi = %f" % a)  # valid print in 2.7 and 3.x
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 "Short pi = %.2f, longer pi = %.12f." % (a, a)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print("Short pi = %.2f, longer pi = %.12f." % (a, a))
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print("Short pi = %.2f, longer pi = %.12f." % (a, a))
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # 1. Write a file
-out_file = open("test.txt", "w")          #'w' stands for Writing
-out_file.write("Writing text to file. This is the first line.\n"+\
-               "And the second line.")
-out_file.close()                          #close the file
+out_file = open("test.txt", "w")  #'w' stands for Writing
+out_file.write(
+    "Writing text to file. This is the first line.\n" + "And the second line."
+)
+out_file.close()  # close the file
 
 # 2. Read a file
-in_file = open("test.txt", "r")           #'r' stands for Reading
-text = in_file.read()                     #read complete file into
-                                          #string variable text
-in_file.close()                           #close the file
+in_file = open("test.txt", "r")  #'r' stands for Reading
+text = in_file.read()  # read complete file into
+# string variable text
+in_file.close()  # close the file
 
 # 3. Display data
 print(text)
@@ -379,11 +386,13 @@ the examples below:
     This is the second line.
     This is a third and last line.
 
-```{code-cell} ipython3
-f = open('myfile.txt', 'w')
-f.write('This is the first line.\n'
-        'This is the second line.\n'
-        'This is a third and last line.')
+```{code-cell}
+f = open("myfile.txt", "w")
+f.write(
+    "This is the first line.\n"
+    "This is the second line.\n"
+    "This is a third and last line."
+)
 f.close()
 ```
 
@@ -392,12 +401,12 @@ f.close()
 The `fileobject.read()` method reads the whole file, and returns it as one
 string (including new line characters).
 
-```{code-cell} ipython3
-f = open('myfile.txt', 'r')
+```{code-cell}
+f = open("myfile.txt", "r")
 f.read()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 f.close()
 ```
 
@@ -406,20 +415,20 @@ f.close()
 The `fileobject.readlines()` method returns a list of strings, where each
 element of the list corresponds to one line in the string:
 
-```{code-cell} ipython3
-f = open('myfile.txt', 'r')
+```{code-cell}
+f = open("myfile.txt", "r")
 f.readlines()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 f.close()
 ```
 
 This is often used to iterate over the lines, and to do something with each
 line. For example:
 
-```{code-cell} ipython3
-f = open('myfile.txt', 'r')
+```{code-cell}
+f = open("myfile.txt", "r")
 for line in f.readlines():
     print("%d characters" % len(line))
 f.close()
@@ -431,8 +440,8 @@ small and will fit into the machine’s memory.
 
 If so, we can also close the file before we process the data, i.e.:
 
-```{code-cell} ipython3
-f = open('myfile.txt', 'r')
+```{code-cell}
+f = open("myfile.txt", "r")
 lines = f.readlines()
 f.close()
 for line in lines:
@@ -445,8 +454,8 @@ There is a neater possibility to read a file line by line which (i) will only
 read one line at a time (and is thus suitable for large files as well) and (ii)
 results in more compact code:
 
-```{code-cell} ipython3
-f = open('myfile.txt', 'r')
+```{code-cell}
+f = open("myfile.txt", "r")
 for line in f:
     print("%d characters" % len(line))
 f.close()

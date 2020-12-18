@@ -52,7 +52,7 @@ complementary to the the functionality of `numpy`.
 
 First we need to import `scipy`:
 
-```{code-cell} ipython3
+```{code-cell}
 import scipy
 ```
 
@@ -188,7 +188,7 @@ estimation of the numerical error of that result.
 
 Here is an example: which produces this output:
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 from math import cos, exp, pi
 from scipy.integrate import quad
@@ -197,11 +197,11 @@ from scipy.integrate import quad
 def f(x):
     return exp(cos(-2 * x * pi)) + 3.2
 
+
 # call quad to integrate f from -2 to 2
 res, err = quad(f, -2, 2)
 
-print("The numerical result is {:f} (+-{:g})"
-    .format(res, err))
+print("The numerical result is {:f} (+-{:g})".format(res, err))
 ```
 
 Note that `quad()` takes optional parameters `epsabs` and `epsrel` to increase
@@ -231,12 +231,14 @@ numerically.
 - (ii) computes the integral numerically using the `quad` function. The return
   values should be as for the `quad` function.
 
-```{code-cell} ipython3
+```{code-cell}
 %matplotlib inline
 # settings for jupyter book: svg for html version, high-resolution png for pdf
 from IPython.display import set_matplotlib_formats
+
 set_matplotlib_formats('svg', 'png')
 import matplotlib as mpl
+
 mpl.rcParams['figure.dpi'] = 400
 ```
 
@@ -254,34 +256,38 @@ given this differential equation:
 
 $$\frac{\mathrm{d}y}{\mathrm{d}t}(t) = -2yt \quad \mathrm{with} \quad y(0)=1.$$
 
-```{code-cell} ipython3
+```{code-cell}
 %config InlineBackend.figure_format = 'svg'
 from scipy.integrate import odeint
 import numpy as N
+
 
 def f(y, t):
     """this is the rhs of the ODE to integrate, i.e. dy/dt=f(y,t)"""
     return -2 * y * t
 
-y0 = 1             # initial value
-a = 0              # integration limits for t
+
+y0 = 1  # initial value
+a = 0  # integration limits for t
 b = 2
 
 t = N.arange(a, b, 0.01)  # values of t for
-                          # which we require
-                          # the solution y(t)
+# which we require
+# the solution y(t)
 y = odeint(f, y0, t)  # actual computation of y(t)
 
-import pylab          # plotting of results
+import pylab  # plotting of results
+
 pylab.plot(t, y)
-pylab.xlabel('t'); pylab.ylabel('y(t)')
+pylab.xlabel('t')
+pylab.ylabel('y(t)')
 ```
 
 The `odeint` command takes a number of optional parameters to change the default
 error tolerance of the integration (and to trigger the production of extra
 debugging output). Use the help command to explore these:
 
-```{code-cell} ipython3
+```{code-cell}
 help(scipy.integrate.odeint)
 ```
 
@@ -321,19 +327,20 @@ located between $x = 1.5$ (where $f(1.5)= − 1.125$) and $x = 3$ (w
 $f(3)=9$). It is pretty straightforward to see that this other root is located
 at $x = 2$. Here is a program that determines this root numerically:
 
-```{code-cell} ipython3
+```{code-cell}
 from scipy.optimize import bisect
+
 
 def f(x):
     """returns f(x)=x^3-2x^2. Has roots at
     x=0 (double root) and x=2"""
     return x ** 3 - 2 * x ** 2
 
+
 # main program starts here
 x = bisect(f, 1.5, 3, xtol=1e-6)
 
-print("The root x is approximately x=%14.12g,\n"
-      "the error is less than 1e-6." % (x))
+print("The root x is approximately x=%14.12g,\n" "the error is less than 1e-6." % (x))
 print("The exact error is %g." % (2 - x))
 ```
 
@@ -361,7 +368,7 @@ other words: $a$ and $b$ have to enclose a root.
      the approximation of the root. How big is the absolute error of $x$? How
      does this compare with `xtol`?
 
-```{code-cell} ipython3
+```{code-cell}
 
 ```
 
@@ -375,13 +382,15 @@ converge).
 
 Here is an example:
 
-```{code-cell} ipython3
+```{code-cell}
 from scipy.optimize import fsolve
+
 
 def f(x):
     return x ** 3 - 2 * x ** 2
 
-x = fsolve(f, 3)           # one root is at x=2.0
+
+x = fsolve(f, 3)  # one root is at x=2.0
 
 print("The root x is approximately x=%21.19g" % x)
 print("The exact error is %g." % (2 - x))
@@ -403,32 +412,34 @@ for any given $x$ when called as $y0(x)$.
 
 The code below demonstrates this, and shows the different interpolation kinds.
 
-```{code-cell} ipython3
+```{code-cell}
 import numpy as np
 import scipy.interpolate
 import pylab
 
+
 def create_data(n):
     """Given an integer n, returns n data points
     x and values y as a numpy.array."""
-    xmax = 5.
+    xmax = 5.0
     x = np.linspace(0, xmax, n)
-    y = - x**2
-    #make x-data somewhat irregular
+    y = -(x ** 2)
+    # make x-data somewhat irregular
     y += 1.5 * np.random.normal(size=len(x))
     return x, y
 
-#main program
+
+# main program
 n = 10
 x, y = create_data(n)
 
-#use finer and regular mesh for plot
+# use finer and regular mesh for plot
 xfine = np.linspace(0.1, 4.9, n * 100)
-#interpolate with piecewise constant function (p=0)
+# interpolate with piecewise constant function (p=0)
 y0 = scipy.interpolate.interp1d(x, y, kind='nearest')
-#interpolate with piecewise linear func (p=1)
+# interpolate with piecewise linear func (p=1)
 y1 = scipy.interpolate.interp1d(x, y, kind='linear')
-#interpolate with piecewise constant func (p=2)
+# interpolate with piecewise constant func (p=2)
 y2 = scipy.interpolate.interp1d(x, y, kind='quadratic')
 
 pylab.plot(x, y, 'o', label='data point')
@@ -464,7 +475,7 @@ We use the following example to clarify this:
 $$f(x,\vec{p}) = a \exp(-b x) + c,
 \quad\mathrm{i.e.}\quad \vec{p}=\mathtt{a,b,c}$$
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 import numpy as np
 from scipy.optimize import curve_fit
@@ -472,22 +483,24 @@ from scipy.optimize import curve_fit
 
 def f(x, a, b, c):
     """Fit function y=f(x,p) with parameters p=(a,b,c). """
-    return a * np.exp(- b * x) + c
+    return a * np.exp(-b * x) + c
 
-#create fake data
+
+# create fake data
 x = np.linspace(0, 4, 50)
 y = f(x, a=2.5, b=1.3, c=0.5)
-#add noise
+# add noise
 yi = y + 0.2 * np.random.normal(size=len(x))
 
-#call curve fit function
+# call curve fit function
 popt, pcov = curve_fit(f, x, yi)
 a, b, c = popt
 print("Optimal parameters are a=%g, b=%g, and c=%g" % (a, b, c))
 
-#plotting
+# plotting
 import pylab
-yfitted = f(x, *popt)   # equivalent to f(x, popt[0], popt[1], popt[2])
+
+yfitted = f(x, *popt)  # equivalent to f(x, popt[0], popt[1], popt[2])
 pylab.plot(x, yi, 'o', label='data $y_i$')
 pylab.plot(x, yfitted, '-', label='fit $f(x_i)$')
 pylab.xlabel('x')
@@ -535,43 +548,43 @@ the signal and plot the absolute value of the (complex) discrete Fourier
 transform coefficients against frequency, and expect to see peaks at 50Hz and
 70Hz.
 
-```{code-cell} ipython3
+```{code-cell}
 import scipy.fft
 import numpy as np
 import matplotlib.pyplot as plt
+
 pi = scipy.pi
 
-signal_length = 0.5     # [seconds]
-sample_rate = 500       # sampling rate [Hz]
-dt = 1. / sample_rate   # time between two samples [s]
+signal_length = 0.5  # [seconds]
+sample_rate = 500  # sampling rate [Hz]
+dt = 1.0 / sample_rate  # time between two samples [s]
 
 df = 1 / signal_length  # frequency between points in
-                        # in frequency domain [Hz]
+# in frequency domain [Hz]
 t = np.arange(0, signal_length, dt)  # the time vector
-n_t = len(t)            # length of time vector
+n_t = len(t)  # length of time vector
 
 # create signal
-y = np.sin(2*pi*50*t) + np.sin(2*pi*70*t+pi/4)
+y = np.sin(2 * pi * 50 * t) + np.sin(2 * pi * 70 * t + pi / 4)
 
 # compute Fourier transform
 f = scipy.fft.fft(y)
 
 # work out meaningful frequencies in Fourier transform
-freqs = df * np.arange(0, (n_t-1)/2., dtype='d')  # 'd'=double precision float
+freqs = df * np.arange(0, (n_t - 1) / 2.0, dtype="d")  # 'd'=double precision float
 n_freq = len(freqs)
 
 # plot input data y against time
 plt.subplot(2, 1, 1)
-plt.plot(t, y, label='input data')
+plt.plot(t, y, label="input data")
 plt.xlabel('time [s]')
 plt.ylabel('signal')
 
-#plot frequency spectrum
+# plot frequency spectrum
 plt.subplot(2, 1, 2)
-plt.plot(freqs, abs(f[0:n_freq]),
-         label='abs(fourier transform)')
+plt.plot(freqs, abs(f[0:n_freq]), label='abs(fourier transform)')
 plt.xlabel('frequency [Hz]')
-plt.ylabel('abs(DFT(signal))');
+plt.ylabel('abs(DFT(signal))')
 ```
 
 The lower plot shows the discrete Fourier transform computed from the data shown
@@ -601,13 +614,15 @@ The majority of the commands (after the two calls to `fmin`) in the file
 `fmin1.py` creates the plot of the function, the start points for the searches
 and the minima obtained:
 
-```{code-cell} ipython3
+```{code-cell}
 from numpy import arange, cos, exp
 from scipy.optimize import fmin
 import pylab
 
+
 def f(x):
-    return cos(x) - 3 * exp( -(x - 0.2) ** 2)
+    return cos(x) - 3 * exp(-((x - 0.2) ** 2))
+
 
 # find minima of f(x),
 # starting from 1.0 and 2.0 respectively
@@ -625,16 +640,14 @@ pylab.grid()
 pylab.axis([-5, 5, -2.2, 0.5])
 
 # add minimum1 to plot
-pylab.plot(minimum1, f(minimum1), 'vr',
-           label='minimum 1')
+pylab.plot(minimum1, f(minimum1), 'vr', label='minimum 1')
 # add start1 to plot
 pylab.plot(1.0, f(1.0), 'or', label='start 1')
 
 # add minimum2 to plot
-pylab.plot(minimum2,f(minimum2),'vg',\
-           label='minimum 2')
+pylab.plot(minimum2, f(minimum2), 'vg', label='minimum 2')
 # add start2 to plot
-pylab.plot(2.0,f(2.0),'og',label='start 2')
+pylab.plot(2.0, f(2.0), 'og', label='start 2')
 
 pylab.legend(loc='lower left')
 ```
@@ -684,16 +697,17 @@ octave:2> save -6 octave_a.mat a       %save as version 6
 
 Then we load this array within python:
 
-```{code-cell} ipython3
+```{code-cell}
 from scipy.io import loadmat
+
 mat_contents = loadmat('static/data/octave_a.mat')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 mat_contents
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 mat_contents['a']
 ```
 
@@ -706,7 +720,7 @@ key-value pair in the dictionary.
 
 Let’s save two arrays from Python to demonstrate that:
 
-```{code-cell} ipython3
+```{code-cell}
 import scipy.io
 import numpy as np
 
@@ -716,8 +730,7 @@ b = np.ones((4, 4))
 
 # save as mat-file
 # create dictionary for savemat
-tmp_d = {'a': a,
-         'b': b}
+tmp_d = {'a': a, 'b': b}
 scipy.io.savemat('data.mat', tmp_d)
 ```
 

@@ -65,12 +65,14 @@ package](https://jupyterbook.org), we use some settings to create a svg file for
 the html version of the book, and a high-resolution png file for the pdf
 version:
 
-```{code-cell} ipython3
+```{code-cell}
 %matplotlib inline
 # settings for jupyter book: svg for html version, high-resolution png for pdf
 from IPython.display import set_matplotlib_formats
+
 set_matplotlib_formats('svg', 'png')
 import matplotlib as mpl
+
 mpl.rcParams['figure.dpi'] = 400
 ```
 
@@ -79,14 +81,14 @@ mpl.rcParams['figure.dpi'] = 400
 The recommended way of using Matplotlib in a simple example is shown here (let’s
 call this example 1a):
 
-```{code-cell} ipython3
+```{code-cell}
 # example 1 a
-import numpy as np                  # get access to fast arrays
-import matplotlib.pyplot as plt     # the plotting functions
+import numpy as np  # get access to fast arrays
+import matplotlib.pyplot as plt  # the plotting functions
 
-x = np.arange(-3.14, 3.14, 0.01)    # create x-data
-y = np.sin(x)                       # compute y - data
-plt.plot(x, y)                      # create plot
+x = np.arange(-3.14, 3.14, 0.01)  # create x-data
+y = np.sin(x)  # compute y - data
+plt.plot(x, y)  # create plot
 ```
 
 ### How to import matplotlib, pylab, pyplot, numpy and all that
@@ -114,11 +116,11 @@ array handling for Python (see [chapter 14](14-numpy.ipynb)).
 We could thus also have written the example 1a above as in example 1b (which is
 identical in functionality to the example above and will create the same plot):
 
-```{code-cell} ipython3
+```{code-cell}
 import pylab
 import numpy as np
 
-x = np.arange (-3.14, 3.14, 0.01)
+x = np.arange(-3.14, 3.14, 0.01)
 y = np.sin(x)
 
 pylab.plot(x, y)
@@ -127,7 +129,7 @@ pylab.plot(x, y)
 Because the `numpy.arange` and `numpy.sin` objects have already been imported
 into the (convenience) `pylab` namespace, we could also write it as example 1c:
 
-```{code-cell} ipython3
+```{code-cell}
 # example 1c
 import pylab as p
 
@@ -141,10 +143,11 @@ If we really want to cut down on characters to type, we could also important the
 whole functionality from the `pylab` convenience module, and rewrite the code as
 example 1d:
 
-```{code-cell} ipython3
+```{code-cell}
 # example 1 d
 from pylab import *  # not generally recommended
-                     # okay for interactive testing
+
+# okay for interactive testing
 
 x = arange(-3.14, 3.14, 0.01)
 y = sin(x)
@@ -193,7 +196,7 @@ labels, legends etc, you have two options to save the plot.
     extension of the file name you provide. Here is an example
     (`pylabsavefig.py`) which saves the plot shown in Figure \[fig:pylab1
 
-```{code-cell} ipython3
+```{code-cell}
 import pylab
 import numpy as N
 
@@ -241,14 +244,14 @@ One can switch the interactive mode on using `pylab.ion()` and off using
 
 Matplotlib allows us to fine tune our plots in great detail. Here is an example:
 
-```{code-cell} ipython3
+```{code-cell}
 import pylab
 import numpy as N
 
 x = N.arange(-3.14, 3.14, 0.01)
 y1 = N.sin(x)
 y2 = N.cos(x)
-pylab.figure(figsize =(5 , 5))
+pylab.figure(figsize=(5, 5))
 pylab.plot(x, y1, label='sin(x)')
 pylab.plot(x, y2, label='cos(x)')
 pylab.legend()
@@ -286,7 +289,7 @@ For example:
 The full list of options can be found when typing `help(pylab.plot)` at the
 Python prompt. Because this documentation is so useful, we'll print it off here:
 
-```{code-cell} ipython3
+```{code-cell}
 help(pylab.plot)
 ```
 
@@ -303,11 +306,13 @@ There are three different methods to display more than one curve.
 By calling the `plot` command repeatedly, more than one curve can be drawn in
 the same graph. Example:
 
-```{code-cell} ipython3
+```{code-cell}
 import numpy as np
-t = np.arange(0, 2*np.pi, 0.01)
+
+t = np.arange(0, 2 * np.pi, 0.01)
 
 import pylab
+
 pylab.plot(t, np.sin(t), label='sin(t)')
 pylab.plot(t, np.cos(t), label='cos(t)')
 pylab.legend()
@@ -330,9 +335,10 @@ subplot(2, 2, 1)
 Here is a complete example plotting the sine and cosine curves in two graphs
 that are aligned underneath each other within the same window:
 
-```{code-cell} ipython3
+```{code-cell}
 import numpy as np
-t = np.arange (0, 2*np.pi, 0.01)
+
+t = np.arange(0, 2 * np.pi, 0.01)
 
 import pylab
 
@@ -344,13 +350,14 @@ pylab.ylabel('sin(t)')
 pylab.subplot(2, 1, 2)
 pylab.plot(t, np.cos(t))
 pylab.xlabel('t')
-pylab.ylabel('cos(t)');
+pylab.ylabel('cos(t)')
 ```
 
 #### Two (or more) figure windows
 
-```{code-cell} ipython3
+```{code-cell}
 import pylab
+
 pylab.figure(1)
 pylab.plot(range(10), 'o')
 
@@ -368,13 +375,13 @@ Note that you can use `pylab.close()` to close one, some or all figure windows
 The program below demonstrates how to create histograms from statistical data
 with matplotlib.
 
-```{code-cell} ipython3
+```{code-cell}
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.stats
 
 mu, sigma = 100, 15
-x = mu + sigma*np.random.randn(10000)
+x = mu + sigma * np.random.randn(10000)
 
 # the histogram of the data
 n, bins, patches = plt.hist(x, 50, density=1, facecolor='green', alpha=0.75)
@@ -404,27 +411,31 @@ possibly learn a bit more about Matplotlib.
 The program below demonstrates how to create a bitmap-plot of the entries of a
 matrix.
 
-```{code-cell} ipython3
+```{code-cell}
 import numpy as np
 import matplotlib.pyplot as plt
 
 # Helper function (from https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/mlab.py
 # as of August 2018)
-def bivariate_normal(X, Y, sigmax=1.0, sigmay=1.0,
-                     mux=0.0, muy=0.0, sigmaxy=0.0):
+def bivariate_normal(X, Y, sigmax=1.0, sigmay=1.0, mux=0.0, muy=0.0, sigmaxy=0.0):
     """
     Bivariate Gaussian distribution for equal shape *X*, *Y*.
     See `bivariate normal
     <https://mathworld.wolfram.com/BivariateNormalDistribution.html>`_
     at mathworld.
     """
-    Xmu = X-mux
-    Ymu = Y-muy
+    Xmu = X - mux
+    Ymu = Y - muy
 
-    rho = sigmaxy/(sigmax*sigmay)
-    z = Xmu**2/sigmax**2 + Ymu**2/sigmay**2 - 2*rho*Xmu*Ymu/(sigmax*sigmay)
-    denom = 2*np.pi*sigmax*sigmay*np.sqrt(1-rho**2)
-    return np.exp(-z/(2*(1-rho**2))) / denom
+    rho = sigmaxy / (sigmax * sigmay)
+    z = (
+        Xmu ** 2 / sigmax ** 2
+        + Ymu ** 2 / sigmay ** 2
+        - 2 * rho * Xmu * Ymu / (sigmax * sigmay)
+    )
+    denom = 2 * np.pi * sigmax * sigmay * np.sqrt(1 - rho ** 2)
+    return np.exp(-z / (2 * (1 - rho ** 2))) / denom
+
 
 # create matrix Z that contains some interesting data
 delta = 0.1
@@ -452,16 +463,16 @@ reducing the number of colours in the map). The last example mimics the
 behaviour of the more sophisticated `contour` command that also comes with
 `matplotlib`.
 
-```{code-cell} ipython3
+```{code-cell}
 plt.subplot?
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.cm as cm        # Colour map submodule
+import matplotlib.cm as cm  # Colour map submodule
 
-#create matrix Z that contains some data interesting data
+# create matrix Z that contains some data interesting data
 delta = 0.025
 x = y = np.arange(-3.0, 3.0, delta)
 X, Y = np.meshgrid(x, y)
@@ -469,13 +480,13 @@ Z = bivariate_normal(X, Y, 3.0, 1.0, 0.0, 0.0)
 
 Nx, Ny = 2, 3
 plt.subplot(Nx, Ny, 1)  # next plot will be shown in
-                        # first subplot in Nx x Ny
-                        # matrix of subplots
+# first subplot in Nx x Ny
+# matrix of subplots
 
 plt.imshow(Z, cmap=cm.jet)  # default colourmap 'jet'
 plt.title("colourmap jet")
 
-plt.subplot(Nx, Ny, 2)   # next plot for second subplot
+plt.subplot(Nx, Ny, 2)  # next plot for second subplot
 plt.imshow(Z, cmap=cm.jet_r)  # reverse colours in jet
 plt.title("colourmap jet_r")
 
@@ -493,10 +504,10 @@ plt.title("colourmap gist_earth")
 
 plt.subplot(Nx, Ny, 6)
 # make isolines by reducing number of colours to 10
-mycmap = cm.get_cmap('jet', 10)    # 10 discrete colors
+mycmap = cm.get_cmap('jet', 10)  # 10 discrete colors
 plt.imshow(Z, cmap=mycmap)
 plt.title("colourmap jet\n(10 colours only)")
-plt.tight_layout()   # avoid overlap of titles and axis labels
+plt.tight_layout()  # avoid overlap of titles and axis labels
 plt.savefig("pylabimshowcm.pdf")
 ```
 

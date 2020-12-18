@@ -36,7 +36,7 @@ Python comes with a basic terminal prompt; you may see examples from this with
 We are using a more powerful REPL interface, the Jupyter Notebook. Blocks of
 code appear with an `In` prompt next to them:
 
-```{code-cell} ipython3
+```{code-cell}
 4 + 5
 ```
 
@@ -48,61 +48,61 @@ around it. To run it, press Shift-Enter.
 Basic operations such as addition (`+`), subtraction (`-`), multiplication
 (`*`), division (`/`) and exponentiation (`**`) work (mostly) as expected:
 
-```{code-cell} ipython3
+```{code-cell}
 10 + 10000
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 42 - 1.5
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 47 * 11
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 10 / 0.5
 ```
 
-```{code-cell} ipython3
-2**2   # Exponentiation ('to the power of') is **, NOT ^
+```{code-cell}
+2 ** 2  # Exponentiation ('to the power of') is **, NOT ^
 ```
 
-```{code-cell} ipython3
-2**3
+```{code-cell}
+2 ** 3
 ```
 
-```{code-cell} ipython3
-2**4
+```{code-cell}
+2 ** 4
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 2 + 2
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # This is a comment
 2 + 2
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 2 + 2  # and a comment on the same line as code
 ```
 
 and, using the fact that $\sqrt[n]{x} = x^{1/n}$, we can compute the $\sqrt{3} =
 1.732050\dots$ using `**`:
 
-```{code-cell} ipython3
-3**0.5
+```{code-cell}
+3 ** 0.5
 ```
 
 Parenthesis can be used for grouping:
 
-```{code-cell} ipython3
+```{code-cell}
 2 * 10 + 5
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 2 * (10 + 5)
 ```
 
@@ -110,8 +110,8 @@ Parenthesis can be used for grouping:
 
 In Python 3, division works as you'd expect:
 
-```{code-cell} ipython3
-15/6
+```{code-cell}
+15 / 6
 ```
 
 In Python 2, however, `15/6` will give you `2`.
@@ -201,15 +201,16 @@ mathematical functions such as sin, cos, exp, log and many others are located in
 the mathematics module with name `math`. We can make use of this as soon as we
 *import* the math module:
 
-```{code-cell} ipython3
+```{code-cell}
 import math
+
 math.exp(1.0)
 ```
 
 Using the `dir` function, we can see the directory of objects available in the
 math module:
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 dir(math)
 ```
@@ -217,26 +218,26 @@ dir(math)
 As usual, the `help` function can provide more information about the module
 (`help(math)`) on individual objects:
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 help(math.exp)
 ```
 
 The mathematics module defines to constants *π* and *e*:
 
-```{code-cell} ipython3
+```{code-cell}
 math.pi
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 math.e
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 math.cos(math.pi)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 math.log(math.e)
 ```
 
@@ -246,7 +247,7 @@ A *variable* can be used to store a certain value or object. In Python, all
 numbers (and everything else, including functions, modules and files) are
 objects. A variable is created through assignment:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -257,29 +258,29 @@ x = 0.5
 Once the variable `x` has been created through assignment of 0.5 in this
 example, we can make use of it:
 
-```{code-cell} ipython3
-x*3
+```{code-cell}
+x * 3
 ```
 
-```{code-cell} ipython3
-x**2
+```{code-cell}
+x ** 2
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 y = 111
 y + 222
 ```
 
 A variable is overridden if a new value is assigned:
 
-```{code-cell} ipython3
+```{code-cell}
 y = 0.7
 math.sin(y) ** 2 + math.cos(y) ** 2
 ```
 
 The equal sign (’=’) is used to assign a value to a variable.
 
-```{code-cell} ipython3
+```{code-cell}
 width = 20
 height = 5 * 9
 width * height
@@ -287,23 +288,23 @@ width * height
 
 A value can be assigned to several variables simultaneously:
 
-```{code-cell} ipython3
+```{code-cell}
 x = y = z = 0  # initialise x, y and z with 0
 x
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 y
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 z
 ```
 
 Variables must be created (assigned a value) before they can be used, or an
 error will occur:
 
-```{code-cell} ipython3
+```{code-cell}
 :tags: [raises-exception]
 
 # NBVAL_RAISES_EXCEPTION
@@ -315,13 +316,13 @@ In interactive mode, the last printed expression is assigned to the variable
 `_`. This means that when you are using Python as a desk calculator, it is
 somewhat easier to continue calculations, for example:
 
-```{code-cell} ipython3
+```{code-cell}
 tax = 12.5 / 100
 price = 100.50
 price * tax
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 price + _
 ```
 
@@ -333,7 +334,7 @@ same name masking the built-in variable with its magic behaviour.
 
 Strictly speaking, the following happens when we write
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -358,7 +359,7 @@ discussed in more detail in [the next chapter](03-data-types-structures.ipynb).
 
 In computer programs we often find statements like
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -393,7 +394,7 @@ Let’s apply our two-step rule to the assignment `x = x + 1` given above:
 
 Let’s confirm with the Python prompt that this is the correct interpretation:
 
-```{code-cell} ipython3
+```{code-cell}
 x = 4
 x = x + 1
 x
@@ -418,7 +419,7 @@ x = x + c
 
 Our initial example above could thus have been written
 
-```{code-cell} ipython3
+```{code-cell}
 x = 4
 x += 1
 x
@@ -429,7 +430,7 @@ subtraction of a constant (`-=`) and division by a constant (`/=`).
 
 Note that the order of `+` and `=` matters:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -439,12 +440,12 @@ x += 1
 
 will increase the variable `x` by one where as
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
 ---
-x =+ 1
+x = +1
 ```
 
 will assign the value `+1` to the variable `x`.

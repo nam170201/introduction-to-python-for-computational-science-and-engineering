@@ -18,22 +18,22 @@ kernelspec:
 Python knows different data types. To find the type of a variable, use the
 `type()` function:
 
-```{code-cell} ipython3
+```{code-cell}
 a = 45
 type(a)
 ```
 
-```{code-cell} ipython3
-b = 'This is a string'
+```{code-cell}
+b = "This is a string"
 type(b)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 c = 2 + 1j
 type(c)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 d = [1, 3, 56]
 type(d)
 ```
@@ -62,29 +62,29 @@ Powerful Calculator, Integer Division).
 If we need to convert string containing an integer number to an integer we can
 use `int()` function:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
 ---
-a = '34'       # a is a string containing the characters 3 and 4
-x = int(a)     # x is in integer number
+a = '34'  # a is a string containing the characters 3 and 4
+x = int(a)  # x is in integer number
 ```
 
 The function `int()` will also convert floating point numbers to integers:
 
-```{code-cell} ipython3
+```{code-cell}
 int(7.0)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 int(7.9)
 ```
 
 Note than `int` will truncate any non-integer part of a floating point number.
 To `round` an floating point number to an integer, use the `round()` command:
 
-```{code-cell} ipython3
+```{code-cell}
 round(7.9)
 ```
 
@@ -94,8 +94,8 @@ Integers in Python 3 are unlimited; Python will automatically assign more memory
 as needed as the numbers get bigger. This means we can calculate very large
 numbers with no special steps.
 
-```{code-cell} ipython3
-35**42
+```{code-cell}
+35 ** 42
 ```
 
 In many other programming languages, such as C and FORTRAN, integers are a fixed
@@ -125,13 +125,13 @@ or negative values, unsigned integers only allow positive ones. For instance:
 A string containing a floating point number can be converted into a floating
 point number using the `float()` command:
 
-```{code-cell} ipython3
+```{code-cell}
 a = '35.342'
 b = float(a)
 b
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type(b)
 ```
 
@@ -140,40 +140,41 @@ type(b)
 Python (as Fortran and Matlab) has built-in complex numbers. Here are some
 examples how to use these:
 
-```{code-cell} ipython3
+```{code-cell}
 x = 1 + 3j
 x
 ```
 
-```{code-cell} ipython3
-abs(x)               # computes the absolute value
+```{code-cell}
+abs(x)  # computes the absolute value
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x.imag
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x.real
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x * x
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x * x.conjugate()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 3 * x
 ```
 
 Note that if you want to perform more complicated operations (such as taking the
 square root, etc) you have to use the `cmath` module (Complex MATHematics):
 
-```{code-cell} ipython3
+```{code-cell}
 import cmath
+
 cmath.sqrt(x)
 ```
 
@@ -182,7 +183,7 @@ cmath.sqrt(x)
 The `abs()` function returns the absolute value of a number (also called
 modulus):
 
-```{code-cell} ipython3
+```{code-cell}
 a = -45.463
 abs(a)
 ```
@@ -220,17 +221,17 @@ Sequences share the following operations
 A string is a (immutable) sequence of characters. A string can be defined using
 single quotes:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
 ---
-a = 'Hello World'
+a = "Hello World"
 ```
 
 double quotes:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -240,62 +241,62 @@ a = "Hello World"
 
 or triple quotes of either kind
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
 ---
 a = """Hello World"""
-a = '''Hello World'''
+a = """Hello World"""
 ```
 
 The type of a string is `str` and the empty string is given by `""`:
 
-```{code-cell} ipython3
+```{code-cell}
 a = "Hello World"
 type(a)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 b = ""
 type(b)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type("Hello World")
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type("")
 ```
 
 The number of characters in a string (that is its *length*) can be obtained
 using the `len()`-function:
 
-```{code-cell} ipython3
+```{code-cell}
 a = "Hello Moon"
 len(a)
 ```
 
-```{code-cell} ipython3
-a = 'test'
+```{code-cell}
+a = "test"
 len(a)
 ```
 
-```{code-cell} ipython3
-len('another test')
+```{code-cell}
+len("another test")
 ```
 
 You can combine (“concatenate”) two strings using the `+` operator:
 
-```{code-cell} ipython3
-'Hello ' + 'World'
+```{code-cell}
+"Hello " + "World"
 ```
 
 Strings have a number of useful methods, including for example `upper()` which
 returns the string in upper case:
 
-```{code-cell} ipython3
+```{code-cell}
 a = "This is a test sentence."
 a.upper()
 ```
@@ -308,7 +309,7 @@ of methods, `help` can be used to learn about each method.
 A particularly useful method is `split()` which converts a string into a list of
 strings:
 
-```{code-cell} ipython3
+```{code-cell}
 a = "This is a test sentence."
 a.split()
 ```
@@ -321,24 +322,24 @@ By passing a separator character to the `split()` method, a string can split
 into different parts. Suppose, for example, we would like to obtain a list of
 complete sentences:
 
-```{code-cell} ipython3
+```{code-cell}
 a = "The dog is hungry. The cat is bored. The snake is awake."
 a.split(".")
 ```
 
 The opposite string method to `split` is `join` which can be used as follows:
 
-```{code-cell} ipython3
+```{code-cell}
 a = "The dog is hungry. The cat is bored. The snake is awake."
 s = a.split('.')
 s
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ".".join(s)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 " STOP".join(s)
 ```
 
@@ -352,7 +353,7 @@ s
 A list is a sequence of objects. The objects can be of any type, for example
 integers:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -362,7 +363,7 @@ a = [34, 12, 54]
 
 or strings:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -372,7 +373,7 @@ a = ['dog', 'cat', 'mouse']
 
 An empty list is presented by `[]`:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -382,25 +383,25 @@ a = []
 
 The type is `list`:
 
-```{code-cell} ipython3
+```{code-cell}
 type(a)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type([])
 ```
 
 As with strings, the number of elements in a list can be obtained using the
 `len()` function:
 
-```{code-cell} ipython3
+```{code-cell}
 a = ['dog', 'cat', 'mouse']
 len(a)
 ```
 
 It is also possible to *mix* different types in the same list:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -411,7 +412,7 @@ a = [123, 'duck', -42, 17, 0, 'elephant']
 In Python a list is an object. It is therefore possible for a list to contain
 other lists (because a list keeps a sequence of objects):
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -421,13 +422,13 @@ a = [1, 4, 56, [5, 3, 1], 300, 400]
 
 You can combine (“concatenate”) two lists using the `+` operator:
 
-```{code-cell} ipython3
+```{code-cell}
 [3, 4, 5] + [34, 35, 100]
 ```
 
 Or you can add one object to the end of a list using the `append()` method:
 
-```{code-cell} ipython3
+```{code-cell}
 a = [34, 56, 23]
 a.append(42)
 a
@@ -436,7 +437,7 @@ a
 You can delete an object from a list by calling the `remove()` method and
 passing the object to delete. For example:
 
-```{code-cell} ipython3
+```{code-cell}
 a = [34, 56, 23, 42]
 a.remove(56)
 a
@@ -449,18 +450,18 @@ and therefore a command exists to generate that list: the `range(n)` command
 generates integers starting from 0 and going up to *but not including* n. Here
 are a few examples:
 
-```{code-cell} ipython3
+```{code-cell}
 list(range(3))
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 list(range(10))
 ```
 
 This command is often used with for loops. For example, to print the numbers
 $0^2,1^2,2^2,3^2,…,10^2$, the following program can be used:
 
-```{code-cell} ipython3
+```{code-cell}
 for i in range(11):
     print(i ** 2)
 ```
@@ -470,16 +471,16 @@ sequence (start) and another optional parameter for the step size. This is often
 written as `range([start],stop,[step])` where the arguments in square brackets
 (*i.e.* start and step) are optional. Here are some examples:
 
-```{code-cell} ipython3
-list(range(3, 10))            # start=3
+```{code-cell}
+list(range(3, 10))  # start=3
 ```
 
-```{code-cell} ipython3
-list(range(3, 10, 2))         # start=3, step=2
+```{code-cell}
+list(range(3, 10, 2))  # start=3, step=2
 ```
 
-```{code-cell} ipython3
-list(range(10, 0, -1))        # start=10,step=-1
+```{code-cell}
+list(range(10, 0, -1))  # start=10,step=-1
 ```
 
 Why are we calling `list(range())`?
@@ -500,19 +501,19 @@ immutable).
 
 For example, the objects in a sequence can be of any type:
 
-```{code-cell} ipython3
+```{code-cell}
 a = (12, 13, 'dog')
 a
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a[0]
 ```
 
 The parentheses are not necessary to define a tuple: just a sequence of objects
 separated by commas is sufficient to define a tuple:
 
-```{code-cell} ipython3
+```{code-cell}
 a = 100, 200, 'duck'
 a
 ```
@@ -522,47 +523,47 @@ that tuple is defined.
 
 Tuples can also be used to make two assignments at the same time:
 
-```{code-cell} ipython3
+```{code-cell}
 x, y = 10, 20
 x
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 y
 ```
 
 This can be used to *swap* to objects within one line. For example
 
-```{code-cell} ipython3
+```{code-cell}
 x = 1
 y = 2
 x, y = y, x
 x
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 y
 ```
 
 The empty tuple is given by `()`
 
-```{code-cell} ipython3
+```{code-cell}
 t = ()
 len(t)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type(t)
 ```
 
 The notation for a tuple containing one value may seem a bit odd at first:
 
-```{code-cell} ipython3
+```{code-cell}
 t = (42,)
 type(t)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 len(t)
 ```
 
@@ -570,19 +571,19 @@ The extra comma is required to distinguish `(42,)` from `(42)` where in the
 latter case the parenthesis would be read as defining operator precedence:
 `(42)` simplifies to `42` which is just a number:
 
-```{code-cell} ipython3
+```{code-cell}
 t = (42)
 type(t)
 ```
 
 This example shows the immutability of a tuple:
 
-```{code-cell} ipython3
+```{code-cell}
 a = (12, 13, 'dog')
 a[0]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 :tags: [raises-exception]
 
 # NBVAL_RAISES_EXCEPTION
@@ -604,16 +605,16 @@ tuples (which makes sense because you don’t want these values be changed).
 Individual objects in lists can be accessed by using the index of the object and
 square brackets (`[` and `]`):
 
-```{code-cell} ipython3
+```{code-cell}
 a = ['dog', 'cat', 'mouse']
 a[0]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a[1]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a[2]
 ```
 
@@ -625,12 +626,12 @@ this one uses the index “-1” where the minus indicates that it is one elemen
 *from the back* of the list. Similarly, the index “-2” will return the 2nd last
 element:
 
-```{code-cell} ipython3
+```{code-cell}
 a = ['dog', 'cat', 'mouse']
 a[-1]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a[-2]
 ```
 
@@ -640,24 +641,24 @@ If you prefer, you can think of the index `a[-1]` to be a shorthand notation for
 Remember that strings (like lists) are also a sequence type and can be indexed
 in the same way:
 
-```{code-cell} ipython3
+```{code-cell}
 a = "Hello World!"
 a[0]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a[1]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a[10]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a[-1]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a[-2]
 ```
 
@@ -669,28 +670,28 @@ a[-2]
 *Slicing* of sequences can be used to retrieve more than one element. For
 example:
 
-```{code-cell} ipython3
+```{code-cell}
 a = "Hello World!"
 a[0:3]
 ```
 
 By writing `a[0:3]` we request the first 3 elements starting from element 0. Similarly:
 
-```{code-cell} ipython3
+```{code-cell}
 a[1:4]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a[0:2]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a[0:6]
 ```
 
 We can use negative indices to refer to the end of the sequence:
 
-```{code-cell} ipython3
+```{code-cell}
 a[0:-1]
 ```
 
@@ -698,20 +699,20 @@ It is also possible to leave out the start or the end index and this will return
 all elements up to the beginning or the end of the sequence. Here are some
 examples to make this clearer:
 
-```{code-cell} ipython3
+```{code-cell}
 a = "Hello World!"
 a[:5]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a[5:]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a[-2:]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a[:]
 ```
 
@@ -763,7 +764,7 @@ Dictionaries are *unordered* sets of *key-value pairs*.
 
 An empty dictionary can be created using curly braces:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
@@ -773,42 +774,42 @@ d = {}
 
 Keyword-value pairs can be added like this:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
 ---
-d['today'] = '22 deg C'    # 'today' is the keyword
+d['today'] = "22 deg C"  # 'today' is the keyword
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 jupyter:
   outputs_hidden: true
 ---
-d['yesterday'] = '19 deg C'
+d['yesterday'] = "19 deg C"
 ```
 
 `d.keys()` returns a list of all keys:
 
-```{code-cell} ipython3
+```{code-cell}
 d.keys()
 ```
 
 We can retrieve values by using the keyword as the index:
 
-```{code-cell} ipython3
+```{code-cell}
 d['today']
 ```
 
 Other ways of populating a dictionary if the data is known at creation time are:
 
-```{code-cell} ipython3
-d2 = {2:4, 3:9, 4:16, 5:25}
+```{code-cell}
+d2 = {2: 4, 3: 9, 4: 16, 5: 25}
 d2
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 d3 = dict(a=1, b=2, c=3)
 d3
 ```
@@ -818,27 +819,27 @@ The function `dict()` creates an empty dictionary.
 Other useful dictionary methods include `values()`, `items()` and `get()`. You
 can use `in` to check for the presence of values.
 
-```{code-cell} ipython3
+```{code-cell}
 d.values()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 d.items()
 ```
 
-```{code-cell} ipython3
-d.get('today','unknown')
+```{code-cell}
+d.get('today', 'unknown')
 ```
 
-```{code-cell} ipython3
-d.get('tomorrow','unknown')
+```{code-cell}
+d.get('tomorrow', 'unknown')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 'today' in d
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 'tomorrow' in d
 ```
 
@@ -847,16 +848,16 @@ key exists, otherwise it will return the `default` object.
 
 Here is a more complex example:
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
-order = {}        # create empty dictionary
+order = {}  # create empty dictionary
 
-#add orders as they come in
-order['Peter'] = 'Pint of bitter'
-order['Paul'] = 'Half pint of Hoegarden'
-order['Mary'] = 'Gin Tonic'
+# add orders as they come in
+order['Peter'] = "Pint of bitter"
+order['Paul'] = "Half pint of Hoegarden"
+order['Mary'] = "Gin Tonic"
 
-#deliver order at bar
+# deliver order at bar
 for person in order.keys():
     print(person, "requests", order[person])
 ```
@@ -872,13 +873,13 @@ Some more technicalities:
 An other example to demonstrate an advantage of using dictionaries over pairs of
 lists:
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
-dic = {}                        #create empty dictionary
+dic = {}  # create empty dictionary
 
-dic["Hans"]   = "room 1033"     #fill dictionary
-dic["Andy C"] = "room 1031"     #"Andy C" is key
-dic["Ken"]    = "room 1027"     #"room 1027" is value
+dic['Hans'] = "room 1033"  # fill dictionary
+dic['Andy C'] = "room 1031"  # "Andy C" is key
+dic['Ken'] = "room 1027"  # "room 1027" is value
 
 for key in dic.keys():
     print(key, "works in", dic[key])
@@ -886,16 +887,16 @@ for key in dic.keys():
 
 Without dictionary:
 
-```{code-cell} ipython3
-people = ["Hans","Andy C","Ken"]
-rooms  = ["room 1033","room 1031","room 1027"]
+```{code-cell}
+people = ['Hans', 'Andy C', 'Ken']
+rooms = ['room 1033', 'room 1031', 'room 1027']
 
-#possible inconsistency here since we have two lists
-if not len( people ) == len( rooms ):
+# possible inconsistency here since we have two lists
+if not len(people) == len(rooms):
     raise RuntimeError("people and rooms differ in length")
 
-for i in range( len( rooms ) ):
-    print(people[i],"works in",rooms[i])
+for i in range(len(rooms)):
+    print(people[i], "works in", rooms[i])
 ```
 
 ## Passing arguments to functions
@@ -1025,12 +1026,13 @@ Here are three examples to discuss this. We start by passing a list to a
 function which iterates through all elements in the sequence and doubles the
 value of each element:
 
-```{code-cell} ipython3
+```{code-cell}
 def double_the_values(l):
     print("in double_the_values: l = %s" % l)
     for i in range(len(l)):
         l[i] = l[i] * 2
     print("in double_the_values: changed l to l = %s" % l)
+
 
 l_global = [0, 1, 2, 3, 10]
 print("In main: s=%s" % l_global)
@@ -1052,11 +1054,12 @@ object through the references `l` and `global_l`, respectively.
 In contrast, here is an example where do not modify the elements of the list
 within the function: which produces this output:
 
-```{code-cell} ipython3
+```{code-cell}
 def double_the_list(l):
     print("in double_the_list: l = %s" % l)
     l = l + l
     print("in double_the_list: changed l to l = %s" % l)
+
 
 l_global = "Hello"
 print("In main: l=%s" % l_global)
@@ -1071,11 +1074,12 @@ function (and thus we do not change the list object given to the function).
 
 Finally, let’s look at which produces this output:
 
-```{code-cell} ipython3
+```{code-cell}
 def double_the_value(l):
     print("in double_the_value: l = %s" % l)
     l = 2 * l
     print("in double_the_values: changed l to l = %s" % l)
+
 
 l_global = 42
 print("In main: s=%s" % l_global)
@@ -1118,10 +1122,10 @@ Generally, a function should not modify the data given as input to it.
 For example, the following code demonstrates the attempt to determine the
 maximum value of a list, and – inadvertently – modifies the list in the process:
 
-```{code-cell} ipython3
+```{code-cell}
 def mymax(s):  # demonstrating side effect
     if len(s) == 0:
-        raise ValueError('mymax() arg is an empty sequence')
+        raise ValueError("mymax() arg is an empty sequence")
     elif len(s) == 1:
         return s[0]
     else:
@@ -1129,6 +1133,7 @@ def mymax(s):  # demonstrating side effect
             if s[i] < s[i - 1]:
                 s[i] = s[i - 1]
         return s[len(s) - 1]
+
 
 s = [-45, 3, 6, 2, -1]
 print("in main before caling mymax(s): s=%s" % s)
@@ -1161,36 +1166,36 @@ memory address.) We can use this to identify whether two objects are the same.
 To copy a sequence object (including lists), we can slice it, *i.e.* if `a` is a
 list, then `a[:]` will return a copy of `a`. Here is a demonstration:
 
-```{code-cell} ipython3
+```{code-cell}
 a = list(range(10))
 a
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 b = a
 b[0] = 42
-a              # changing b changes a
+a  # changing b changes a
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 id(a)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 id(b)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 c = a[:]
-id(c)          # c is a different object
+id(c)  # c is a different object
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 c[0] = 100
-a              # changing c does not affect a
+a  # changing c does not affect a
 ```
 
 Python’s standard library provides the `copy` module, which provides copy
@@ -1206,16 +1211,17 @@ A related question concerns the equality of objects.
 The operators `<`, `>`, `==`, `>=`, `<=`, and `!=` compare the *values* of two
 objects. The objects need not have the same type. For example:
 
-```{code-cell} ipython3
-a = 1.0; b = 1
+```{code-cell}
+a = 1.0
+b = 1
 type(a)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 type(b)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 a == b
 ```
 
@@ -1227,7 +1233,7 @@ To see check whether two objects `a` and `b` are the same (i.e. `a` and `b` are
 references to the same place in memory), we can use the `is` operator (continued
 from example above):
 
-```{code-cell} ipython3
+```{code-cell}
 a is b
 ```
 
@@ -1238,12 +1244,12 @@ in Python 2.7 “*Returns the identity of an object. This is guaranteed to be
 unique among simultaneously existing objects. (Hint: it’s the object’s memory
 address.)*”
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 id(a)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 id(b)
 ```
@@ -1254,22 +1260,22 @@ which shows that `a` and `b` are stored in different places in memory.
 
 We close with an example involving lists:
 
-```{code-cell} ipython3
+```{code-cell}
 x = [0, 1, 2]
 y = x
 x == y
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x is y
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 id(x)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 id(y)
 ```
@@ -1282,24 +1288,24 @@ is that line 2 (`y=x`) creates a new reference `y` to the same list object that
 Accordingly, we can change elements of `x`, and `y` will change simultaneously
 as both `x` and `y` refer to the same object:
 
-```{code-cell} ipython3
+```{code-cell}
 x
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 y
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x is y
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x[0] = 100
 y
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x
 ```
 
@@ -1308,44 +1314,44 @@ then the slicing operation `x[:]` will actually create a copy of the list `x`,
 and the new reference `z` will point to the copy. The *value* of `x` and `z` is
 equal, but `x` and `z` are not the same object (they are not identical):
 
-```{code-cell} ipython3
+```{code-cell}
 x
 ```
 
-```{code-cell} ipython3
-z = x[:]            # create copy of x before assigning to z
-z == x              # same value
+```{code-cell}
+z = x[:]  # create copy of x before assigning to z
+z == x  # same value
 ```
 
-```{code-cell} ipython3
-z is x              # are not the same object
+```{code-cell}
+z is x  # are not the same object
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
-id(z)               # confirm by looking at ids
+id(z)  # confirm by looking at ids
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # NBVAL_IGNORE_OUTPUT
 id(x)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 z
 ```
 
 Consequently, we can change `x` without changing `z`, for example (continued)
 
-```{code-cell} ipython3
+```{code-cell}
 x[0] = 42
 x
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 z
 ```
