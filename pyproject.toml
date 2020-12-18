@@ -5,18 +5,20 @@ description = ""
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.6.1"
 matplotlib = "^3.3.2"
-pexpect = "^4.8.0"
-scipy = "^1.5.4"
 pandas = "^1.1.4"
+pexpect = "^4.8.0"
+python = "^3.6.1"
+scipy = "^1.5.4"
 sympy = "^1.6.2"
 
 [tool.poetry.dev-dependencies]
+black = "^20.8b1"
 jupyter-book = {git = "https://github.com/executablebooks/jupyter-book", rev = "f2b846838c35529581d1619fc4086b1b6e70c0e8"}
-pyppeteer = "^0.2.2"
 jupytext = "^1.6.0"
+nbqa = "^0.5.5"
 nbval = "^0.9.6"
+pyppeteer = "^0.2.2"
 sphinxcontrib-bibtex = "<2.0.0"
 
 [build-system]
