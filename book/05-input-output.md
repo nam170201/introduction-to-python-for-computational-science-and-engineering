@@ -290,7 +290,7 @@ One (maybe the most obvious) change going from Python 2 to Python 3 is that the
 World” using:
 
 ```python
-print "Hello world"             # valid in Python 2.x
+print "Hello world"  # valid in Python 2.x
 ```
 
 Effectively, we call the function `print` with the argument `Hello World`. All

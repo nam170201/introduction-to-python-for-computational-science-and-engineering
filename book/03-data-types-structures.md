@@ -226,7 +226,7 @@ single quotes:
 jupyter:
   outputs_hidden: true
 ---
-a = "Hello World"
+a = 'Hello World'
 ```
 
 double quotes:
@@ -246,7 +246,7 @@ or triple quotes of either kind
 jupyter:
   outputs_hidden: true
 ---
-a = """Hello World"""
+a = '''Hello World'''
 a = """Hello World"""
 ```
 

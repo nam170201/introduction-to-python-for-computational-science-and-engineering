@@ -40,13 +40,14 @@ context, product and device design can often be done much more cost effectively
 if carried out virtually through simulation rather than through building and
 testing prototypes. This is in particular so in areas where samples are
 expensive such as nanoscience (where it is expensive to create small things) and
-aerospace industry (where it is expensive to build large things). There are also
-situations where certain experiments can only be carried out virtually (ranging
-from astrophysics to study of effects of large scale nuclear or chemical
-accidents). Computational modelling, including use of computational tools to
-post-process, analyse and visualise data, has been used in engineering, physics
-and chemistry for many decades but is becoming more important due to the cheap
-availability of computational resources. Computational Modelling is also
+aerospace industry (where it is expensive to build large things).
+
+There are also situations where certain experiments can only be carried out
+virtually (ranging from astrophysics to study of effects of large scale nuclear
+or chemical accidents). Computational modelling, including use of computational
+tools to post-process, analyse and visualise data, has been used in engineering,
+physics and chemistry for many decades but is becoming more important due to the
+cheap availability of computational resources. Computational Modelling is also
 starting to play a more important role in studies of biological systems, the
 economy, archaeology, medicine, health care, and many other domains.
 
@@ -92,10 +93,10 @@ that is available for this simple system: $v(t) = t\cdot 9.81
 
 The numerical solution that can be computed using a computer would consist of
 data that shows how the velocity changes over time for a particular initial
-velocity $v_0* ($v_0* is a boundary condition here). The computer program would
-report a long lists of two numbers keeping the (i) value of time $v_i* for which
-a particular (ii) value of the velocity $v_i* has been computed. By plotting all
-$v_i* against $v_i*, or by fitting a curve through the data, we may be able to
+velocity $v_0$ ($v_0$ is a boundary condition here). The computer program would
+report a long lists of two numbers keeping the (i) value of time $v_i$ for which
+a particular (ii) value of the velocity $v_i$ has been computed. By plotting all
+$v_i$ against $v_i$, or by fitting a curve through the data, we may be able to
 understand the trend from the data (which we can just see from the analytical
 solution of course).
 
@@ -118,10 +119,10 @@ processing and visualisation is appropriately supported through existing tools,
 one can carry out computational modelling studies without any deeper programming
 knowledge.
 
-In a research environment – both in academia and research on new
-products/ideas/... in industry – one often reaches a point where existing
-packages will not be able to perform a required simulation task, or where more
-can be learned from analysing existing data in news ways etc.
+In a research environment – both in academia and research on new products,
+ideas, etc... in industry – one often reaches a point where existing packages
+will not be able to perform a required simulation task, or where more can be
+learned from analysing existing data in news ways etc.
 
 At that point, programming skills are required. It is also generally useful to
 have a broad understanding of the building blocks of software and basic ideas of
@@ -152,91 +153,95 @@ for example through:
 - Exception-based error handling
 - Dynamic data types & automatic memory management
 
-*As Python is an interpreted language, and it runs many times slower than
+
+```{important}
+As Python is an interpreted language, and it runs many times slower than
 compiled code, one might ask why anybody should consider such a ’slow’ language
-for computer simulations?*
+for computer simulations?
+```
 
-There are two replies to this criticism:
+### Implementation time versus execution time
 
-1.  *Implementation time versus execution time*: It is not the execution time
-    alone that contributes to the cost of a computational project: one also
-    needs to consider the cost of the development and maintenance work.
+It is not the execution time alone that contributes to the cost of a
+computational project: one also needs to consider the cost of the development
+and maintenance work. In the early days of scientific computing (say in the
+1960/70/80), compute time was so expensive that it made perfect sense to invest
+many person months of a programmer’s time to improve the performance of a
+calculation by a few percent.
 
-   In the early days of scientific computing (say in the 1960/70/80), compute
-   time was so expensive that it made perfect sense to invest many person months
-   of a programmer’s time to improve the performance of a calculation by a few
-   percent.
+Nowadays, however, the CPU cycles have become much cheaper than the programmer’s
+time. For research codes which often run only a small number of times (before
+the researchers move on to the next problem), it may be economic to accept that
+the code runs only at 25% of the expected possible speed if this saves, say, a
+month of a researcher’s (or programmers) time. For example: if the execution
+time of the piece of code is 10 hours, and one can predict that it will run
+about 100 times, then the total execution time is approximately 1000 hours. It
+would be great if this could be reduced to 25% and one could save 750 (CPU)
+hours. On the other hand, is an extra wait (about a month) and the cost of 750
+CPU hours worth investing one month of a person’s time \[who could do something
+else while the calculation is running\]? Often, the answer is not.
 
-   Nowadays, however, the CPU cycles have become much cheaper than the
-   programmer’s time. For research codes which often run only a small number of
-   times (before the researchers move on to the next problem), it may be
-   economic to accept that the code runs only at 25% of the expected possible
-   speed if this saves, say, a month of a researcher’s (or programmers) time.
-   For example: if the execution time of the piece of code is 10 hours, and one
-   can predict that it will run about 100 times, then the total execution time
-   is approximately 1000 hours. It would be great if this could be reduced to
-   25% and one could save 750 (CPU) hours. On the other hand, is an extra wait
-   (about a month) and the cost of 750 CPU hours worth investing one month of a
-   person’s time \[who could do something else while the calculation is
-   running\]? Often, the answer is not.
+*Code readability & maintenance - short code, fewer bugs*: A related issue is
+that a research code is not only used for one project, but carries on to be used
+again and again, evolves, grows, bifurcates etc. In this case, it is often
+justified to invest more time to make the code fast. At the same time, a
+significant amount of programmer time will go into (i) introducing the required
+changes, (ii) testing them even before work on speed optimisation of the changed
+version can start. To be able to maintain, extend and modify a code in often
+unforeseen ways, it can only be helpful to use a language that is easy to read
+and of great expressive power.
 
-   *Code readability & maintenance - short code, fewer bugs*: A related issue is
-   that a research code is not only used for one project, but carries on to be
-   used again and again, evolves, grows, bifurcates etc. In this case, it is
-   often justified to invest more time to make the code fast. At the same time,
-   a significant amount of programmer time will go into (i) introducing the
-   required changes, (ii) testing them even before work on speed optimisation of
-   the changed version can start. To be able to maintain, extend and modify a
-   code in often unforeseen ways, it can only be helpful to use a language that
-   is easy to read and of great expressive power.
 
-2. *Well-written Python code can be very fast* if time critical parts in
-   executed through compiled language.
+## Well-written Python code can be very fast
 
-   Typically, less than 5% percent of the code base of a simulation project need
-   more than 95% of the execution time. As long as these calculations are done
-   very efficiently, one doesn’t need to worry about all other parts of the code
-   as the overall time their execution takes is insignificant.
+If time critical parts in executed through compiled language.
 
-   The compute intense part of the program should to be tuned to reach optimal
-   performance. Python offers a number of options.
+Typically, less than 5% percent of the code base of a simulation project need
+more than 95% of the execution time. As long as these calculations are done very
+efficiently, one doesn’t need to worry about all other parts of the code as the
+overall time their execution takes is insignificant.
 
-   - For example, the `numpy` Python extension provides a Python interface to
-     the compiled and efficient LAPACK libraries that are the quasi-standard in
-     numerical linear algebra. If the problems under study can be formulated
-     such that eventually large systems of algebraic equations have to be
-     solved, or eigenvalues computed, etc, then the compiled code in the LAPACK
-     library can be used (through the Python-numpy package). At this stage, the
-     calculations are carried out with the same performance of Fortran/C as it
-     is essentially Fortran/C code that is used. Matlab, by the way, exploits
-     exactly this: the Matlab scripting language is very slow (about 10 time
-     slower than Python), but Matlab gains its power from delegating the matrix
-     operation to the compiled LAPACK libraries.
-   - Existing numerical C/Fortran libraries can be interfaced to be usable from
-     within Python (using for example Swig, Boost.Python and Cython).
-   - Python can be extended through compiled languages if the computationally
-     demanding part of the problem is algorithmically non-standard and no
-     existing libraries can be used.
+The compute intense part of the program should to be tuned to reach optimal
+performance. Python offers a number of options.
 
-    Commonly used are C, Fortran and C++ to implement fast extensions.
+For example, the `numpy` Python extension provides a Python interface to the
+compiled and efficient LAPACK libraries that are the quasi-standard in numerical
+linear algebra. If the problems under study can be formulated such that
+eventually large systems of algebraic equations have to be solved, or
+eigenvalues computed, etc, then the compiled code in the LAPACK library can be
+used (through the Python-numpy package). At this stage, the calculations are
+carried out with the same performance of Fortran/C as it is essentially
+Fortran/C code that is used. Matlab, by the way, exploits exactly this: the
+Matlab scripting language is very slow (about 10 time slower than Python), but
+Matlab gains its power from delegating the matrix operation to the compiled
+LAPACK libraries.
 
-   -   We list some tools that are used to use compiled code from Python:
+Existing numerical C/Fortran libraries can be interfaced to be usable from
+within Python (using for example Swig, Boost.Python and Cython).
 
-       - The `scipy.weave` extension is useful if just a short expression needs
-         to be expressed in C.
-       - The Cython interface is growing in popularity to (i) semi-automatically
-         declare variable types in Python code, to translate that code to C
-         (automatically) and to then use the compiled C code from Python. Cython
-         is also used to quickly wrap an existing C library with an interface so
-         the C library can be used from Python.
-       - Boost.Python is specialised for wrapping C++ code in Python.
+Python can be extended through compiled languages if the computationally
+demanding part of the problem is algorithmically non-standard and no existing
+libraries can be used.
 
-*The conclusion is that Python is “fast enough” for most computational tasks,
+Commonly used are C, Fortran and C++ to implement fast extensions.
+
+We list some tools that are used to use compiled code from Python:
+- The `scipy.weave` extension is useful if just a short expression needs to be
+  expressed in C
+- The Cython interface is growing in popularity to (i) semi-automatically
+  declare variable types in Python code, to translate that code to C
+  (automatically) and to then use the compiled C code from Python. Cython is
+  also used to quickly wrap an existing C library with an interface so the C
+  library can be used from Python
+- Boost.Python is specialised for wrapping C++ code in Python
+
+```{important}
+The conclusion is that Python is “fast enough” for most computational tasks,
 and that its user friendly high-level language often makes up for reduced speed
 in comparison to compiled lower-level languages. Combining Python with
 tailor-written compiled code for the performance critical parts of the code,
-results in virtually optimal speed in most cases.*
-
+results in virtually optimal speed in most cases.
+```
 
 ### Optimisation strategies
 
